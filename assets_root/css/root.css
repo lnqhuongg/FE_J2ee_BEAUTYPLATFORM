@@ -1,0 +1,39 @@
+.btn-blue-100 {
+    background-color: #cfe2ff;
+    color: #333;
+    font-size: 15px;
+}
+
+.btn-blue-100:hover {
+    background-color: #9ec5fe;
+    color: #333;
+    transition: 0.3s;
+}
+
+.btn-purple-100 {
+    background-color: #e2d9f3;
+    color: #333;
+    font-size: 15px;
+}
+
+.btn-purple-100:hover {
+    background-color: #a98eda;
+    color: #333;
+    transition: 0.3s;
+}
+
+.text-blue-800 {
+    color: #052c65;
+}
+
+.btn-blue-400-outline {
+    color: #3d8bfd;
+    background-color: #fff;
+    border: 1px solid #3d8bfd;
+}
+
+.btn-blue-400-outline:hover {
+    color: #fff;
+    background-color: #3d8bfd;
+    border: 1px solid #3d8bfd;
+}
