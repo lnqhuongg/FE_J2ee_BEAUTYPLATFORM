@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="vi">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Quản lý Hồ sơ</title>
+		<!-- Bootstrap -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+		<!-- Font Awesome -->
+		<link href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css" rel="stylesheet" type="text/css" />
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="../assets/profile.css">
+		<link rel="stylesheet" href="../../assets_root/css/root.css">
+	</head>
+
+	<body>
+		<!-- Header Sticky -->
+		<header class="shadow py-3 sticky-top bg-white z-3">
+			<div class="nav container d-flex justify-content-between">
+				<div class="d-flex align-items-center">
+					<i class="fa-regular fa-scissors" style="font-size: 26px;"></i>
+					<span class="ms-2 fw-semibold fs-4">freshj</span>
+				</div>
+				<div class="d-flex align-items-center provider-info">
+					<span class="me-2 fw-light">provider's name</span>
+					<i class="fa-thin fa-circle-user fs-2"></i>
+					<a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="d-flex">
+			<!-- Sidebar Fixed -->
+			<aside class="sidebar bg-light border-end vh-100">
+				<div class="p-3">
+					<h6 class="text-uppercase text-muted">Tính năng</h6>
+					<ul class="nav flex-column mt-3">
+						<li class="nav-item mb-2">
+							<a class="nav-link active" href="#">
+								<i class="fa-light fa-address-card"></i>Quản lý Hồ sơ
+							</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a class="nav-link" href="#">
+								<i class="fa-light fa-calendar-check"></i>Quản lý Dịch vụ
+							</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a class="nav-link" href="#">
+								<i class="fa-light fa-calendar-lines-pen"></i>Quản lý Đặt lịch
+							</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a class="nav-link" href="#">
+								<i class="fa-light fa-calendar-days"></i>Lịch làm việc
+							</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a class="nav-link" href="#">
+								<i class="fa-light fa-users"></i>Quản lý Nhân viên
+							</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a class="nav-link" href="#">
+								<i class="fa-light fa-tags"></i>Quản lý Khuyến mãi
+							</a>
+						</li>
+						<li class="nav-item mb-2">
+							<a class="nav-link" href="#">
+								<i class="fa-light fa-chart-pie-simple-circle-dollar"></i>Thống kê Doanh thu
+							</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+
+			<!-- Main content -->
+			<main class="flex-grow-1 px-5 mt-4" style="margin-left: 240px;">
+				<!-- Gradient banner -->
+				<div class="banner rounded mb-0"></div>
+
+				<div class="profile-card bg-white rounded shadow-sm p-4 mt-n5">
+								<div class="d-flex align-items-center">
+									<div class="me-3">
+										<img src="../assets/avatar-default.svg" alt="avatar" class="rounded-circle avatar-lg">
+									</div>
+						<div class="flex-grow-1">
+							<h5 class="mb-1">Alexa Rawles</h5>
+							<div class="text-muted">alexarawles@gmail.com</div>
+						</div>
+									<div>
+										<button id="editBtn" class="btn btn-primary btn-sm">Edit</button>
+										<button id="cancelBtn" class="btn btn-outline-secondary btn-sm ms-2 d-none">Cancel</button>
+									</div>
+					</div>
+
+					<hr class="my-4">
+
+								<form id="profileForm">
+						<div class="row gy-3">
+										<div class="col-md-6">
+											<label class="form-label small">Full Name</label>
+											<input name="fullname" disabled type="text" class="form-control form-control-sm" placeholder="Your First Name">
+										</div>
+										<div class="col-md-6">
+											<label class="form-label small">Nick Name</label>
+											<input name="nickname" disabled type="text" class="form-control form-control-sm" placeholder="Your Nick Name">
+										</div>
+
+											<div class="col-md-6">
+												<label class="form-label small">Gender</label>
+												<select name="gender" disabled class="form-select form-select-sm">
+													<option selected>Choose...</option>
+													<option>Female</option>
+													<option>Male</option>
+												</select>
+											</div>
+											<div class="col-md-6">
+												<label class="form-label small">Country</label>
+												<select name="country" disabled class="form-select form-select-sm">
+													<option selected>Choose...</option>
+												</select>
+											</div>
+
+											<div class="col-md-6">
+												<label class="form-label small">Language</label>
+												<select name="lang" disabled class="form-select form-select-sm">
+													<option selected>English</option>
+												</select>
+											</div>
+											<div class="col-md-6">
+												<label class="form-label small">Time Zone</label>
+												<select name="tz" disabled class="form-select form-select-sm">
+													<option selected>UTC +7</option>
+												</select>
+											</div>
+
+							<div class="col-12">
+								<h6 class="mb-2">My email Address</h6>
+								<div id="emailList">
+									<div class="d-flex align-items-center email-entry mb-2">
+										<div class="me-3 email-icon bg-primary-subtle text-primary p-2 rounded-circle">
+											<i class="fa-regular fa-envelope"></i>
+										</div>
+										<div>
+											<div class="fw-medium">alexarawles@gmail.com</div>
+											<div class="small text-muted">1 month ago</div>
+										</div>
+									</div>
+								</div>
+								<div class="mt-3">
+									<button id="addEmailBtn" class="btn btn-outline-primary btn-sm" type="button">+Add Email Address</button>
+								</div>
+
+								<div id="addEmailForm" class="mt-3 d-none">
+									<div class="input-group" style="max-width:520px">
+										<input id="newEmailInput" type="email" class="form-control form-control-sm" placeholder="Enter email address">
+										<button id="saveEmailBtn" class="btn btn-primary btn-sm" type="button">Save</button>
+										<button id="cancelEmailBtn" class="btn btn-outline-secondary btn-sm" type="button">Cancel</button>
+									</div>
+									<div id="emailError" class="text-danger small mt-1 d-none"></div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</main>
+		</div>
+
+			<!-- Bootstrap JS -->
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+			<script>
+				
+				(function(){
+					const editBtn = document.getElementById('editBtn');
+					const cancelBtn = document.getElementById('cancelBtn');
+					const form = document.getElementById('profileForm');
+					let editing = false;
+					
+					function setEditable(flag){
+						const controls = form.querySelectorAll('input, select, textarea');
+						controls.forEach(c=> c.disabled = !flag);
+					}
+					editBtn.addEventListener('click', function(){
+						if(!editing){
+							editing = true;
+							setEditable(true);
+							editBtn.textContent = 'Save';
+							cancelBtn.classList.remove('d-none');
+							editBtn.classList.remove('btn-primary');
+							editBtn.classList.add('btn-success');
+						} else {
+							
+							editing = false;
+							setEditable(false);
+							editBtn.textContent = 'Edit';
+							cancelBtn.classList.add('d-none');
+							editBtn.classList.remove('btn-success');
+							editBtn.classList.add('btn-primary');
+						
+							editBtn.blur();
+							const tmp = document.createElement('span');
+							tmp.className = 'ms-2 text-success small';
+							tmp.textContent = 'Saved';
+							editBtn.parentNode.appendChild(tmp);
+							setTimeout(()=> tmp.remove(), 1200);
+						}
+					});
+					cancelBtn.addEventListener('click', function(){
+						
+						editing = false;
+						setEditable(false);
+						editBtn.textContent = 'Edit';
+						cancelBtn.classList.add('d-none');
+						editBtn.classList.remove('btn-success');
+						editBtn.classList.add('btn-primary');
+					});
+					
+					setEditable(false);
+				})();
+
+
+				// Add Email Address behavior
+				(function(){
+					const addBtn = document.getElementById('addEmailBtn');
+					const addForm = document.getElementById('addEmailForm');
+					const saveBtn = document.getElementById('saveEmailBtn');
+					const cancelBtn = document.getElementById('cancelEmailBtn');
+					const input = document.getElementById('newEmailInput');
+					const emailList = document.getElementById('emailList');
+					const emailError = document.getElementById('emailError');
+
+					function isValidEmail(e){
+						return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+					}
+
+					addBtn.addEventListener('click', function(){
+						addForm.classList.remove('d-none');
+						input.focus();
+						addBtn.setAttribute('disabled','');
+					});
+
+					cancelBtn.addEventListener('click', function(){
+						addForm.classList.add('d-none');
+						emailError.classList.add('d-none');
+						emailError.textContent = '';
+						input.value = '';
+						addBtn.removeAttribute('disabled');
+					});
+
+					saveBtn.addEventListener('click', function(){
+						const val = input.value.trim();
+						if(!isValidEmail(val)){
+							emailError.textContent = 'Please enter a valid email address.';
+							emailError.classList.remove('d-none');
+							return;
+						}
+
+						
+						const wrapper = document.createElement('div');
+						wrapper.className = 'd-flex align-items-center email-entry mb-2';
+						wrapper.innerHTML = `
+							<div class="me-3 email-icon bg-primary-subtle text-primary p-2 rounded-circle">
+								<i class="fa-regular fa-envelope"></i>
+							</div>
+							<div>
+								<div class="fw-medium">${val}</div>
+								<div class="small text-muted">Just now</div>
+							</div>`;
+
+						emailList.appendChild(wrapper);
+						// reset form
+						input.value = '';
+						emailError.classList.add('d-none');
+						addForm.classList.add('d-none');
+						addBtn.removeAttribute('disabled');
+
+						// small saved feedback
+						const tmp = document.createElement('span');
+						tmp.className = 'ms-2 text-success small';
+						tmp.textContent = 'Added';
+						addBtn.parentNode.appendChild(tmp);
+						setTimeout(()=> tmp.remove(), 1200);
+					});
+
+				})();
+			</script>
+	</body>
+</html>
