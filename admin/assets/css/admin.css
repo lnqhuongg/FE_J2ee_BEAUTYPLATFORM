@@ -1,0 +1,114 @@
+/* Header info */
+.provider-info span {
+  border: 0.5px solid #aaaaaa;
+  padding: 2px 15px;
+  border-radius: 50px;
+}
+
+.logout-link {
+  cursor: pointer;
+  font-weight: 200;
+  padding: 1px 5px 2px 5px;
+}
+
+.logout-link:hover {
+  border-bottom: 0.5px solid #aaaaaa;
+}
+
+/* Sidebar link style */
+.sidebar .nav-link {
+  color: #333;
+  font-weight: 400;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  color: #5e5ab5;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.sidebar .nav-link i {
+  font-size: 17px;
+  margin-right: 8px;
+}
+
+/* Table style */
+.custom-table thead th {
+  font-weight: 600;
+  background-color: #f9fafb !important;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1f5ff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.custom-table td, 
+.custom-table th {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.custom-table .badge {
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 50px;
+}
+
+.btn-outline-primary, 
+.btn-outline-danger {
+  border-radius: 8px;
+}
+
+
+/* ==== Pagination đẹp ==== */
+.custom-pagination .page-link {
+  border: none;
+  color: #333;
+  font-weight: 500;
+  border-radius: 8px;
+  margin: 0 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-pagination .page-item.active .page-link {
+  background-color: #8c68cd;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(73, 31, 125, 0.3);
+}
+
+.custom-pagination .page-link:hover {
+  background-color: #efe6fd;
+  color: #a98eda;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+  color: #bbb;
+  pointer-events: none;
+  background-color: #f8f9fa;
+}
+
+.custom-pagination .page-link i {
+  font-size: 0.8rem;
+}
+
+.nav-tabs .nav-link {
+  color: #6f42c1;               /* tím Bootstrap */
+  border: 1px solid transparent;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #ede4ff;     /* tím nhạt giống btn-purple-100 */
+  border-color: #b18bff #b18bff #ede4ff;
+  color: #6f42c1;                /* chữ tím */
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #b18bff;
+  color: #6f42c1;
+}
