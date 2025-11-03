@@ -89,7 +89,7 @@
   text-overflow: ellipsis;
 }
 
-/* ==== Pagination đẹp ==== */
+/* ==== Pagination ==== */
 .custom-pagination .page-link {
   border: none;
   color: #333;
@@ -119,4 +119,3 @@
 .custom-pagination .page-link i {
   font-size: 0.8rem;
 }
-

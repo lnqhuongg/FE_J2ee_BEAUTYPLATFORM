@@ -1,0 +1,95 @@
+
+:root{
+	--banner-start: #e6f0ff;
+	--banner-end: #fff0e6;
+}
+
+body{
+	background: #f5f7fa;
+	color: #343a40;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+
+.search-wrapper input{
+	width: 280px;
+	border-radius: 12px;
+	border: 1px solid rgba(0,0,0,0.06);
+	padding: 10px 12px;
+}
+.avatar-sm img{ width:48px; height:48px; object-fit:cover; }
+
+.sidebar{
+	width: 240px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	padding-top: 80px; 
+}
+
+.banner{
+	height: 140px;
+	background: linear-gradient(90deg, var(--banner-start), var(--banner-end));
+	border-radius: 12px;
+}
+
+.profile-card{
+	margin-left: 0;
+	border-radius: 12px;
+	margin-top: -48px;
+	padding: 26px;
+}
+
+.avatar-lg{ width:120px; height:120px; object-fit:cover; border:6px solid #fff; box-shadow:0 6px 20px rgba(20,40,60,0.08); }
+
+.profile-card h5{ font-size: 20px; font-weight:700; }
+.profile-card .text-muted{ opacity:0.8; }
+
+.btn-primary{ background: #2563eb; border-color: #2563eb; }
+.btn-success{ background: #16a34a; border-color:#16a34a }
+
+
+@media (max-width: 991px){
+	.banner{ height: 100px; }
+	.profile-card{ margin-top: -36px; padding: 18px; }
+}
+
+
+.sticky-top{ z-index: 1030; }
+.nav.container{ align-items: center; }
+.provider-info{ display: flex; align-items: center; gap: .6rem; }
+.provider-info .fw-light{ opacity: .9; }
+.logout-link{ color:#111; text-decoration:none; padding-left:.6rem; }
+.logout-link:hover{ color:#2563eb; }
+
+.sidebar .p-3{ padding-top: 1.25rem; }
+.sidebar .nav-link{ color: #495057; padding: .35rem .5rem; display:flex; align-items:center; gap:.5rem; border-radius:6px; }
+.sidebar .nav-link:hover{ background: rgba(37,99,235,0.06); color: #1e40af; text-decoration:none; }
+.sidebar .nav-link.active{ color: #2563eb; font-weight:600; background: transparent; }
+.sidebar .nav-link i{ width: 20px; text-align: center; margin-right: 8px; }
+
+
+header.sticky-top{ position: sticky; top: 0; backdrop-filter: blur(4px); }
+
+
+.provider-info i.fa-circle-user{ opacity: .85; }
+
+
+.email-icon{ width:40px; height:40px; display:flex; align-items:center; justify-content:center; }
+
+
+.form-control, .form-select{
+	background: #f6f8fb;
+	border: 1px solid rgba(0,0,0,0.04);
+	box-shadow: none;
+}
+
+.btn-primary{ background: #2563eb; border-color: #2563eb; }
+
+
+@media (max-width: 991px){
+	.sidebar{ display:none; }
+	main[style] { margin-left: 0 !important; }
+	.search-wrapper input{ width: 180px; }
+}
