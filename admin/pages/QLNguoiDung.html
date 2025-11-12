@@ -1,116 +1,39 @@
-<!doctype html>
-<html lang="vi">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quản lý Đặt lịch</title>
-    
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
-          rel="stylesheet" crossorigin="anonymous">
+<div data-init="initNguoiDungPage">
+    <!-- Main content -->
+    <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;"><i class="fa-light fa-users me-2"></i>Quản lý Người dùng
+    </h1>
 
-    <!-- Font Awesome -->
-    <link
-      href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
-      rel="stylesheet" type="text/css" />
+    <div class="col-12 main-content px-4">
+        <section class="py-5">
+            <!-- Tab chọn Nhà cung cấp & Khách hàng -->
+            <ul class="nav nav-tabs mb-4" id="userTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active fw-semibold" id="supplier-tab" data-bs-toggle="tab"
+                        data-bs-target="#supplier" type="button" role="tab">
+                        Tài khoản Doanh nghiệp
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-semibold" id="customer-tab" data-bs-toggle="tab"
+                        data-bs-target="#customer" type="button" role="tab">
+                        Tài khoản Khách hàng
+                    </button>
+                </li>
+            </ul>
 
-    <!-- CSS riêng -->
-    <link rel="stylesheet" href="../assets/css/admin.css">
-    <link rel="stylesheet" href="../../assets_root/css/root.css">
-
-    <!-- JS riêng -->
-    <script src="../js/NguoiDung.js"></script>
-  </head>
-
-  <body>
-    <!-- Header Sticky -->
-    <header class="shadow py-3 sticky-top bg-white z-3">
-      <div class="nav container d-flex justify-content-between">
-        <div class="d-flex align-items-center">
-          <i class="fa-regular fa-scissors" style="font-size: 26px;"></i>
-          <span class="ms-2 fw-semibold fs-4">freshj</span>
-        </div>
-        <div class="d-flex align-items-center provider-info">
-          <span class="me-2 fw-light">provider's name</span>
-          <i class="fa-thin fa-circle-user fs-2"></i>
-          <a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
-        </div>
-      </div>
-    </header>
-
-    <!-- Layout: Sidebar cố định + Main -->
-    <div class="d-flex">
-      <!-- Sidebar Fixed -->
-      <aside class="sidebar bg-light border-end vh-100">
-        <div class="p-3">
-          <h6 class="text-uppercase text-muted">Tính năng</h6>
-          <ul class="nav flex-column mt-3">
-            <li class="nav-item mb-2">
-              <a class="nav-link active" href="#">
-                <i class="fa-light fa-address-card"></i>Quản lý Hồ sơ
-              </a>  
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-calendar-check"></i>Quản lý Dịch vụ
-              </a>
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-calendar-lines-pen"></i>Quản lý Đặt lịch
-              </a>
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-calendar-days"></i>Lịch làm việc
-              </a>
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-users"></i>Quản lý Nhân viên
-              </a>
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-tags"></i>Quản lý Khuyến mãi
-              </a>
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-chart-pie-simple-circle-dollar"></i>Thống kê Doanh thu
-              </a>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
-      <!-- Main content -->
-      <main class="flex-grow-1 px-5 mt-4" style="margin-left: 240px;">
-        <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;">Quản lý Hồ sơ</h1>
-
-        <div class="col-12 main-content" style="padding-left: 0px;">
-            <section class="py-5">
-                <!-- Tab chọn tài khoản nhà cung cấp & khách hàng  -->
-                <ul class="nav nav-tabs" style="margin: 0px 0px 25px 0px;">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Nhà cung cấp dịch vụ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Tài khoản khách hàng</a>
-                    </li>
-                </ul>
-                <!-- -------------- START: Nhà cung cấp -------------- -->
-                <!-- tìm kiếm, lọc của Nhà cung cấp -->
-                <div class="admin-section" style="display: block;">
-                    <form class="row d-flex align-items-center">
-                        <div class="col-2">
-                            <select name="" id="" class="form-select w-100">
-                                <option value="-1" checked>Loại nhà cung cấp</option>
-                                <option value="-1" checked>Nail</option>
-                                <option value="-1" checked>Head</option>
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Nhà cung cấp -->
+                <div class="tab-pane fade show active" id="supplier" role="tabpanel" aria-labelledby="supplier-tab">
+                    <form class="row d-flex align-items-center mb-3">
+                        <div class="col-3">
+                            <select class="form-select w-100">
+                                <option value="-1" selected>Loại nhà cung cấp</option>
+                                <option>Nail</option>
+                                <option>Head</option>
                             </select>
                         </div>
-                        <div class="col-7">
+                        <div class="col-6">
                             <div class="input-group">
                                 <input type="text" placeholder="Tìm kiếm theo email hoặc tên tài khoản..."
                                     class="w-75 form-control">
@@ -120,49 +43,34 @@
                         <div class="col-3 d-flex justify-content-end">
                             <button class="btn btn-purple-100 border" data-bs-toggle="modal"
                                 data-bs-target="#SupplierModal" type="button">
-                                <i class="fa-duotone fa-solid fa-plus-large"></i>
-                                Thêm Tài khoản mới
+                                <i class="fa-duotone fa-solid fa-plus-large"></i> Thêm Tài khoản mới
                             </button>
                         </div>
                     </form>
-                    <!-- table danh sách tài khoản Nhà cung cấp -->
-                    <div style="margin: 10px 0px 20px 0px;">
+
+                    <!-- Table Nhà cung cấp -->
+                    <div style="margin: 10px 0 20px;">
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Mã tài khoản</th>
-                                    <th scope="col">Tên tài khoản</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Nhóm quyền</th>
-                                    <th scope="col">Trạng thái</th>
-                                    <th class="text-center" scope="col">Tùy chỉnh</th>
+                                    <th>Mã tài khoản</th>
+                                    <th>Tên tài khoản</th>
+                                    <th>Email</th>
+                                    <th>Nhóm quyền</th>
+                                    <th>Trạng thái</th>
+                                    <th class="text-center">Tùy chỉnh</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="width: 120px" scope="row"><strong>1</strong></td>
+                                    <td><strong>1</strong></td>
                                     <td>Lê Ngọc Quỳnh Hương</td>
                                     <td>lnqhuong04@gmail.com</td>
                                     <td>Admin</td>
                                     <td>Đang hoạt động</td>
                                     <td class="text-center">
-                                        <button style="border:none;" class="btn-table" title="Chỉnh sửa"
-                                            data-bs-toggle="modal" data-bs-target="#SupplierModal"
-                                            type="button">
-                                            <i class="fa-duotone fa-solid fa-pen-to-square"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 120px" scope="row"><strong>1</strong></td>
-                                    <td>Lê Ngọc Quỳnh Hương</td>
-                                    <td>lnqhuong04@gmail.com</td>
-                                    <td>Admin</td>
-                                    <td>Đang hoạt động</td>
-                                    <td class="text-center">
-                                        <button style="border:none;" class="btn-table" title="Chỉnh sửa"
-                                            data-bs-toggle="modal" data-bs-target="#SupplierModal"
-                                            type="button">
+                                        <button class="btn-table border-0" data-bs-toggle="modal"
+                                            data-bs-target="#SupplierModal">
                                             <i class="fa-duotone fa-solid fa-pen-to-square"></i>
                                         </button>
                                     </td>
@@ -170,13 +78,33 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <!-- -------------- END: Nhà cung cấp -------------- -->
 
-                <!-- -------------- START: KHÁCH HÀNG -------------- -->
-                <!-- tìm kiếm, lọc của khách hàng -->
-                <div class="customer-section" style="display: none;">
-                    <form class="row d-flex align-items-center justify-content-between">
+                    <!-- Phân trang -->
+                    <div
+                        class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
+                        <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mb-0 custom-pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="fa-light fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa-light fa-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Khách hàng -->
+                <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">
+                    <form class="row d-flex align-items-center justify-content-between mb-3">
                         <div class="col-9">
                             <div class="input-group">
                                 <input type="text" placeholder="Tìm kiếm theo email hoặc tên tài khoản..."
@@ -187,32 +115,32 @@
                         <div class="col-3 d-flex justify-content-end">
                             <button class="btn btn-purple-100 border" data-bs-toggle="modal"
                                 data-bs-target="#CustomerAccountModal" type="button">
-                                <i class="fa-duotone fa-solid fa-plus-large"></i>
-                                Thêm Tài khoản mới
+                                <i class="fa-duotone fa-solid fa-plus-large"></i> Thêm Tài khoản mới
                             </button>
                         </div>
                     </form>
-                    <div style="margin: 10px 0px 20px 0px;">
+
+                    <!-- Table Khách hàng -->
+                    <div style="margin: 10px 0 20px;">
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Mã tài khoản</th>
-                                    <th scope="col">Tên tài khoản</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Trạng thái</th>
-                                    <th scope="col" class="text-center">Tùy chỉnh</th>
+                                    <th>Mã tài khoản</th>
+                                    <th>Tên tài khoản</th>
+                                    <th>Email</th>
+                                    <th>Trạng thái</th>
+                                    <th class="text-center">Tùy chỉnh</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="width: 120px" scope="row"><strong>1</strong></td>
+                                    <td><strong>1</strong></td>
                                     <td>Lê Ngọc Quỳnh Hương</td>
                                     <td>lnqhuong04@gmail.com</td>
                                     <td>Đang hoạt động</td>
                                     <td class="text-center">
-                                        <button style="border:none;" class="btn-table" title="Chỉnh sửa"
-                                            data-bs-toggle="modal" data-bs-target="#CustomerAccountModal"
-                                            type="button">
+                                        <button class="btn-table border-0" data-bs-toggle="modal"
+                                            data-bs-target="#CustomerAccountModal">
                                             <i class="fa-duotone fa-solid fa-pen-to-square"></i>
                                         </button>
                                     </td>
@@ -220,164 +148,162 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <!-- -------------- END: KHÁCH HÀNG -------------- -->
-                <!-- Phân trang -->
-                <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
-                    <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ</div>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination mb-0 custom-pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                            <i class="fa-light fa-chevron-left"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#"><i class="fa-light fa-chevron-right"></i></a>
-                        </li>
-                        </ul>
-                    </nav>
-                </div>
-            </section>
-        </div>
-        <!-- Modal CỦA Nhà cung cấp -->
-        <div class="modal fade" id="SupplierModal" tabindex="-1" aria-labelledby="SupplierModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content p-2">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="SupplierModalLabel">Thêm Tài khoản Nhà cung cấp mới</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row" style="margin-bottom: 15px;">
-                            <div class="col-6">
-                                <label for="" class="form-label">Mã tài khoản</label>
-                                <input class="w-100 form-control" type="text" disabled value="TK0001">
-                            </div>
-                            <div class="col-6">
-                                <label for="" class="form-label">Số điện thoại</label>
-                                <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
-                            </div>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label for="" class="form-label">Tên tài khoản</label>
-                            <input class="w-100 form-control" type="text" placeholder="Nhập tên tài khoản...">
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label for="" class="form-label">Email</label>
-                            <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label for="" class="form-label">Mật khẩu</label>
-                            <input class="w-100 form-control" type="text" placeholder="Nhập mật khẩu tài khoản...">
-                        </div>
-                        <!-- Chọn giới tính nam nữ  -->
-                        <div class="row" style="margin-bottom: 15px;">
-                            <label for="" class="form-label">Giới tính</label>
-                            <div class="d-flex col-4 justify-content-between">
-                                <span class="form-check">
-                                    <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nu">
-                                    <label class="form-check-label" for="gioitinh_nu">
-                                        Nữ
-                                    </label>
-                                </span>
-                                <span class="form-check">
-                                    <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nam"
-                                        checked>
-                                    <label class="form-check-label" for="gioitinh_nam">
-                                        Nam
-                                    </label>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom: 5px;">
-                            <div class="col-6">
-                                <label for="" class="form-label">Loại nhà cung cấp</label>
-                                <select name="" id="" class="form-select">
-                                    <option selected value="-1">Chọn loại</option>
-                                    <option value="">Nail</option>
-                                    <option value="">Face</option>
-                                    <option value="">Head</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-purple-100 border">Thêm mới</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Modal CỦA KHÁCH HÀNG -->
-        <div class="modal fade" id="CustomerAccountModal" tabindex="-1" aria-labelledby="CustomerAccountModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content p-2">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="CustomerAccountModalLabel">Thêm Tài khoản khách hàng mới</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row" style="margin-bottom: 15px;">
-                            <div class="col-6">
-                                <label for="" class="form-label">Mã tài khoản</label>
-                                <input class="w-100 form-control" type="text" disabled value="TK0001">
-                            </div>
-                            <div class="col-6">
-                                <label for="" class="form-label">Số điện thoại</label>
-                                <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
-                            </div>
+                    <!-- Phân trang -->
+                    <div
+                        class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
+                        <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ
                         </div>
-                        <div style="margin-bottom: 15px;">
-                            <label for="" class="form-label">Tên tài khoản</label>
-                            <input class="w-100 form-control" type="text" placeholder="Nhập tên tài khoản...">
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label for="" class="form-label">Email</label>
-                            <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <label for="" class="form-label">Mật khẩu</label>
-                            <input class="w-100 form-control" type="text" placeholder="Nhập mật khẩu tài khoản...">
-                        </div>
-                        <!-- Chọn giới tính nam nữ  -->
-                        <div class="row">
-                            <label for="" class="form-label">Giới tính</label>
-                            <div class="d-flex col-4 justify-content-between">
-                                <span class="form-check">
-                                    <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nu">
-                                    <label class="form-check-label" for="gioitinh_nu">
-                                        Nữ
-                                    </label>
-                                </span>
-                                <span class="form-check">
-                                    <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nam"
-                                        checked>
-                                    <label class="form-check-label" for="gioitinh_nam">
-                                        Nam
-                                    </label>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-purple-100 border">Thêm mới</button>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mb-0 custom-pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="fa-light fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa-light fa-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-        </div>
-      </main>
+
+
+        </section>
     </div>
 
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  </body>
-</html>
+    <!-- Modal CỦA Nhà cung cấp -->
+    <div class="modal fade" id="SupplierModal" tabindex="-1" aria-labelledby="SupplierModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-2">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="SupplierModalLabel">Thêm Tài khoản Nhà cung cấp mới</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-6">
+                            <label for="" class="form-label">Mã tài khoản</label>
+                            <input class="w-100 form-control" type="text" disabled value="TK0001">
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Tên tài khoản</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập tên tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Email</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Mật khẩu</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập mật khẩu tài khoản...">
+                    </div>
+                    <!-- Chọn giới tính nam nữ  -->
+                    <div class="row" style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Giới tính</label>
+                        <div class="d-flex col-4 justify-content-between">
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nu">
+                                <label class="form-check-label" for="gioitinh_nu">
+                                    Nữ
+                                </label>
+                            </span>
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nam" checked>
+                                <label class="form-check-label" for="gioitinh_nam">
+                                    Nam
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 5px;">
+                        <div class="col-6">
+                            <label for="" class="form-label">Loại nhà cung cấp</label>
+                            <select name="" id="" class="form-select">
+                                <option selected value="-1">Chọn loại</option>
+                                <option value="">Nail</option>
+                                <option value="">Face</option>
+                                <option value="">Head</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-purple-100 border">Thêm mới</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal CỦA KHÁCH HÀNG -->
+    <div class="modal fade" id="CustomerAccountModal" tabindex="-1" aria-labelledby="CustomerAccountModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-2">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="CustomerAccountModalLabel">Thêm Tài khoản khách hàng mới</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-6">
+                            <label for="" class="form-label">Mã tài khoản</label>
+                            <input class="w-100 form-control" type="text" disabled value="TK0001">
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Tên tài khoản</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập tên tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Email</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Mật khẩu</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập mật khẩu tài khoản...">
+                    </div>
+                    <!-- Chọn giới tính nam nữ  -->
+                    <div class="row">
+                        <label for="" class="form-label">Giới tính</label>
+                        <div class="d-flex col-4 justify-content-between">
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nu">
+                                <label class="form-check-label" for="gioitinh_nu">
+                                    Nữ
+                                </label>
+                            </span>
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nam" checked>
+                                <label class="form-check-label" for="gioitinh_nam">
+                                    Nam
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-purple-100 border">Thêm mới</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/controllers/NguoiDung.js"></script>

@@ -10,6 +10,10 @@
     transition: 0.3s;
 }
 
+.bg-purple-555 {
+    background-color: #8968c7;
+}
+
 .btn-purple-100 {
     background-color: #e2d9f3;
     color: #333;
@@ -28,6 +32,8 @@
 
 .btn-blue-400-outline {
     color: #3d8bfd;
+    border-radius: 5px;
+    padding: 5px 8px;
     background-color: #fff;
     border: 1px solid #3d8bfd;
 }
@@ -36,4 +42,5 @@
     color: #fff;
     background-color: #3d8bfd;
     border: 1px solid #3d8bfd;
+    transition: 0.5s;
 }

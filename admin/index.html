@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quản lý Dịch vụ</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link
+        href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
+        rel="stylesheet" type="text/css" />
+
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets_root/css/root.css">
+</head>
+
+<body>
+
+    <!-- Header Sticky -->
+    <header class="shadow py-3 sticky-top bg-white z-3" id="navbar"></header>
+
+    <!-- Layout: Sidebar cố định + Main -->
+    <div class="d-flex">
+        <!-- Sidebar Fixed -->
+        <aside class="sidebar bg-light border-end vh-100" id="sidebar"></aside>
+
+        <main class="flex-grow-1 px-5 mt-4 mb-0 pb-0" style="margin-left: 240px;" id="main"></main>
+    </div>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../lib/api.js"></script>
+    <script src="js/ComponentLoad/ComponentLoader.js"></script>
+    <script src="js/Router/Router.js"></script>
+
+
+</body>
+
+</html>

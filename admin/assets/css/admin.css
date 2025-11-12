@@ -1,3 +1,9 @@
+/* cái này để load trang mượt */
+#main {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
 /* Sidebar fixed hoàn toàn */
 .sidebar {
   position: fixed;
@@ -56,7 +62,7 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.custom-table td, 
+.custom-table td,
 .custom-table th {
   padding: 12px 16px;
   vertical-align: middle;
@@ -68,7 +74,7 @@
   border-radius: 50px;
 }
 
-.btn-outline-primary, 
+.btn-outline-primary,
 .btn-outline-danger {
   border-radius: 8px;
 }
@@ -118,4 +124,30 @@
 
 .custom-pagination .page-link i {
   font-size: 0.8rem;
+}
+
+/* này css cái tab bên ql người dùng */
+.nav-tabs .nav-link {
+  color: #6f42c1;               /* tím Bootstrap */
+  border: 1px solid transparent;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #ede4ff;     /* tím nhạt giống btn-purple-100 */
+  border-color: #b18bff #b18bff #ede4ff;
+  color: #6f42c1;                /* chữ tím */
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #b18bff;
+  color: #6f42c1;
+}
+
+#message_validate {
+  font-size: 13px;
+  margin-left: 10px;
+  margin-top: 2px;
 }

@@ -1,0 +1,109 @@
+<!-- Main content -->
+<div class="container-fluid px-0">
+  <h1 class="h4 mb-4 fw-bold text-blue-800">
+    <i class="fa-light fa-address-card me-2"></i> Quản lý hồ sơ Admin
+  </h1>
+
+  <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card-body p-0">
+      <!-- Header: avatar + info -->
+      <div class="d-flex align-items-center bg-light px-4 py-3 border-bottom">
+        <div class="me-3">
+          <div class="rounded-circle bg-purple-555 text-light d-flex align-items-center justify-content-center"
+            style="width: 56px; height: 56px; font-size: 24px;">
+            <i class="fa-regular fa-user-tie"></i>
+          </div>
+        </div>
+        <div>
+          <h5 class="mb-1 fw-semibold">Admin</h5>
+          <div class="text-muted small">admin@salonsaigon.vn</div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs px-4 mt-3" id="profileTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active fw-semibold" id="info-tab" data-bs-toggle="tab"
+            data-bs-target="#info" type="button" role="tab">
+            <i class="fa-regular fa-id-badge me-1"></i> Thông tin tài khoản
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link fw-semibold" id="password-tab" data-bs-toggle="tab"
+            data-bs-target="#password" type="button" role="tab">
+            <i class="fa-regular fa-lock-keyhole me-1"></i> Đổi mật khẩu
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content px-4 py-4">
+        <!-- Tab 1: Thông tin tài khoản -->
+        <div class="tab-pane fade show active" id="info" role="tabpanel">
+          <form id="accountForm" class="needs-validation" novalidate>
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Tên tài khoản</label>
+                <input name="fullname" type="text" class="form-control form-control-sm rounded-3 shadow-sm"
+                  placeholder="Nhập tên tài khoản...">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Email</label>
+                <input name="email" type="email" class="form-control form-control-sm rounded-3 shadow-sm"
+                  placeholder="Nhập email...">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Ngày tạo</label>
+                <input name="createdAt" disabled type="text"
+                  class="form-control form-control-sm rounded-3 shadow-sm bg-light"
+                  value="2024-03-12 14:22">
+              </div>
+            </div>
+
+            <div class="mt-4 d-flex align-items-center">
+              <button type="submit" class="btn-blue-400-outline btn-sm me-2">
+                <i class="fa-regular fa-floppy-disk me-1"></i> Lưu thay đổi
+              </button>
+              <button type="reset" class="btn btn-outline-secondary btn-sm px-3">
+                <i class="fa-regular fa-rotate-left me-1"></i> Hủy
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Tab 2: Đổi mật khẩu -->
+        <div class="tab-pane fade" id="password" role="tabpanel">
+          <form id="passwordForm" class="needs-validation" novalidate>
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Mật khẩu hiện tại</label>
+                <input name="oldPassword" type="password" class="form-control form-control-sm rounded-3 shadow-sm"
+                  placeholder="Nhập mật khẩu hiện tại..." required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Mật khẩu mới</label>
+                <input name="newPassword" type="password" class="form-control form-control-sm rounded-3 shadow-sm"
+                  placeholder="Nhập mật khẩu mới..." required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-semibold">Xác nhận mật khẩu mới</label>
+                <input name="confirmPassword" type="password" class="form-control form-control-sm rounded-3 shadow-sm"
+                  placeholder="Nhập lại mật khẩu mới..." required>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button type="submit" class="btn btn-success btn-sm px-4 me-2">
+                <i class="fa-regular fa-lock me-1"></i> Cập nhật mật khẩu
+              </button>
+              <button type="reset" class="btn btn-outline-secondary btn-sm px-3">
+                <i class="fa-regular fa-xmark me-1"></i> Hủy
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/controllers/HoSo.js"></script>

@@ -15,8 +15,8 @@
 
 /* Main Content Area */
 main {
-  background-color: var(--light-bg);
-  min-height: 100vh;
+  /* background-color: var(--light-bg);
+  min-height: 100vh; */
   padding-bottom: 40px;
 }
 
@@ -28,7 +28,6 @@ main {
 .page-header h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a;
   margin-bottom: 5px;
 }
 
