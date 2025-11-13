@@ -1,6 +1,6 @@
 (() => {
   var currentPage = 0;
-  const pageSize = 2;
+  const pageSize = 5;
   let currentKeyword = '';
 
   // === XÓA HOẶC BỎ QUA ĐOẠN KIỂM TRA NÀY ===

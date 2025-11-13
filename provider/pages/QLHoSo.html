@@ -1,142 +1,153 @@
 <!doctype html>
 <html lang="vi">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Quản lý Hồ sơ</title>
-		<!-- Bootstrap -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-		<!-- Font Awesome -->
-		<link href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css" rel="stylesheet" type="text/css" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quản lý Hồ sơ</title>
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		crossorigin="anonymous">
 
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="../assets/css/provider.css">
-		<link rel="stylesheet" href="../../assets_root/css/root.css">
-	</head>
+	<!-- Font Awesome -->
+	<link
+		href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
+		rel="stylesheet" type="text/css" />
 
-	<body>
-		<!-- Header Sticky -->
-		<header class="shadow py-3 sticky-top bg-white z-3">
-			<div class="nav container d-flex justify-content-between">
-				<div class="d-flex align-items-center">
-					<i class="fa-regular fa-scissors" style="font-size: 26px;"></i>
-					<span class="ms-2 fw-semibold fs-4">freshj</span>
-				</div>
-				<div class="d-flex align-items-center provider-info">
-					<span class="me-2 fw-light">provider's name</span>
-					<i class="fa-thin fa-circle-user fs-2"></i>
-					<a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
-				</div>
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="../assets/css/provider.css">
+	<link rel="stylesheet" href="../../assets_root/css/root.css">
+</head>
+
+<body>
+	<!-- Header Sticky -->
+	<header class="shadow py-3 sticky-top bg-white z-3">
+		<div class="nav container d-flex justify-content-between">
+			<div class="d-flex align-items-center">
+				<i class="fa-regular fa-scissors" style="font-size: 26px;"></i>
+				<span class="ms-2 fw-semibold fs-4">freshj</span>
 			</div>
-		</header>
-
-		<div class="d-flex">
-			<!-- Sidebar Fixed -->
-			<aside class="sidebar bg-light border-end vh-100">
-				<div class="p-3">
-					<h6 class="text-uppercase text-muted">Tính năng</h6>
-					<ul class="nav flex-column mt-3">
-						<li class="nav-item mb-2">
-							<a class="nav-link active" href="#">
-								<i class="fa-light fa-address-card"></i>Quản lý Hồ sơ
-							</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a class="nav-link" href="#">
-								<i class="fa-light fa-calendar-check"></i>Quản lý Dịch vụ
-							</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a class="nav-link" href="#">
-								<i class="fa-light fa-calendar-lines-pen"></i>Quản lý Đặt lịch
-							</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a class="nav-link" href="#">
-								<i class="fa-light fa-calendar-days"></i>Lịch làm việc
-							</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a class="nav-link" href="#">
-								<i class="fa-light fa-users"></i>Quản lý Nhân viên
-							</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a class="nav-link" href="#">
-								<i class="fa-light fa-tags"></i>Quản lý Khuyến mãi
-							</a>
-						</li>
-						<li class="nav-item mb-2">
-							<a class="nav-link" href="#">
-								<i class="fa-light fa-chart-pie-simple-circle-dollar"></i>Thống kê Doanh thu
-							</a>
-						</li>
-					</ul>
-				</div>
-			</aside>
-
-			<!-- Main content -->
-			<main class="flex-grow-1 px-5 mt-4" style="margin-left: 240px;">
-				<!-- Gradient banner -->
-				<div class="banner rounded mb-0"></div>
-
-                <form id="profileForm" class="profile-card bg-white rounded shadow-sm p-4 mt-n5">
-                    <div class="d-flex align-items-center">
-                        <!-- avatar của doanh nghiệp -->
-                        <div class="me-3">
-                            <img src="../assets/avatar-default.svg" alt="avatar" class="rounded-circle avatar-lg">
-                        </div>
-                        <div class="flex-grow-1">
-                            <h5 class="mb-1">Salon Xịn Nhất Cái Sài Gòn</h5>
-                            <div class="text-muted">salonsaigon@gmail.com</div>
-                        </div>
-                        <div>
-                            <button type="button" id="editBtn" class="btn btn-primary btn-sm">Edit</button>
-                            <button type="button" id="cancelBtn" class="btn btn-outline-secondary btn-sm ms-2 d-none">Cancel</button>
-                        </div>
-                    </div>
-
-                    <hr class="my-4">
-
-                    <div class="row gy-3">
-                        <div class="col-md-6">
-                            <label class="form-label small">Tên Salon</label>
-                            <input name="fullname" disabled type="text" class="form-control form-control-sm" placeholder="Nhập tên Salon...">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label small">Email</label>
-                            <input name="nickname" disabled type="text" class="form-control form-control-sm" placeholder="Nhập email...">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label small">Loại hình kinh doanh</label>
-                            <select name="gender" disabled class="form-select form-select-sm">
-                                <option selected>Chọn loại hình...</option>
-                                <option>Tiệm làm nail</option>
-                                <option>Tiệm làm tóc</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label small">Mật khẩu</label>
-                            <input name="nickname" disabled type="text" class="form-control form-control-sm" placeholder="Nhập mật khẩu...">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label small">Địa chỉ</label>
-                            <input name="nickname" disabled type="text" class="form-control form-control-sm" placeholder="A7/200 Văn Tiến Dũng, Phong Phú, Bình Chánh, TP. HCM">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label small">Time Zone</label>
-                            <select name="tz" disabled class="form-select form-select-sm">
-                                <option selected>UTC +7</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-
-			</main>
+			<div class="d-flex align-items-center provider-info">
+				<span class="me-2 fw-light">provider's name</span>
+				<i class="fa-thin fa-circle-user fs-2"></i>
+				<a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
+			</div>
 		</div>
-			<!-- Bootstrap JS -->
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-			<script src="../js/HoSo.js"></script>
-	</body>
+	</header>
+
+	<div class="d-flex">
+		<!-- Sidebar Fixed -->
+		<aside class="sidebar bg-light border-end vh-100">
+			<div class="p-3">
+				<h6 class="text-uppercase text-muted">Tính năng</h6>
+				<ul class="nav flex-column mt-3">
+					<li class="nav-item mb-2">
+						<a class="nav-link active" href="#">
+							<i class="fa-light fa-address-card"></i>Quản lý Hồ sơ
+						</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a class="nav-link" href="#">
+							<i class="fa-light fa-calendar-check"></i>Quản lý Dịch vụ
+						</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a class="nav-link" href="#">
+							<i class="fa-light fa-calendar-lines-pen"></i>Quản lý Đặt lịch
+						</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a class="nav-link" href="#">
+							<i class="fa-light fa-calendar-days"></i>Lịch làm việc
+						</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a class="nav-link" href="#">
+							<i class="fa-light fa-users"></i>Quản lý Nhân viên
+						</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a class="nav-link" href="#">
+							<i class="fa-light fa-tags"></i>Quản lý Khuyến mãi
+						</a>
+					</li>
+					<li class="nav-item mb-2">
+						<a class="nav-link" href="#">
+							<i class="fa-light fa-chart-pie-simple-circle-dollar"></i>Thống kê Doanh thu
+						</a>
+					</li>
+				</ul>
+			</div>
+		</aside>
+
+		<!-- Main content -->
+		<main class="flex-grow-1 px-5 mt-4" style="margin-left: 240px;">
+			<!-- Gradient banner -->
+			<div class="banner rounded mb-0"></div>
+
+			<form id="profileForm" class="profile-card bg-white rounded shadow-sm p-4 mt-n5">
+				<div class="d-flex align-items-center">
+					<!-- avatar của doanh nghiệp -->
+					<div class="me-3">
+						<img src="../assets/avatar-default.svg" alt="avatar" class="rounded-circle avatar-lg">
+					</div>
+					<div class="flex-grow-1">
+						<h5 class="mb-1">Salon Xịn Nhất Cái Sài Gòn</h5>
+						<div class="text-muted">salonsaigon@gmail.com</div>
+					</div>
+					<div>
+						<button type="button" id="editBtn" class="btn btn-primary btn-sm">Edit</button>
+						<button type="button" id="cancelBtn"
+							class="btn btn-outline-secondary btn-sm ms-2 d-none">Cancel</button>
+					</div>
+				</div>
+
+				<hr class="my-4">
+
+				<div class="row gy-3">
+					<div class="col-md-6">
+						<label class="form-label small">Tên Salon</label>
+						<input name="fullname" disabled type="text" class="form-control form-control-sm"
+							placeholder="Nhập tên Salon...">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label small">Email</label>
+						<input name="nickname" disabled type="text" class="form-control form-control-sm"
+							placeholder="Nhập email...">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label small">Loại hình kinh doanh</label>
+						<select name="gender" disabled class="form-select form-select-sm">
+							<option selected>Chọn loại hình...</option>
+							<option>Tiệm làm nail</option>
+							<option>Tiệm làm tóc</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<label class="form-label small">Mật khẩu</label>
+						<input name="nickname" disabled type="text" class="form-control form-control-sm"
+							placeholder="Nhập mật khẩu...">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label small">Địa chỉ</label>
+						<input name="nickname" disabled type="text" class="form-control form-control-sm"
+							placeholder="A7/200 Văn Tiến Dũng, Phong Phú, Bình Chánh, TP. HCM">
+					</div>
+					<div class="col-md-6">
+						<label class="form-label small">Time Zone</label>
+						<select name="tz" disabled class="form-select form-select-sm">
+							<option selected>UTC +7</option>
+						</select>
+					</div>
+				</div>
+			</form>
+
+		</main>
+	</div>
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script src="../js/HoSo.js"></script>
+</body>
+
 </html>
