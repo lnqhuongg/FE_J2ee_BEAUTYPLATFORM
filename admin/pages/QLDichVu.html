@@ -1,0 +1,114 @@
+<div data-init="initDichVuPage">
+  <!-- CÁI NÀY LÀ NỘI DUNG BÊN TRONG MAIN -->
+  <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;"><i class="fa-light fa-calendar-check me-2"></i>Quản lý
+    Dịch vụ</h1>
+  <button type="button" class="btn btn-blue-100 border btn_create_service" data-bs-toggle="modal" data-bs-target="#serviceModal">
+    <i class="fa-light fa-plus-large me-1"></i>
+    Thêm Dịch vụ mới
+  </button>
+  <form class="bg-light rounded shadow px-3 py-3 my-3 border" id="searchService">
+    <div class="row g-3 align-items-end">
+      <div class="col-md-10">
+        <label class="form-label">Tìm kiếm từ khóa</label>
+        <input type="text" id="keyword" class="form-control" placeholder="Nhập vào tên...">
+      </div>
+
+      <div class="col-md-2 d-grid">
+        <button type="submit" class="btn btn-purple-100 border btn_search">Tìm kiếm</button>
+      </div>
+
+    </div>
+  </form>
+  <!-- TABLE DICH VU -->
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table align-middle table-hover mb-0 custom-table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th class="custom-column1st" scope="col">Tên dịch vụ</th>
+            <th class="custom-column2nd" scope="col">Loại dịch vụ</th>
+            <th class="text-center" scope="col">Giá (VND)</th>
+            <th class="text-center" scope="col">Thời lượng (phút)</th>
+            <th class="text-center" scope="col">Trạng thái</th>
+            <th class="text-center" scope="col" class="text-end">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
+    <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ</div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination mb-0 custom-pagination">
+      </ul>
+    </nav>
+  </div>
+
+  <!-- MODAL ĐỂ TÁCH BIỆT RA KHỎI CODE GIAO DIỆN NHA ĐỂ BÊN DƯỚI CÙNG ĐỂ MỐT CODE DỄ TÌM -->
+  <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content custom-modal">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-semibold" id="serviceModalLabel">Thêm Dịch vụ mới</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <div class="row g-3">
+              <!-- tên dịch vụ  -->
+              <div class="col-md-6">
+                <label for="serviceName" class="form-label fw-medium">Tên dịch vụ</label>
+                <input type="text" class="form-control" id="serviceName" placeholder="Nhập tên dịch vụ...">
+              </div>
+              <!-- loại dịch vụ  -->
+              <div class="col-md-6">
+                <label for="serviceType" class="form-label fw-medium">Loại dịch vụ</label>
+                <select id="serviceType" class="form-select">
+                  <option value="" selected>Chọn loại dịch vụ</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+              <!-- giá  -->
+              <div class="col-md-6">
+                <label for="servicePrice" class="form-label fw-medium">Giá (VNĐ)</label>
+                <input type="text" class="form-control" id="servicePrice" placeholder="Nhập giá dịch vụ...">
+              </div>
+              <!-- thời lượng   -->
+              <div class="col-md-6">
+                <label for="serviceDuration" class="form-label fw-medium">Thời lượng (phút)</label>
+                <input type="text" class="form-control" id="serviceDuration" placeholder="Nhập thời lượng...">
+              </div>
+              <!-- mô tả  -->
+              <div class="col-12">
+                <label for="serviceDescription" class="form-label fw-medium">Mô tả</label>
+                <textarea class="form-control" id="serviceDescription" rows="3"
+                  placeholder="Nhập mô tả về dịch vụ..."></textarea>
+              </div>
+              <!-- trạng thái  -->
+              <div class="col-md-4">
+                <label for="serviceStatus" class="form-label fw-medium">Trạng thái</label>
+                <select id="serviceStatus" class="form-select">
+                  <option value="1" selected>Đang hoạt động</option>
+                  <option value="0">Tạm ngưng</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-blue-100 border btn_submit_service">Thêm mới</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/controllers/DichVu.js"></script>
