@@ -1,0 +1,319 @@
+/* Sidebar fixed hoàn toàn */
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 240px;
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  background-color: #f8f9fa;
+}
+
+/* Header info */
+.provider-info span {
+  border: 0.5px solid #aaaaaa;
+  padding: 2px 15px;
+  border-radius: 50px;
+}
+
+.logout-link {
+  cursor: pointer;
+  font-weight: 200;
+  padding: 1px 5px 2px 5px;
+}
+
+.logout-link:hover {
+  border-bottom: 0.5px solid #aaaaaa;
+}
+
+/* Sidebar link style */
+.sidebar .nav-link {
+  color: #333;
+  font-weight: 400;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  color: #5e5ab5;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.sidebar .nav-link i {
+  font-size: 17px;
+  margin-right: 8px;
+}
+
+/* Table style */
+.custom-table thead th {
+  font-weight: 600;
+  background-color: #f9fafb !important;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1f5ff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.custom-table td,
+.custom-table th {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.custom-table .badge {
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 50px;
+}
+
+.btn-outline-primary,
+.btn-outline-danger {
+  border-radius: 8px;
+}
+
+.custom-column1st {
+  width: 225px;
+  max-width: 225px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-column2nd {
+  width: 175px;
+  max-width: 175px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==== Pagination ==== */
+.custom-pagination .page-link {
+  border: none;
+  color: #333;
+  font-weight: 500;
+  border-radius: 8px;
+  margin: 0 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-pagination .page-item.active .page-link {
+  background-color: #8c68cd;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(73, 31, 125, 0.3);
+}
+
+.custom-pagination .page-link:hover {
+  background-color: #efe6fd;
+  color: #a98eda;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+  color: #bbb;
+  pointer-events: none;
+  background-color: #f8f9fa;
+}
+
+.custom-pagination .page-link i {
+  font-size: 0.8rem;
+}
+
+/* ------ Profile css ------*/
+.provider-info i.fa-circle-user {
+  opacity: .85;
+}
+
+
+.email-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.form-control,
+.form-select {
+  background: #f6f8fb;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: none;
+}
+
+.banner {
+  height: 140px;
+  background: linear-gradient(90deg, #e6f0ff, #fff0e6);
+  border-radius: 12px;
+}
+
+.profile-card {
+  margin-left: 0;
+  border-radius: 12px;
+  margin-top: -48px;
+  padding: 26px;
+}
+
+.avatar-lg {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 6px solid #fff;
+  box-shadow: 0 6px 20px rgba(20, 40, 60, 0.08);
+}
+
+.profile-card h5 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.profile-card .text-muted {
+  opacity: 0.8;
+}
+
+/* NÀY LÀ TRANG ĐĂNG ký CỦA NCC */
+/* Progress bar at top */
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #5b42f3;
+  z-index: 100;
+}
+
+/* Continue button in top right */
+.continue-btn-top {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  padding: 10px 24px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.continue-btn-top:hover {
+  background: #333333;
+  transform: translateX(3px);
+}
+
+.setup-container {
+  max-width: 700px;
+  margin: 80px auto 0;
+}
+
+/* Account setup label and main heading */
+.setup-label {
+  color: #999999;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.setup-heading {
+  font-size: 35px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.setup-description {
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.form-group.optional label::after {
+  content: ' (Optional)';
+  font-weight: 400;
+  color: #999999;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #000000;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder {
+  color: #cccccc;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-color: 1px solid #d8d8d8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.back-btn:hover {
+  transform: translateX(-3px);
+}
+
+.types_business button img {
+  width: 35px;
+  margin-right: 5px;
+}
+
+.types_business button {
+  background-color: transparent;
+  width: 190px;
+  padding: 15px 0px;
+  color: #6b679f;
+  border: 1px solid #6b679f;
+  border-radius: 7px;
+  transition: all 0.4s ease;  
+}
+
+.types_business button:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-8px);
+}

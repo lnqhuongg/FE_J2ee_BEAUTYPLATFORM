@@ -1,0 +1,297 @@
+<div data-init="initNguoiDungPage">
+    <!-- Main content -->
+    <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;"><i class="fa-light fa-users me-2"></i>Quản lý Người dùng
+    </h1>
+
+    <div class="col-12 main-content px-4">
+        <section class="py-5">
+            <!-- Tab chọn Nhà cung cấp & Khách hàng -->
+            <ul class="nav nav-tabs mb-4" id="userTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active fw-semibold" id="supplier-tab" data-bs-toggle="tab"
+                        data-bs-target="#supplier" type="button" role="tab">
+                        Tài khoản Doanh nghiệp
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-semibold" id="customer-tab" data-bs-toggle="tab"
+                        data-bs-target="#customer" type="button" role="tab">
+                        Tài khoản Khách hàng
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Nhà cung cấp -->
+                <div class="tab-pane fade show active" id="supplier" role="tabpanel" aria-labelledby="supplier-tab">
+                    <form class="row d-flex align-items-center mb-3">
+                        <div class="col-3">
+                            <select class="form-select w-100">
+                                <option value="-1" selected>Loại hình Doanh nghiệp</option>
+                                <option>Nail</option>
+                                <option>Head</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" placeholder="Tìm kiếm theo tên, email, số điện thoại doanh nghiệp..."
+                                    class="w-75 form-control">
+                                <button class="btn btn-purple-100 border">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Table Nhà cung cấp -->
+                    <div style="margin: 10px 0 20px;">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Mã tài khoản</th>
+                                    <th>Tên tài khoản</th>
+                                    <th>Email</th>
+                                    <th>Nhóm quyền</th>
+                                    <th>Trạng thái</th>
+                                    <th class="text-center">Tùy chỉnh</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1</strong></td>
+                                    <td>Lê Ngọc Quỳnh Hương</td>
+                                    <td>lnqhuong04@gmail.com</td>
+                                    <td>Admin</td>
+                                    <td>Đang hoạt động</td>
+                                    <td class="text-center">
+                                        <button class="btn-table border-0 btn btn-outline-primary" data-bs-toggle="modal"
+                                            data-bs-target="#SupplierModal">
+                                            <i class="fa-light fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Phân trang -->
+                    <div
+                        class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
+                        <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mb-0 custom-pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="fa-light fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa-light fa-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Khách hàng -->
+                <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">
+                    <form class="row d-flex align-items-center justify-content-between mb-3">
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" placeholder="Tìm kiếm theo tên hoặc số điện thoại khách hàng..."
+                                    class="w-75 form-control">
+                                <button class="btn btn-purple-100 border">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Table Khách hàng -->
+                    <div style="margin: 10px 0 20px;">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Mã tài khoản</th>
+                                    <th>Tên tài khoản</th>
+                                    <th>Email</th>
+                                    <th>Trạng thái</th>
+                                    <th class="text-center">Tùy chỉnh</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1</strong></td>
+                                    <td>Lê Ngọc Quỳnh Hương</td>
+                                    <td>lnqhuong04@gmail.com</td>
+                                    <td>Đang hoạt động</td>
+                                    <td class="text-center">
+                                        <button class="btn-table border-0 btn btn-outline-primary" data-bs-toggle="modal"
+                                            data-bs-target="#CustomerAccountModal">
+                                            <i class="fa-light fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Phân trang -->
+                    <div
+                        class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
+                        <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mb-0 custom-pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="fa-light fa-chevron-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fa-light fa-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+
+
+    <!-- Modal CỦA Nhà cung cấp -->
+    <div class="modal fade" id="SupplierModal" tabindex="-1" aria-labelledby="SupplierModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-2">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="SupplierModalLabel">Thêm Tài khoản Nhà cung cấp mới</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-6">
+                            <label for="" class="form-label">Mã tài khoản</label>
+                            <input class="w-100 form-control" type="text" disabled value="TK0001">
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Tên tài khoản</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập tên tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Email</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Mật khẩu</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập mật khẩu tài khoản...">
+                    </div>
+                    <!-- Chọn giới tính nam nữ  -->
+                    <div class="row" style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Giới tính</label>
+                        <div class="d-flex col-4 justify-content-between">
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nu">
+                                <label class="form-check-label" for="gioitinh_nu">
+                                    Nữ
+                                </label>
+                            </span>
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nam" checked>
+                                <label class="form-check-label" for="gioitinh_nam">
+                                    Nam
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 5px;">
+                        <div class="col-6">
+                            <label for="" class="form-label">Loại nhà cung cấp</label>
+                            <select name="" id="" class="form-select">
+                                <option selected value="-1">Chọn loại</option>
+                                <option value="">Nail</option>
+                                <option value="">Face</option>
+                                <option value="">Head</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-purple-100 border">Thêm mới</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal CỦA KHÁCH HÀNG -->
+    <div class="modal fade" id="CustomerAccountModal" tabindex="-1" aria-labelledby="CustomerAccountModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-2">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="CustomerAccountModalLabel">Thêm Tài khoản khách hàng mới</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-6">
+                            <label for="" class="form-label">Mã tài khoản</label>
+                            <input class="w-100 form-control" type="text" disabled value="TK0001">
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="form-label">Số điện thoại</label>
+                            <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Tên tài khoản</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập tên tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Email</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="" class="form-label">Mật khẩu</label>
+                        <input class="w-100 form-control" type="text" placeholder="Nhập mật khẩu tài khoản...">
+                    </div>
+                    <!-- Chọn giới tính nam nữ  -->
+                    <div class="row">
+                        <label for="" class="form-label">Giới tính</label>
+                        <div class="d-flex col-4 justify-content-between">
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nu">
+                                <label class="form-check-label" for="gioitinh_nu">
+                                    Nữ
+                                </label>
+                            </span>
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nam" checked>
+                                <label class="form-check-label" for="gioitinh_nam">
+                                    Nam
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-purple-100 border">Thêm mới</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/controllers/NguoiDung.js"></script>

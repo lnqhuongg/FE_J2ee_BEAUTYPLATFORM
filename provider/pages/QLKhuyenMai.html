@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quản lý Dịch vụ</title>
+    <title>Quản lý Khuyến mãi</title>
     
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -14,8 +14,8 @@
       href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
       rel="stylesheet" type="text/css" />
 
-    <!-- CSS riêng -->
-    <link rel="stylesheet" href="../assets/provider.css">
+    <!-- CSS riêng cho trang Khuyến mãi -->
+    <link rel="stylesheet" href="../assets/css/provider.css">
     <link rel="stylesheet" href="../../assets_root/css/root.css">
   </head>
 
@@ -43,7 +43,7 @@
           <h6 class="text-uppercase text-muted">Tính năng</h6>
           <ul class="nav flex-column mt-3">
             <li class="nav-item mb-2">
-              <a class="nav-link active" href="#">
+              <a class="nav-link" href="#">
                 <i class="fa-light fa-address-card"></i>Quản lý Hồ sơ
               </a>  
             </li>
@@ -68,7 +68,7 @@
               </a>
             </li>
             <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
+              <a class="nav-link active" href="#">
                 <i class="fa-light fa-tags"></i>Quản lý Khuyến mãi
               </a>
             </li>
@@ -83,71 +83,74 @@
 
       <!-- Main content -->
       <main class="flex-grow-1 px-5 mt-4" style="margin-left: 240px;">
-        <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;">Quản lý Dịch vụ</h1>
+        <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;">Quản lý Khuyến mãi</h1>
         <button type="button" 
                 class="btn btn-blue-100 border"
                 data-bs-toggle="modal" 
-                data-bs-target="#serviceModal">
+                data-bs-target="#promoModal">
           <i class="fa-light fa-plus-large me-1"></i>
-          Thêm Dịch vụ mới
+          Thêm Khuyến mãi mới
         </button>
+
         <form class="bg-light rounded shadow px-3 py-2 d-flex justify-content-between align-items-center my-3 border" action="">
           <div class="mb-2">
-            <label for="" class="form-label">Lọc theo Loại</label>
-            <select class="form-select" style="width: 230px;">
-              <option selected>Loại Dịch vụ</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <label for="filterType" class="form-label">Lọc theo Loại</label>
+            <select id="filterType" class="form-select" style="width: 230px;">
+              <option selected>Loại Khuyến mãi</option>
+              <option value="percent">Giảm %</option>
+              <option value="fixed">Giảm tiền</option>
+              <option value="combo">Combo</option>
             </select>
           </div>
-          <div class="mb-2">
-            <label for="" class="form-label">Tìm kiếm từ khóa</label>
-            <input style="width: 750px;" type="text" class="form-control" id="" placeholder="Nhập vào mã hoặc tên dịch vụ...">
+          <div class="mb-2 flex-grow-1 mx-3">
+            <label for="searchPromo" class="form-label">Tìm kiếm từ khóa</label>
+            <input style="width: 100%;" type="text" class="form-control" id="searchPromo" placeholder="Nhập mã, tên hoặc mô tả...">
           </div>
-          <div class="d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-end">
             <button type="submit" class="btn btn-purple-100 border">Tìm kiếm</button>
           </div>
         </form>
-        <!-- TABLE DICH VU -->
+
+        <!-- TABLE KHUYEN MAI -->
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table align-middle table-hover mb-0 custom-table">
               <thead class="table-light">
                 <tr>
                   <th scope="col">#</th>
-                  <th class="custom-column1st" scope="col">Tên dịch vụ</th>
-                  <th class="custom-column2nd" scope="col">Loại dịch vụ</th>
-                  <th class="text-center" scope="col">Giá (VND)</th>
-                  <th class="text-center" scope="col">Thời lượng (phút)</th>
+                  <th class="custom-column1st" scope="col">Mã KM</th>
+                  <th class="custom-column2nd" scope="col">Tên khuyến mãi</th>
+                  <th class="text-center" scope="col">Loại</th>
+                  <th class="text-center" scope="col">Giá trị</th>
+                  <th class="text-center" scope="col">Bắt đầu</th>
+                  <th class="text-center" scope="col">Kết thúc</th>
                   <th class="text-center" scope="col">Trạng thái</th>
-                  <th class="text-center" scope="col" class="text-end">Thao tác</th>
+                  <th class="text-center" scope="col">Thao tác</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td class="custom-column1st">Cắt tóc nam</td>
-                  <td class="custom-column2nd">Cắt tóc</td>
-                  <td class="text-center">80,000</td>
-                  <td class="text-center">30</td>
-                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td class="custom-column1st">KMXMAS2025</td>
+                  <td class="custom-column2nd">Giảm 20% tất cả dịch vụ</td>
+                  <td class="text-center">Giảm %</td>
+                  <td class="text-center">20%</td>
+                  <td class="text-center">2025-12-01</td>
+                  <td class="text-center">2025-12-31</td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Đang chạy</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"
-                            type="button"
-                            data-bs-toggle="modal" 
-                            data-bs-target="#serviceModal">
-                      <i class="fa-regular fa-pen"></i>
-                    </button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1" type="button" data-bs-toggle="modal" data-bs-target="#promoModal"><i class="fa-regular fa-pen"></i></button>
                     <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
                   </td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td class="custom-column1st">Gội đầu thư giãn ối giồi ôi trình là gì</td>
-                  <td class="custom-column2nd">Gội đầu</td>
-                  <td class="text-center">50,000</td>
-                  <td class="text-center">15</td>
+                  <td class="custom-column1st">NEWUSER100</td>
+                  <td class="custom-column2nd">Giảm 100k cho khách hàng mới</td>
+                  <td class="text-center">Giảm tiền</td>
+                  <td class="text-center">100,000</td>
+                  <td class="text-center">2025-01-01</td>
+                  <td class="text-center">2025-12-31</td>
                   <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">Tạm ngưng</span></td>
                   <td class="text-center">
                     <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
@@ -155,36 +158,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td class="custom-column1st">Cắt tóc nam</td>
-                  <td class="custom-column2nd">Cắt tóc</td>
-                  <td class="text-center">80,000</td>
-                  <td class="text-center">30</td>
-                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
-                  <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td class="custom-column1st">Gội đầu thư giãn ối giồi ôi trình là gì</td>
-                  <td class="custom-column2nd">Gội đầu</td>
-                  <td class="text-center">50,000</td>
-                  <td class="text-center">15</td>
-                  <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">Tạm ngưng</span></td>
-                  <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td class="custom-column1st">Cắt tóc nam</td>
-                  <td class="custom-column2nd">Cắt tóc</td>
-                  <td class="text-center">80,000</td>
-                  <td class="text-center">30</td>
-                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td>3</td>
+                  <td class="custom-column1st">COMBO2FREE</td>
+                  <td class="custom-column2nd">Mua 2 tặng 1</td>
+                  <td class="text-center">Combo</td>
+                  <td class="text-center">Mua 2 Tặng 1</td>
+                  <td class="text-center">2025-06-01</td>
+                  <td class="text-center">2025-09-30</td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Đang chạy</span></td>
                   <td class="text-center">
                     <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
                     <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
@@ -196,7 +177,7 @@
         </div>
 
         <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
-          <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ</div>
+          <div class="text-muted small">Hiển thị <strong>1–3</strong> trong <strong>3</strong> khuyến mãi</div>
           <nav aria-label="Page navigation example">
             <ul class="pagination mb-0 custom-pagination">
               <li class="page-item disabled">
@@ -216,57 +197,62 @@
       </main>
     </div>
 
-    <!-- MODAL ĐỂ TÁCH BIỆT RA KHỎI CODE GIAO DIỆN NHA ĐỂ BÊN DƯỚI CÙNG ĐỂ MỐT CODE DỄ TÌM -->
-    <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <!-- Modal Thêm/Sửa Khuyến mãi -->
+    <div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content custom-modal">
           <div class="modal-header border-0 pb-0">
-            <h5 class="modal-title fw-semibold" id="serviceModalLabel">Thêm Dịch vụ mới</h5>
+            <h5 class="modal-title fw-semibold" id="promoModalLabel">Thêm Khuyến mãi mới</h5>
             <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Đóng"></button>
           </div>
 
           <div class="modal-body">
             <form>
               <div class="row g-3">
-                <!-- tên dịch vụ  -->
                 <div class="col-md-6">
-                  <label for="serviceName" class="form-label fw-medium">Tên dịch vụ</label>
-                  <input type="text" class="form-control" id="serviceName" placeholder="Nhập tên dịch vụ...">
+                  <label for="promoCode" class="form-label fw-medium">Mã khuyến mãi</label>
+                  <input type="text" class="form-control" id="promoCode" placeholder="Nhập mã khuyến mãi...">
                 </div>
-                <!-- loại dịch vụ  -->
                 <div class="col-md-6">
-                  <label for="serviceType" class="form-label fw-medium">Loại dịch vụ</label>
-                  <select class="form-select">
-                    <option selected>Chọn loại dịch vụ</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                  <label for="promoName" class="form-label fw-medium">Tên khuyến mãi</label>
+                  <input type="text" class="form-control" id="promoName" placeholder="Nhập tên khuyến mãi...">
                 </div>
-                <!-- giá  -->
-                <div class="col-md-6">
-                  <label for="servicePrice" class="form-label fw-medium">Giá (VNĐ)</label>
-                  <input type="text" class="form-control" id="servicePrice" placeholder="Nhập giá dịch vụ...">
-                </div>
-                <!-- thời lượng   -->
-                <div class="col-md-6">
-                  <label for="serviceDuration" class="form-label fw-medium">Thời lượng (phút)</label>
-                  <input type="text" class="form-control" id="serviceDuration" placeholder="Nhập thời lượng...">
-                </div>
-                <!-- mô tả  -->
-                <div class="col-12">
-                  <label for="serviceDescription" class="form-label fw-medium">Mô tả</label>
-                  <textarea class="form-control" id="serviceDescription" rows="3" placeholder="Nhập mô tả về dịch vụ..."></textarea>
-                </div>
-                <!-- trạng thái  -->
+
                 <div class="col-md-4">
-                  <label for="serviceType" class="form-label fw-medium">Trạng thái</label>
-                  <select class="form-select">
-                    <option selected>Chọn trạng thái</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                  <label for="promoType" class="form-label fw-medium">Loại</label>
+                  <select id="promoType" class="form-select">
+                    <option selected>Chọn loại</option>
+                    <option value="percent">Giảm %</option>
+                    <option value="fixed">Giảm tiền</option>
+                    <option value="combo">Combo</option>
                   </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="promoValue" class="form-label fw-medium">Giá trị</label>
+                  <input type="text" class="form-control" id="promoValue" placeholder="Ví dụ: 20% hoặc 100000">
+                </div>
+                <div class="col-md-4">
+                  <label for="promoStatus" class="form-label fw-medium">Trạng thái</label>
+                  <select id="promoStatus" class="form-select">
+                    <option selected>Chọn trạng thái</option>
+                    <option value="active">Đang chạy</option>
+                    <option value="paused">Tạm ngưng</option>
+                    <option value="expired">Hết hạn</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="promoStart" class="form-label fw-medium">Ngày bắt đầu</label>
+                  <input type="date" class="form-control" id="promoStart">
+                </div>
+                <div class="col-md-6">
+                  <label for="promoEnd" class="form-label fw-medium">Ngày kết thúc</label>
+                  <input type="date" class="form-control" id="promoEnd">
+                </div>
+
+                <div class="col-12">
+                  <label for="promoDesc" class="form-label fw-medium">Mô tả</label>
+                  <textarea class="form-control" id="promoDesc" rows="3" placeholder="Mô tả chi tiết khuyến mãi..."></textarea>
                 </div>
               </div>
             </form>
@@ -274,14 +260,17 @@
 
           <div class="modal-footer border-0 pt-0">
             <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
-            <button type="button" class="btn btn-blue-100 border">Thêm mới</button>
+            <button type="button" class="btn btn-blue-100 border">Lưu</button>
           </div>
         </div>
       </div>
     </div>
 
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   </body>
+<<<<<<< HEAD:provider/pages/QLKhuyenMai.html
 </html>
+=======
+</html>
+>>>>>>> origin/anhnghi:provider/frontend/QLKhuyenMai.html

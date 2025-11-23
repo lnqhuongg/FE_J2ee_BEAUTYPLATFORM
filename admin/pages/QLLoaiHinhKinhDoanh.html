@@ -1,0 +1,87 @@
+<div data-init="initLoaiHinhPage">
+  <!-- Main content -->
+  <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;"><i class="fa-light fa-building-memo me-2"></i>Quản lý Loại
+    hình kinh doanh</h1>
+
+  <!-- NÚT THÊM MỚI  -->
+  <button type="button" class="btn btn-blue-100 border btn_create_modal" data-bs-toggle="modal"
+    data-bs-target="#businessTypeModal">
+    <i class="fa-light fa-plus-large me-1"></i>
+    Thêm Loại hình mới
+  </button>
+
+  <!-- TÌM KIẾM -->
+  <form class="bg-light rounded shadow px-3 py-2 d-flex justify-content-between align-items-center my-3 border"
+    action="" id="searchLH">
+    <div class="mb-2">
+      <label for="" class="form-label">Tìm kiếm từ khóa</label>
+      <input style="width: 1000px;" type="text" class="form-control" id="keyword"
+        placeholder="Tìm kiếm theo tên loại hình...">
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <button type="button" class="btn btn-purple-100 border btn_search">Tìm kiếm</button>
+    </div>
+  </form>
+
+  <!-- TABLE LOẠI HÌNH KINH DOANH -->
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table align-middle table-hover mb-0 custom-table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th class="text-center" scope="col">Mã loại hình</th>
+            <th class="text-center" scope="col">Tên loại hình</th>
+            <th class="text-center" scope="col">Trạng thái</th>
+            <th class="text-center" scope="col">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PHÂN TRANG  -->
+  <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
+    <div class="text-muted small"></div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination mb-0 custom-pagination"></ul>
+    </nav>
+  </div>
+
+  <!-- MODAL LOẠI HÌNH KINH DOANH -->
+  <div class="modal fade" id="businessTypeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content custom-modal" data-mode="add" data-id="">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-semibold" id="businessTypeModalLabel">Thêm Loại hình kinh doanh mới</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <!-- tên loại hình  -->
+            <div class="col">
+              <label for="tenLH" class="form-label fw-medium">Tên loại hình</label>
+              <input type="text" class="form-control" id="tenLH" placeholder="Nhập tên loại hình...">
+              <div class="text-danger" id="message_validate"></div>
+            </div>
+            <!-- trạng thái  -->
+            <div class="col" id="trangThaiGroup">
+              <label for="trangThai" class="form-label fw-medium">Trạng thái</label>
+              <select class="form-select" id="trangThai">
+                <option selected>Chọn trạng thái</option>
+                <option value="1">Đang hoạt động</option>
+                <option value="0">Tạm ngưng</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-blue-100 border btn_submit_form">Thêm mới</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/controllers/LoaiHinhKinhDoanh.js"></script>
