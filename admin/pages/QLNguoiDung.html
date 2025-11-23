@@ -28,23 +28,17 @@
                     <form class="row d-flex align-items-center mb-3">
                         <div class="col-3">
                             <select class="form-select w-100">
-                                <option value="-1" selected>Loại nhà cung cấp</option>
+                                <option value="-1" selected>Loại hình Doanh nghiệp</option>
                                 <option>Nail</option>
                                 <option>Head</option>
                             </select>
                         </div>
-                        <div class="col-6">
+                        <div class="col">
                             <div class="input-group">
-                                <input type="text" placeholder="Tìm kiếm theo email hoặc tên tài khoản..."
+                                <input type="text" placeholder="Tìm kiếm theo tên, email, số điện thoại doanh nghiệp..."
                                     class="w-75 form-control">
                                 <button class="btn btn-purple-100 border">Tìm kiếm</button>
                             </div>
-                        </div>
-                        <div class="col-3 d-flex justify-content-end">
-                            <button class="btn btn-purple-100 border" data-bs-toggle="modal"
-                                data-bs-target="#SupplierModal" type="button">
-                                <i class="fa-duotone fa-solid fa-plus-large"></i> Thêm Tài khoản mới
-                            </button>
                         </div>
                     </form>
 
@@ -69,9 +63,9 @@
                                     <td>Admin</td>
                                     <td>Đang hoạt động</td>
                                     <td class="text-center">
-                                        <button class="btn-table border-0" data-bs-toggle="modal"
+                                        <button class="btn-table border-0 btn btn-outline-primary" data-bs-toggle="modal"
                                             data-bs-target="#SupplierModal">
-                                            <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+                                            <i class="fa-light fa-eye"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -105,18 +99,12 @@
                 <!-- Khách hàng -->
                 <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">
                     <form class="row d-flex align-items-center justify-content-between mb-3">
-                        <div class="col-9">
+                        <div class="col">
                             <div class="input-group">
-                                <input type="text" placeholder="Tìm kiếm theo email hoặc tên tài khoản..."
+                                <input type="text" placeholder="Tìm kiếm theo tên hoặc số điện thoại khách hàng..."
                                     class="w-75 form-control">
                                 <button class="btn btn-purple-100 border">Tìm kiếm</button>
                             </div>
-                        </div>
-                        <div class="col-3 d-flex justify-content-end">
-                            <button class="btn btn-purple-100 border" data-bs-toggle="modal"
-                                data-bs-target="#CustomerAccountModal" type="button">
-                                <i class="fa-duotone fa-solid fa-plus-large"></i> Thêm Tài khoản mới
-                            </button>
                         </div>
                     </form>
 
@@ -139,9 +127,9 @@
                                     <td>lnqhuong04@gmail.com</td>
                                     <td>Đang hoạt động</td>
                                     <td class="text-center">
-                                        <button class="btn-table border-0" data-bs-toggle="modal"
+                                        <button class="btn-table border-0 btn btn-outline-primary" data-bs-toggle="modal"
                                             data-bs-target="#CustomerAccountModal">
-                                            <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+                                            <i class="fa-light fa-eye"></i>
                                         </button>
                                     </td>
                                 </tr>

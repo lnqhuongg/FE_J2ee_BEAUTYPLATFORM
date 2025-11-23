@@ -15,7 +15,12 @@
   background-color: #f8f9fa;
 }
 
-/* Header info */
+
+header.sticky-top {
+  z-index: 1030;
+}
+
+
 .provider-info span {
   border: 0.5px solid #aaaaaa;
   padding: 2px 15px;
@@ -32,7 +37,7 @@
   border-bottom: 0.5px solid #aaaaaa;
 }
 
-/* Sidebar link style */
+
 .sidebar .nav-link {
   color: #333;
   font-weight: 400;

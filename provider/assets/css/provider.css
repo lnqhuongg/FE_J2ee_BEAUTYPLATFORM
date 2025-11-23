@@ -172,7 +172,7 @@
   opacity: 0.8;
 }
 
-/* NÀY LÀ TRANG ĐĂNG NHẬP CỦA NCC */
+/* NÀY LÀ TRANG ĐĂNG ký CỦA NCC */
 /* Progress bar at top */
 .progress-bar-container {
   position: fixed;
@@ -294,6 +294,26 @@
   z-index: 100;
 }
 
-.icon_typeBusiness {
+.back-btn:hover {
+  transform: translateX(-3px);
+}
+
+.types_business button img {
   width: 35px;
+  margin-right: 5px;
+}
+
+.types_business button {
+  background-color: transparent;
+  width: 190px;
+  padding: 15px 0px;
+  color: #6b679f;
+  border: 1px solid #6b679f;
+  border-radius: 7px;
+  transition: all 0.4s ease;  
+}
+
+.types_business button:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-8px);
 }

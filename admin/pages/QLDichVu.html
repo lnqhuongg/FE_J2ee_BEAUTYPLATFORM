@@ -2,7 +2,8 @@
   <!-- CÁI NÀY LÀ NỘI DUNG BÊN TRONG MAIN -->
   <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;"><i class="fa-light fa-calendar-check me-2"></i>Quản lý
     Dịch vụ</h1>
-  <button type="button" class="btn btn-blue-100 border" data-bs-toggle="modal" data-bs-target="#serviceModal">
+  <button type="button" class="btn btn-blue-100 border btn_create_service" data-bs-toggle="modal"
+    data-bs-target="#serviceModal">
     <i class="fa-light fa-plus-large me-1"></i>
     Thêm Dịch vụ mới
   </button>
@@ -58,7 +59,7 @@
   </div>
 
   <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
-    <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ</div>
+    <div class="text-muted small"></div>
     <nav aria-label="Page navigation example">
       <ul class="pagination mb-0 custom-pagination">
       </ul>
@@ -75,56 +76,75 @@
         </div>
 
         <div class="modal-body">
-          <form>
-            <div class="row g-3">
-              <!-- tên dịch vụ  -->
+          <form class="row g-3">
+            <div class="row g-3 mt-0" id="serviceIdBlock">
               <div class="col-md-6">
-                <label for="serviceName" class="form-label fw-medium">Tên dịch vụ</label>
-                <input type="text" class="form-control" id="serviceName" placeholder="Nhập tên dịch vụ...">
+                <label for="serviceId" class="form-label fw-medium">Mã dịch vụ</label>
+                <input type="text" class="form-control" id="serviceId" placeholder="Nhập nội dung..." disabled>
               </div>
-              <!-- loại dịch vụ  -->
+            </div>
+            <!-- tên dịch vụ  -->
+            <div class="col-md-6">
+              <label for="serviceName" class="form-label fw-medium">Tên dịch vụ</label>
+              <input type="text" class="form-control" id="serviceName" placeholder="Nhập tên dịch vụ...">
+            </div>
+            <!-- loại dịch vụ  -->
+            <div class="col-md-6">
+              <label for="serviceTypes" class="form-label fw-medium">Loại dịch vụ</label>
+              <select class="form-select" id="serviceTypes">
+                <option value="-1" selected>Chọn loại dịch vụ</option>
+              </select>
+            </div>
+            <div class="row g-3 mt-0">
               <div class="col-md-6">
-                <label for="serviceType" class="form-label fw-medium">Loại dịch vụ</label>
-                <select class="form-select">
-                  <option selected>Chọn loại dịch vụ</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <label for="providers" class="form-label fw-medium">Doanh nghiệp</label>
+                <select class="form-select" id="providers">
+                  <option value="-1" selected>Chọn doanh nghiệp của dịch vụ</option>
                 </select>
               </div>
-              <!-- giá  -->
-              <div class="col-md-6">
-                <label for="servicePrice" class="form-label fw-medium">Giá (VNĐ)</label>
-                <input type="text" class="form-control" id="servicePrice" placeholder="Nhập giá dịch vụ...">
+            </div>
+            <!-- giá  -->
+            <div class="col-md-6">
+              <label for="servicePrice" class="form-label fw-medium">Giá dịch vụ</label>
+              <div class="input-group col-md-6">
+                <input type="text" class="form-control" placeholder="Giá dịch vụ" id="servicePrice">
+                <span class="input-group-text">VNĐ</span>
               </div>
-              <!-- thời lượng   -->
-              <div class="col-md-6">
-                <label for="serviceDuration" class="form-label fw-medium">Thời lượng (phút)</label>
-                <input type="text" class="form-control" id="serviceDuration" placeholder="Nhập thời lượng...">
+            </div>
+            <!-- thời lượng   -->
+            <div class="col-md-6">
+              <label for="serviceDuration" class="form-label fw-medium">Thời lượng</label>
+              <div class="input-group col-md-6">
+                <input type="text" class="form-control" placeholder="Giá dịch vụ" id="serviceDuration">
+                <span class="input-group-text">phút</span>
               </div>
-              <!-- mô tả  -->
-              <div class="col-12">
-                <label for="serviceDescription" class="form-label fw-medium">Mô tả</label>
-                <textarea class="form-control" id="serviceDescription" rows="3"
-                  placeholder="Nhập mô tả về dịch vụ..."></textarea>
+            </div>
+            <!-- mô tả  -->
+            <div class="col-12">
+              <label for="serviceDescription" class="form-label fw-medium">Mô tả</label>
+              <textarea class="form-control" id="serviceDescription" rows="3"
+                placeholder="Nhập mô tả về dịch vụ..."></textarea>
+            </div>
+            <!-- trạng thái  -->
+            <div class="col-md-3" id="serviceStatusBlock">
+              <label for="" class="form-label fw-medium">Trạng thái</label>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="serviceStatus" value="1">
+                <label class="form-check-label" for="serviceStatus" id="statusLabel">Đang hoạt động</label>
               </div>
-              <!-- trạng thái  -->
-              <div class="col-md-4">
-                <label for="serviceType" class="form-label fw-medium">Trạng thái</label>
-                <select class="form-select">
-                  <option selected>Chọn trạng thái</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
+            </div>
+            <div class="col-md-9" id="servicePromotionBlock">
+              <label for="provider" class="form-label fw-medium">Áp dụng khuyến mãi cho dịch vụ</label>
+              <select class="form-select" id="provider">
+                <option value="-1" selected>Chọn khuyến mãi</option>
+              </select>
             </div>
           </form>
         </div>
 
         <div class="modal-footer border-0 pt-0">
           <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-blue-100 border">Thêm mới</button>
+          <button type="button" class="btn btn-blue-100 border btn_submit_service">Thêm mới</button>
         </div>
       </div>
     </div>
