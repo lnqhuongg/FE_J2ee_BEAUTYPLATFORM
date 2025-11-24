@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thống kê Nhà cung cấp</title>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+          rel="stylesheet" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
+      rel="stylesheet" type="text/css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="../assets/admin.css">
+    <link rel="stylesheet" href="../../assets_root/css/root.css">
+
+    <style>
+      .stats-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      .stats-card.card-revenue {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+      }
+
+      .stats-card.card-services {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+      }
+
+      .stats-card.card-active {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        box-shadow: 0 4px 15px rgba(67, 233, 123, 0.3);
+      }
+
+      .stats-card h5 {
+        font-size: 14px;
+        font-weight: 600;
+        opacity: 0.9;
+        margin-bottom: 10px;
+      }
+
+      .stats-card .stat-value {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .stats-card .stat-label {
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      .chart-container {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      .chart-wrapper {
+        position: relative;
+        height: 400px;
+      }
+
+      .provider-table-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        overflow: hidden;
+      }
+
+      .provider-table-card .card-header {
+        background: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        padding: 15px 20px;
+      }
+
+      .provider-table-card h6 {
+        margin: 0;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header Sticky -->
+    <header class="shadow py-3 sticky-top bg-white z-3">
+      <div class="nav container d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <i class="fa-regular fa-scissors" style="font-size: 26px;"></i>
+          <span class="ms-2 fw-semibold fs-4">freshj</span>
+        </div>
+        <div class="d-flex align-items-center provider-info">
+          <span class="me-2 fw-light">Admin</span>
+          <i class="fa-thin fa-circle-user fs-2"></i>
+          <a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Layout: Sidebar cố định + Main -->
+    <div class="d-flex">
+      <!-- Sidebar Fixed -->
+      <aside class="sidebar bg-light border-end vh-100">
+        <div class="p-3">
+          <h6 class="text-uppercase text-muted">Tính năng</h6>
+          <ul class="nav flex-column mt-3">
+            <li class="nav-item mb-2">
+              <a class="nav-link" href="admin-dashboard.html">
+                <i class="fa-light fa-chart-line"></i>Tổng quan
+              </a>  
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" href="#">
+                <i class="fa-light fa-list"></i>Loại hình kinh doanh
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" href="#">
+                <i class="fa-light fa-users"></i>Quản lý Người dùng
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" href="#">
+                <i class="fa-light fa-check-circle"></i>Duyệt Dịch vụ
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" href="#">
+                <i class="fa-light fa-file-alt"></i>Quản lý Nội dung
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" href="#">
+                <i class="fa-light fa-exclamation-circle"></i>Khiếu nại & Hỗ trợ
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link active" href="#">
+                <i class="fa-light fa-chart-bar"></i>Thống kê & Báo cáo
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link" href="#">
+                <i class="fa-light fa-cog"></i>Cấu hình Hệ thống
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-grow-1 px-5 mt-4" style="margin-left: 240px;">
+        <h1 class="h4 mb-3 text-blue-800" style="font-weight: 700;">
+          <i class="fa-light fa-chart-bar me-2"></i>Thống kê Nhà cung cấp
+        </h1>
+        <p class="text-muted small mb-4">Xem thống kê tổng hợp hoạt động của nhà cung cấp</p>
+
+        <!-- Stats Cards -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="stats-card">
+              <h5>Tổng nhà cung cấp</h5>
+              <div class="stat-value">24</div>
+              <div class="stat-label">Nhà cung cấp hoạt động</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card card-revenue">
+              <h5>Tổng doanh thu</h5>
+              <div class="stat-value">₫45.2M</div>
+              <div class="stat-label">Tháng này</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card card-services">
+              <h5>Tổng dịch vụ</h5>
+              <div class="stat-value">156</div>
+              <div class="stat-label">Dịch vụ đang cung cấp</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card card-active">
+              <h5>Tỉ lệ hoạt động</h5>
+              <div class="stat-value">92%</div>
+              <div class="stat-label">Nhà cung cấp hoạt động</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Container -->
+        <div class="chart-container">
+          <h6 class="mb-3">Biểu đồ doanh thu theo thời gian</h6>
+          <div class="chart-wrapper">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Provider Table -->
+        <div class="provider-table-card">
+          <div class="card-header">
+            <h6>Danh sách nhà cung cấp hàng đầu</h6>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-hover mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Mã nhà cung cấp</th>
+                  <th scope="col">Tên nhà cung cấp</th>
+                  <th class="text-center" scope="col">Tổng thời gian (giờ)</th>
+                  <th class="text-end" scope="col">Tổng doanh thu</th>
+                  <th class="text-center" scope="col">Trạng thái</th>
+                  <th class="text-center" scope="col">Ngày tạo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>DL001</strong></td>
+                  <td>Salon Tóc Việt</td>
+                  <td class="text-center">156</td>
+                  <td class="text-end"><strong>₫5,200,000</strong></td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td class="text-center">2024-01-15</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>DL002</strong></td>
+                  <td>Spa & Massage Luxe</td>
+                  <td class="text-center">89</td>
+                  <td class="text-end"><strong>₫3,800,000</strong></td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td class="text-center">2024-01-20</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>DL003</strong></td>
+                  <td>Makeup Studio Anh</td>
+                  <td class="text-center">234</td>
+                  <td class="text-end"><strong>₫4,500,000</strong></td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td class="text-center">2024-02-01</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><strong>DL004</strong></td>
+                  <td>Nail Art Pro</td>
+                  <td class="text-center">145</td>
+                  <td class="text-end"><strong>₫2,100,000</strong></td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td class="text-center">2024-02-10</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><strong>DL005</strong></td>
+                  <td>Skincare Clinic</td>
+                  <td class="text-center">167</td>
+                  <td class="text-end"><strong>₫3,200,000</strong></td>
+                  <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">Tạm ngưng</span></td>
+                  <td class="text-center">2024-02-15</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
+          <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>24</strong> nhà cung cấp</div>
+          <nav aria-label="Page navigation">
+            <ul class="pagination mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">
+                  <i class="fa-light fa-chevron-left"></i>
+                </a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#"><i class="fa-light fa-chevron-right"></i></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Chart.js Script -->
+    <script>
+      // Dữ liệu biểu đồ doanh thu theo ngày
+      const ctx = document.getElementById('revenueChart').getContext('2d');
+      
+      const revenueChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['1/1', '2/1', '3/1', '4/1', '5/1', '6/1', '7/1', '8/1', '9/1', '10/1', '11/1', '12/1'],
+          datasets: [
+            {
+              label: 'Doanh thu (triệu VNĐ)',
+              data: [2.5, 3.2, 2.8, 4.1, 3.9, 4.5, 5.2, 5.8, 6.1, 5.5, 6.3, 7.2],
+              borderColor: '#667eea',
+              backgroundColor: 'rgba(102, 126, 234, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 5,
+              pointBackgroundColor: '#667eea',
+              pointBorderColor: '#fff',
+              pointBorderWidth: 2,
+              pointHoverRadius: 7
+            },
+            {
+              label: 'Mục tiêu (triệu VNĐ)',
+              data: [3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5],
+              borderColor: '#f5576c',
+              backgroundColor: 'rgba(245, 87, 108, 0.1)',
+              borderWidth: 2,
+              borderDash: [5, 5],
+              fill: false,
+              tension: 0.4,
+              pointRadius: 4,
+              pointBackgroundColor: '#f5576c',
+              pointBorderColor: '#fff',
+              pointBorderWidth: 2,
+              pointHoverRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                padding: 15,
+                font: {
+                  size: 13,
+                  weight: '600'
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              padding: 12,
+              titleFont: { size: 14 },
+              bodyFont: { size: 13 },
+              borderColor: '#ddd',
+              borderWidth: 1,
+              displayColors: true
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(0, 0, 0, 0.05)',
+                drawBorder: false
+              },
+              ticks: {
+                font: { size: 12 },
+                callback: function(value) {
+                  return value + 'M';
+                }
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                font: { size: 12 }
+              }
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
