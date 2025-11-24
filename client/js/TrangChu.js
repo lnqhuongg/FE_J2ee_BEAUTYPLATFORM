@@ -12,22 +12,24 @@ window.addEventListener('scroll', () => {
 const input = document.getElementById('serviceInput');
 const box = document.getElementById('suggestionBox');
 
-input.addEventListener('focus', () => {
-    box.style.display = 'block';
-});
-
-input.addEventListener('blur', () => {
-    // chờ 1 chút để click vào item không bị ẩn ngay
-    setTimeout(() => box.style.display = 'none', 150);
-});
-
-// click vào item gợi ý
-box.querySelectorAll('li').forEach(item => {
-    item.addEventListener('click', () => {
-        input.value = item.textContent;
-        box.style.display = 'none';
+if (input && box) {
+    input.addEventListener('focus', () => {
+        box.style.display = 'block';
     });
-});
+
+    input.addEventListener('blur', () => {
+        // chờ 1 chút để click vào item không bị ẩn ngay
+        setTimeout(() => box.style.display = 'none', 150);
+    });
+
+    // click vào item gợi ý
+    box.querySelectorAll('li').forEach(item => {
+        item.addEventListener('click', () => {
+            input.value = item.textContent;
+            box.style.display = 'none';
+        });
+    });
+}
 
 // carousel multiple items 
 var multipleCardCarousel = document.querySelector(
