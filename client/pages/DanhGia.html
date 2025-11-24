@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Đánh giá</title>
+  <style>
+    :root{--bg:#f6f7fb;--card:#fff;--muted:#9aa3ad;--accent:#ffca28;--border:#e6e9ef}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; margin:0; background:var(--bg); color:#111}
+    .page{max-width:1100px;margin:36px auto;padding:24px}
+    h1{font-size:32px;margin:0 0 12px}
+    .wrap{display:flex;gap:24px}
+    .left{flex:1}
+    .right{width:320px}
+
+    /* Reviews list */
+    .reviews{background:transparent}
+    .review{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border)}
+    .avatar{width:56px;height:56px;border-radius:50%;flex-shrink:0;background:#ddd;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+    .review-body{flex:1}
+    .meta{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+    .name{font-weight:700}
+    .date{color:var(--muted);font-size:13px}
+    .stars{color:var(--accent);display:inline-block}
+    .text{margin-top:8px;line-height:1.5}
+
+    /* Right card */
+    .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(16,24,40,0.06);border:1px solid var(--border)}
+    .summary{display:flex;align-items:center;gap:14px}
+    .avg{font-size:28px;font-weight:700}
+    .avg-sub{color:var(--muted);font-size:13px}
+    .rating-star{color:var(--accent);font-size:18px}
+
+    .bars{margin-top:14px}
+    .bar-row{display:flex;align-items:center;gap:8px;margin:8px 0}
+    .bar-label{width:28px;font-size:13px;color:var(--muted)}
+    .bar-track{flex:1;height:8px;background:#f1f3f6;border-radius:6px;position:relative}
+    .bar-fill{height:100%;background:#111;border-radius:6px}
+    .bar-count{width:28px;text-align:right;font-size:13px;color:var(--muted)}
+
+    /* Controls */
+    .controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    .controls .sort{background:transparent;border:1px solid var(--border);padding:8px 10px;border-radius:8px}
+
+    /* Filter list */
+    .filters{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+    .filter-row{display:flex;align-items:center;gap:8px}
+    .filter-row input{width:16px;height:16px}
+
+    /* Responsive */
+    @media (max-width:900px){.wrap{flex-direction:column}.right{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Đánh giá</h1>
+    <div class="wrap">
+      <div class="left">
+        <div class="controls">
+          <div id="totalInfo">99 đánh giá</div>
+          <select id="sortSelect" class="sort">
+            <option value="new">Mới nhất</option>
+            <option value="old">Cũ nhất</option>
+          </select>
+        </div>
+
+        <div id="reviews" class="reviews">
+          <!-- Reviews will be rendered here -->
+        </div>
+      </div>
+
+      <aside class="right">
+        <div class="card">
+          <div class="summary">
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="avg" id="avgScore">5.0</div>
+                <div>
+                  <div class="rating-star">★★★★★</div>
+                  <div class="avg-sub" id="countReview">(99)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bars" id="bars">
+            <!-- Histogram rows -->
+          </div>
+
+          <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px">
+            <div style="font-weight:700;margin-bottom:8px">Đánh giá bạn có thể tin tưởng</div>
+            <div style="color:var(--muted);font-size:13px">Tất cả các đánh giá của chúng tôi đều từ khách hàng thật, sau các lần ghé sử dụng được xác minh</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <div style="font-weight:700;margin-bottom:8px">Lọc theo</div>
+          <div class="filters" id="filterList">
+            <!-- checkboxes -->
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Sample data matching the provided screenshot
+    const reviewsData = [
+      {name:'Lim Y', date:'lúc 17:37 ngày Th 7, 22 thg 11, 2025', rating:5, text:'did my nails with jamie & it turned out so chio!!fast but meticulous 💯', avatar:'LY'},
+      {name:'Stephanie C', date:'lúc 15:47 ngày Th 4, 19 thg 11, 2025', rating:5, text:"Did an omakase facial and lash extension with Jaime recently. She's very professional and quick but yet thorough in her treatments. Overall experience was a pleasant and comfortable one.", avatar:'S'},
+      {name:'Gina Q', date:'lúc 21:59 ngày Th 4, 12 thg 11, 2025', rating:5, text:'Thank you Micky!! For the patience and extra time to doll up my nails with a fresh set of autumn theme! Totally love it!', avatar:'GQ'},
+      {name:'Alex T', date:'lúc 10:15 ngày Th 2, 8 thg 11, 2025', rating:4, text:'Great service, but trim was a bit shorter than expected.', avatar:'AT'}
+    ];
+
+    // Generate UI
+    const reviewsEl = document.getElementById('reviews');
+    const avgEl = document.getElementById('avgScore');
+    const countEl = document.getElementById('countReview');
+    const barsEl = document.getElementById('bars');
+    const filterListEl = document.getElementById('filterList');
+    const totalInfo = document.getElementById('totalInfo');
+
+    let state = {reviews: reviewsData.slice(), filterRatings: new Set(), sort:'new'};
+
+    function calcStats(list){
+      const totals = {count:list.length, sum:0, by:[0,0,0,0,0]};
+      list.forEach(r=>{ totals.sum += r.rating; totals.by[r.rating-1] += 1; });
+      return totals;
+    }
+
+    function render(){
+      let list = reviewsData.slice();
+      if(state.filterRatings.size){
+        list = list.filter(r=>state.filterRatings.has(r.rating));
+      }
+      if(state.sort==='new'){
+        // assume data already newest first
+      } else if(state.sort==='old'){
+        list = list.slice().reverse();
+      }
+
+      // render reviews
+      reviewsEl.innerHTML = '';
+      list.forEach(r=>{
+        const div = document.createElement('div');
+        div.className = 'review';
+        div.innerHTML = `
+          <div class="avatar">${escapeHtml(r.avatar)}</div>
+          <div class="review-body">
+            <div class="meta"><div class="name">${escapeHtml(r.name)}</div><div class="date">${escapeHtml(r.date)}</div></div>
+            <div class="stars">${renderStars(r.rating)}</div>
+            <div class="text">${escapeHtml(r.text)}</div>
+          </div>`;
+        reviewsEl.appendChild(div);
+      });
+
+      // stats
+      const stats = calcStats(list);
+      const avg = stats.count? (stats.sum / stats.count) : 0;
+      avgEl.textContent = avg? avg.toFixed(1) : '0.0';
+      countEl.textContent = `(${stats.count})`;
+      totalInfo.textContent = `${stats.count} đánh giá`;
+
+      // bars (based on full dataset, not filtered)
+      const full = calcStats(reviewsData);
+      barsEl.innerHTML = '';
+      const max = Math.max(...full.by,1);
+      for(let i=5;i>=1;i--){
+        const row = document.createElement('div');
+        row.className = 'bar-row';
+        const label = document.createElement('div'); label.className='bar-label'; label.textContent = i;
+        const track = document.createElement('div'); track.className='bar-track';
+        const fill = document.createElement('div'); fill.className='bar-fill'; fill.style.width = (full.by[i-1]/max*100)+'%';
+        track.appendChild(fill);
+        const cnt = document.createElement('div'); cnt.className='bar-count'; cnt.textContent = full.by[i-1];
+        row.appendChild(label); row.appendChild(track); row.appendChild(cnt);
+        barsEl.appendChild(row);
+      }
+
+      // filters
+      filterListEl.innerHTML = '';
+      for(let i=5;i>=1;i--){
+        const fr = document.createElement('div'); fr.className='filter-row';
+        const cb = document.createElement('input'); cb.type='checkbox'; cb.value=i; cb.checked = state.filterRatings.has(i);
+        cb.addEventListener('change',()=>{
+          if(cb.checked) state.filterRatings.add(i); else state.filterRatings.delete(i);
+          render();
+        });
+        const lbl = document.createElement('label'); lbl.innerHTML = `${i} <span style="color:var(--muted)">•</span>`;
+        fr.appendChild(cb); fr.appendChild(lbl);
+        filterListEl.appendChild(fr);
+      }
+    }
+
+    function renderStars(n){
+      const full = '★'.repeat(n);
+      const empty = '★'.repeat(5-n);
+      return `<span style="color:var(--accent)">${full}</span><span style="color:#e6e9ef">${empty}</span>`;
+    }
+
+    function escapeHtml(s){ return (''+s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c]); }
+
+    // sort control
+    document.getElementById('sortSelect').addEventListener('change', e=>{ state.sort = e.target.value; render(); });
+
+    // initial render
+    render();
+  </script>
+</body>
+</html>
