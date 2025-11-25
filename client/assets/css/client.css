@@ -1332,7 +1332,7 @@ footer ul li a:hover {
     height: calc(100vh - 60px);
 }
 
-.main-container .form-control:focus, 
+.main-container .form-control:focus,
 .main-container .form-select:focus {
     box-shadow: none !important;
     outline: 0 !important;
@@ -1485,4 +1485,129 @@ footer ul li a:hover {
     .content-wrapper {
         grid-template-columns: 1fr;
     }
+}
+
+/* css cho trang chi tiết doanh nghiệp */
+.provider-information-section {
+    margin-top: 100px;
+    padding: 0px 60px;
+}
+
+.provider-information-section .top {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.provider-information-section .title-block {
+    flex: 1;
+}
+
+.provider-information-section .title-block h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.provider-information-section .meta {
+    color: var(--muted);
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.provider-information-section .meta div i {
+    font-size: 13px;
+}
+
+.provider-information-section .meta button {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px 12px 15px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0.5px solid #cdcdcd;
+    border-radius: 50%;
+}
+
+.provider-information-section .meta button:hover {
+    background-color: #ebebeb;
+}
+
+.provider-information-section .gallery {
+    position: relative;
+}
+
+.provider-information-section .main-image img {
+    width: 800px;
+    border-radius: 10px;
+}
+
+.provider-information-section .thumbs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.provider-information-section .thumbs .thumb img {
+    width: 380px;
+    border-radius: 10px;
+}
+
+.see-all-thumbs {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.see-all-thumbs button {
+    font-size: 14px;
+    padding: 4px 22px;
+    border: none;
+    background-color: #fff;
+    border-radius: 50px;
+    transition: 0.4s;
+}
+
+.see-all-thumbs button:hover {
+    background-color: #e7e7e7;
+}
+
+.provider-information-section .content-section {
+    padding-block: 2rem;
+    display: grid;
+    grid-template-columns: 770px 1fr;
+    align-items: start;
+    gap: 2rem;
+}
+
+.provider-information-section .content-section .aside-sticky-provider {
+    position: sticky;
+    top: 8rem;
+}
+
+.provider-information-section .content-section .aside-sticky-provider .content-aside-sticky {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.aside-sticky-provider .content-aside-sticky .provider-name {
+    font-weight: 700;
+    font-size: 27px;
+}
+
+.make-an-appointment-btn {
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.make-an-appointment-btn button {
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 50px;
+}
+
+.make-an-appointment-btn button:hover {
+    background-color: #272727;
 }
