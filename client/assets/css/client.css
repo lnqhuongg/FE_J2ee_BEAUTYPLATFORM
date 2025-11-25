@@ -1611,3 +1611,21 @@ footer ul li a:hover {
 .make-an-appointment-btn button:hover {
     background-color: #272727;
 }
+
+.provider-information-section .service-list .service-preview {
+    border: 0.5px solid #cfcfcf;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.provider-information-section .service-list .service-preview:hover {
+    background-color: #f3f3f3;
+}
+
+.provider-information-section .staff-at-business .img-wapper,
+.provider-information-section .staff-at-business .staff-name {
+    cursor: pointer;
+}

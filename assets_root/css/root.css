@@ -44,3 +44,22 @@
     border: 1px solid #3d8bfd;
     transition: 0.5s;
 }
+
+.btn-out-without-background-hover {
+    padding: 8px 17px;
+    border-radius: 100px;
+    font-weight: 900;
+    background-color: #fff;
+    border: 0.5px solid #c2c2c2;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.btn-out-without-background-hover:hover {
+    background-color: #f0f0f0;
+}
+
+.text-deco-none {
+    text-decoration: none;
+    color: #333;
+}

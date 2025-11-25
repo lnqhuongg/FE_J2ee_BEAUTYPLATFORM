@@ -16,6 +16,7 @@
         href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
         rel="stylesheet" type="text/css" />
     <!-- css rieng -->
+    <link rel="stylesheet" href="../../assets_root/css/root.css">
     <link rel="stylesheet" href="../assets/css/client.css">
     <link rel="stylesheet" href="../../assets_root/css/toast.css">
 </head>
@@ -155,15 +156,58 @@
                             <li>Cạo lông chân</li>
                         </ul>
                     </div>
-                    <div class="service-list">
-                        <div class="service-preview">
+                    <div class="service-list mt-3">
+                        <div class="service-preview mb-3" data-bs-toggle="modal" data-bs-target="#serviceModal">
                             <div>
                                 <strong>Vừa gội đầu vừa tám chuyện</strong>
-                                <p>180 phút</p>
+                                <p style="font-size: 14px; color: #818181;">180 phút</p>
                             </div>
                             <div>
                                 <strong>75.000 VND</strong>
                             </div>
+                        </div>
+                        <div class="service-preview mb-3" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                            <div>
+                                <strong>Vừa gội đầu vừa tám chuyện</strong>
+                                <p style="font-size: 14px; color: #818181;">180 phút</p>
+                            </div>
+                            <div>
+                                <strong>75.000 VND</strong>
+                            </div>
+                        </div>
+                        <div class="service-preview mb-3" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                            <div>
+                                <strong>Vừa gội đầu vừa tám chuyện</strong>
+                                <p style="font-size: 14px; color: #818181;">180 phút</p>
+                            </div>
+                            <div>
+                                <strong>75.000 VND</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="see-all-service">
+                        <a class="btn-out-without-background-hover text-deco-none" style="font-size: 15px; text-decoration: none;">
+                            Xem tất cả
+                        </a>
+                    </div>
+                    <div class="staff-at-business mt-5">
+                        <h4 style="font-weight: 900;" class="mb-3">Các chuyên viên</h4>
+                        <div class="row row-cols-4">
+                            <div class="col staff mb-1">
+                                <div class="d-flex justify-content-center mb-2 img-wapper">
+                                    <img src="../img/image.png" 
+                                        style="width: 90px;
+                                               border-radius: 50%;" 
+                                        alt=""
+                                        data-bs-toggle="modal" data-bs-target="#staffModal">
+                                </div>
+                                <p class="staff-name text-center" 
+                                   style="font-size: 15px;"
+                                   data-bs-toggle="modal" data-bs-target="#staffModal">
+                                   Búm xi la bum
+                                </p>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -239,5 +283,28 @@
     <script src="../js/TrangChu.js"></script>
     <script src="../js/General.js"></script>
 </body>
+
+<!-- Modal của dịch vụ -->
+<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-4 px-5">
+                <h4 class="service-name">Vừa gội đầu vừa nói chuyện</h4>
+                <p style="font-size: 14px;" class="mt-4">
+                    Gội đầu, mát xa, nói xấu nyc cùng với khách hàng, niềm nở, tâm sự đời và đưa ra lời 
+                    tư vấn nếu khách hàng cần. Khách hàng có thể ngủ và yêu cầu chuyên viên im lặng nếu không cần
+                    nói chuyện trong gói dịch vụ.
+                </p>
+                <div class="d-flex justify-content-between">
+                    <strong>75.000 VND</strong>
+                    <p style="font-size: 14px; color: #818181;">180 phút</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </html>
