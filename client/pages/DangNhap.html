@@ -24,8 +24,8 @@
         <i class="fas fa-arrow-left"></i>
     </button>
     <div class="login-container">
-        <!-- Form Section -->
-        <!-- <div class="login-form-section">
+        <!-- Form Section 1: Email và OAuth2 -->
+        <div class="login-form-section" id="emailStep">
             <div class="login-box email-oauth2">
                 <div class="login-header">
                     <h1>Freshj dành cho khách hàng</h1>
@@ -35,11 +35,11 @@
                 <div class="social-login">
                     <div class="social-login-title">Đăng nhập với</div>
                     <div class="social-buttons">
-                        <button class="social-btn facebook-btn">
+                        <button class="social-btn facebook-btn" id="btnLoginFacebook" type="button">
                             <i class="fab fa-facebook-f"></i>
                             <span>Facebook</span>
                         </button>
-                        <button class="social-btn gmail-btn">
+                        <button class="social-btn gmail-btn" id="btnLoginGoogle" type="button">
                             <i class="fab fa-google"></i>
                             <span>Gmail</span>
                         </button>
@@ -50,12 +50,15 @@
                     <span>Hoặc</span>
                 </div>
 
-                <form>
+                <!-- Alert cho bước email -->
+                <div id="emailAlert"></div>
+
+                <form id="formCheckEmail">
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Địa chỉ email của bạn">
+                        <input type="email" id="inputEmail" placeholder="Địa chỉ email của bạn">
                     </div>
 
-                    <button type="button" class="continue-btn" onclick="handleContinue()">
+                    <button type="submit" class="continue-btn" id="btnContinueEmail">
                         Tiếp tục
                     </button>
                 </form>
@@ -64,43 +67,82 @@
                     Bạn có tài khoản doanh nghiệp?<br> <a href="#">Đăng nhập tài khoản doanh nghiệp</a>
                 </div>
             </div>
-        </div> -->
+        </div>
 
-        <div class="login-form-section">
+        <!-- Form Section 2: Đăng nhập hoặc Đăng ký -->
+        <div class="login-form-section" id="authStep" style="display: none;">
             <div class="login-box email-login">
                 <div class="login-header">
-                    <h1>Tạo tài khoản mới</h1>
-                    <p>Gần xong rồi! Tạo tài khoản mới cho email <strong>lnqhuong04@gmail.com</strong> của bạn bằng cách
-                        hoàn thành các thông tin sau</p>
+                    <h1 id="authTitle">Đăng nhập</h1>
+                    <p id="authDescription">Nhập mật khẩu để đăng nhập</p>
                 </div>
 
-                <form>
+                <!-- Alert cho bước auth -->
+                <div id="authAlert"></div>
+
+                <!-- Form Đăng nhập -->
+                <form id="formLogin" style="display: none;">
                     <div class="form-group">
-                        <label for="fullname">Họ và tên *</label>
-                        <input type="email" id="fullname" placeholder="Nhập họ và tên">
+                        <label for="inputLoginPassword">Mật khẩu *</label>
+                        <input type="password" id="inputLoginPassword" placeholder="Nhập mật khẩu">
+                    </div>
+
+                    <button type="submit" class="continue-btn" id="btnLogin">
+                        Đăng nhập
+                    </button>
+
+                    <div class="login-footer">
+                        <a href="#" id="linkBackToEmail">← Quay lại nhập email</a>
+                    </div>
+                </form>
+
+                <!-- Form Đăng ký -->
+                <form id="formRegister" style="display: none;">
+                    <div class="form-group">
+                        <label for="inputFullname">Họ và tên *</label>
+                        <input type="text" id="inputFullname" placeholder="Nhập họ và tên">
                     </div>
 
                     <div class="form-group">
-                        <label for="fullname">Mật khẩu *</label>
-                        <input type="email" id="fullname" placeholder="Nhập mật khẩu">
+                        <label for="inputRegisterPassword">Mật khẩu *</label>
+                        <input type="password" id="inputRegisterPassword" placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)">
                     </div>
 
                     <div class="form-group">
-                        <label for="fullname">Xác nhận mật khẩu *</label>
-                        <input type="email" id="fullname" placeholder="Nhập lại mật khẩu">
+                        <label for="inputConfirmPassword">Xác nhận mật khẩu *</label>
+                        <input type="password" id="inputConfirmPassword" placeholder="Nhập lại mật khẩu">
                     </div>
 
                     <div class="form-group">
-                        <label for="fullname">Số điện thoại *</label>
+                        <label for="inputGender">Giới tính *</label>
+                        <select class="form-control" id="inputGender">
+                            <option value="">-- Chọn giới tính --</option>
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                            <option value="2">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputBirthdate">Ngày sinh *</label>
+                        <input type="date" id="inputBirthdate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPhone">Số điện thoại *</label>
                         <div class="d-flex justify-content-between">
                             <input type="text" value="+84" style="width: 65px; background: #eeeeee;" disabled>
-                            <input type="text" id="fullname" placeholder="Nhập số điện thoại" style="width: 330px;">
+                            <input type="text" id="inputPhone" placeholder="Nhập số điện thoại" style="width: 330px;" pattern="[0-9]{9,10}">
                         </div>
                     </div>
 
-                    <button type="submit" class="continue-btn" onclick="handleContinue()">
-                        Tiếp tục
+                    <button type="submit" class="continue-btn" id="btnRegister">
+                        Đăng ký
                     </button>
+
+                    <div class="login-footer">
+                        <a href="#" id="linkBackToEmail2">← Quay lại nhập email</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -112,6 +154,9 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../lib/api.js"></script>
+    <script src="../js/DangNhap.js"></script>
 </body>
 
 </html>

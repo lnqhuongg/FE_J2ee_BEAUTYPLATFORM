@@ -27,17 +27,17 @@
                 <div class="tab-pane fade show active" id="supplier" role="tabpanel" aria-labelledby="supplier-tab">
                     <form class="row d-flex align-items-center mb-3">
                         <div class="col-3">
-                            <select class="form-select w-100">
+                            <select class="form-select w-100" id="selectLoaiHinhNCC">
                                 <option value="-1" selected>Loại hình Doanh nghiệp</option>
-                                <option>Nail</option>
-                                <option>Head</option>
                             </select>
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                <input type="text" placeholder="Tìm kiếm theo tên, email, số điện thoại doanh nghiệp..."
+                                <input type="text" 
+                                    id="searchNCC"
+                                    placeholder="Tìm kiếm theo tên, email, số điện thoại doanh nghiệp..."
                                     class="w-75 form-control">
-                                <button class="btn btn-purple-100 border">Tìm kiếm</button>
+                                <button class="btn btn-purple-100 border" id="btnSearchNCC">Tìm kiếm</button>
                             </div>
                         </div>
                     </form>
@@ -101,9 +101,11 @@
                     <form class="row d-flex align-items-center justify-content-between mb-3">
                         <div class="col">
                             <div class="input-group">
-                                <input type="text" placeholder="Tìm kiếm theo tên hoặc số điện thoại khách hàng..."
+                                <input type="text" 
+                                    id="searchKH"
+                                    placeholder="Tìm kiếm theo tên hoặc số điện thoại khách hàng..."
                                     class="w-75 form-control">
-                                <button class="btn btn-purple-100 border">Tìm kiếm</button>
+                                <button class="btn btn-purple-100 border" id="btnSearchKH">Tìm kiếm</button>
                             </div>
                         </div>
                     </form>
@@ -175,57 +177,51 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row" style="margin-bottom: 15px;">
-                        <div class="col-6">
-                            <label for="" class="form-label">Mã tài khoản</label>
-                            <input class="w-100 form-control" type="text" disabled value="TK0001">
-                        </div>
-                        <div class="col-6">
-                            <label for="" class="form-label">Số điện thoại</label>
-                            <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
-                        </div>
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-6">
+                    <label for="" class="form-label">Mã tài khoản</label>
+                    <input class="w-100 form-control" type="text" disabled value="">
                     </div>
-                    <div style="margin-bottom: 15px;">
-                        <label for="" class="form-label">Tên tài khoản</label>
-                        <input class="w-100 form-control" type="text" placeholder="Nhập tên tài khoản...">
+                    <div class="col-6">
+                    <label for="" class="form-label">Số điện thoại</label>
+                    <input class="w-100 form-control" type="text" placeholder="Nhập số điện thoại...">
                     </div>
-                    <div style="margin-bottom: 15px;">
-                        <label for="" class="form-label">Email</label>
-                        <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="" class="form-label">Tên nhà cung cấp</label>
+                    <input class="w-100 form-control" type="text" placeholder="Nhập tên nhà cung cấp...">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="" class="form-label">Email</label>
+                    <input class="w-100 form-control" type="text" placeholder="Nhập email tài khoản...">
+                </div>
+                
+                <!-- Giới tính -->
+                <div class="row" style="margin-bottom: 15px;">
+                    <label for="" class="form-label">Giới tính</label>
+                    <div class="d-flex col-4 justify-content-between">
+                    <span class="form-check">
+                        <input class="form-check-input" type="radio" name="gioitinh_ncc" id="gioitinh_nu" value="0">
+                        <label class="form-check-label" for="gioitinh_nu">Nữ</label>
+                    </span>
+                    <span class="form-check">
+                        <input class="form-check-input" type="radio" name="gioitinh_ncc" id="gioitinh_nam" value="1" checked>
+                        <label class="form-check-label" for="gioitinh_nam">Nam</label>
+                    </span>
                     </div>
-                    <div style="margin-bottom: 15px;">
-                        <label for="" class="form-label">Mật khẩu</label>
-                        <input class="w-100 form-control" type="text" placeholder="Nhập mật khẩu tài khoản...">
+                </div>
+                
+                <div class="row" style="margin-bottom: 5px;">
+                    <div class="col-6">
+                    <label for="" class="form-label">Loại nhà cung cấp</label>
+                    <select name="" id="" class="form-select">
+                        <option selected value="-1">Chọn loại</option>
+                        <!-- Sẽ load động -->
+                    </select>
                     </div>
-                    <!-- Chọn giới tính nam nữ  -->
-                    <div class="row" style="margin-bottom: 15px;">
-                        <label for="" class="form-label">Giới tính</label>
-                        <div class="d-flex col-4 justify-content-between">
-                            <span class="form-check">
-                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nu">
-                                <label class="form-check-label" for="gioitinh_nu">
-                                    Nữ
-                                </label>
-                            </span>
-                            <span class="form-check">
-                                <input class="form-check-input" type="radio" name="gioitinh" id="gioitinh_nam" checked>
-                                <label class="form-check-label" for="gioitinh_nam">
-                                    Nam
-                                </label>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 5px;">
-                        <div class="col-6">
-                            <label for="" class="form-label">Loại nhà cung cấp</label>
-                            <select name="" id="" class="form-select">
-                                <option selected value="-1">Chọn loại</option>
-                                <option value="">Nail</option>
-                                <option value="">Face</option>
-                                <option value="">Head</option>
-                            </select>
-                        </div>
-                    </div>
+                </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
