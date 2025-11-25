@@ -1,13 +1,3 @@
-// navbar sticky
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
 // gợi ý thanh tìm kiếm
 const input = document.getElementById('serviceInput');
 const box = document.getElementById('suggestionBox');

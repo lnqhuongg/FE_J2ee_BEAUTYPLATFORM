@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Freshj</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font giống Fresha -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- font awesome cua Huong Nguyen -->
+    <link
+        href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
+        rel="stylesheet" type="text/css" />
+    <!-- css rieng -->
+    <link rel="stylesheet" href="../assets/css/client.css">
+    <link rel="stylesheet" href="../../assets_root/css/toast.css">
+</head>
+
+<div id="toast" class="toast-custom">
+    <span id="toastMessage">Đã thay đổi ảnh đại diện thành công</span>
+    <button id="toastClose">&times;</button>
+</div>
+
+<body style="overflow: hidden;">
+    <main class="bg-light">
+        <!-- Hero area có nền gradient -->
+        <nav class="navbar navbar-expand-lg py-3 px-4 px-lg-5 animation-appear" id="navbar">
+            <div class="container-fluid d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <i class="fa-regular fa-scissors" style="font-size: 26px;"></i>
+                    <span class="ms-2 fw-semibold fs-4">freshj</span>
+                </div>
+                <div class="filter-search-container">
+                    <div class="filter-group">
+                        <i class="fas fa-search filter-icon"></i>
+                        <input type="text" placeholder="Spa & Sauna">
+                    </div>
+                    <div class="filter-group">
+                        <i class="fas fa-map-marker-alt filter-icon"></i>
+                        <input type="text" placeholder="Melbourne, Australia">
+                    </div>
+                    <div class="filter-group">
+                        <i class="fas fa-calendar filter-icon"></i>
+                        <select>
+                            <option>Any date</option>
+                            <option>Today</option>
+                            <option>Tomorrow</option>
+                            <option>This week</option>
+                            <option>This month</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <i class="fas fa-clock filter-icon"></i>
+                        <select>
+                            <option>Any time</option>
+                            <option>Morning (6AM - 12PM)</option>
+                            <option>Afternoon (12PM - 6PM)</option>
+                            <option>Evening (6PM - 12AM)</option>
+                            <option>Night (12AM - 6AM)</option>
+                        </select>
+                    </div>
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+                <div class="d-flex gap-2">
+                    <!-- này là chưa đăng nhập -->
+                    <!-- <button class="btn btn-nav-client">Đăng nhập</button> -->
+                    <!-- này là sau khi đăng nhập -->
+                    <div class="dropdown-container">
+                        <button class="profile-button" id="profileBtn">
+                            <img src="../img/image.png" alt="Avatar">
+                        </button>
+
+                        <div class="dropdown-menu-custom" id="dropdownMenu">
+                            <div class="dropdown-header">
+                                <p class="user-name">Hương Lê Ngọc Quỳnh</p>
+                            </div>
+
+                            <div class="menu-section">
+                                <button class="menu-item">
+                                    <i class="fas fa-id-card"></i>
+                                    <span class="menu-item-text">Hồ sơ</span>
+                                </button>
+                                <button class="menu-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="menu-item-text">Các cuộc hẹn</span>
+                                </button>
+                                <button class="menu-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span class="menu-item-text">Mục yêu thích</span>
+                                </button>
+                                <button class="menu-item">
+                                    <i class="fas fa-cog"></i>
+                                    <span class="menu-item-text">Cài đặt</span>
+                                </button>
+                            </div>
+
+                            <div class="menu-section">
+                                <button class="menu-item logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span class="menu-item-text">Đăng xuất</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h6>Menu</h6>
+                </div>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" class="active">
+                            <i class="fa-light fa-user"></i>Hồ sơ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-light fa-calendar"></i> Các cuộc hẹn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-light fa-heart"></i> Mục yêu thích
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-light fa-gear"></i> Cài đặt
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Content -->
+            <div class="content">
+                <h1 class="page-title mb-2">Hồ sơ</h1>
+
+                <div class="content-wrapper d-flex justify-content-center">
+                    <!-- Profile Card -->
+                    <div class="profile-card">
+                        <div class="d-flex justify-content-end mb-2 edit-profile">
+                            <a href="#" id="editProfileBtn">Chỉnh sửa</a>
+                        </div>
+                        <div class="profile-image">
+                            <img src="../img/image.png" id="avatarPreview" alt="Profile">
+
+                            <!-- input load ảnh (ẩn) -->
+                            <input type="file" id="avatarInput" accept="image/*" hidden>
+
+                            <!-- label thay cho button -->
+                            <label for="avatarInput" class="edit-btn">
+                                <i class="fa-duotone fa-solid fa-pencil"></i>
+                            </label>
+                        </div>
+
+                        <h2 class="profile-name">Huong Le Ngoc Quynh</h2>
+
+                        <div class="profile-divider"></div>
+
+                        <div class="profile-info">
+                            <div class="profile-info-item">
+                                <div class="profile-info-label">Tên</div>
+                                <div class="profile-info-value">Le Ngoc Quynh</div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-label">Họ</div>
+                                <div class="profile-info-value">Huong</div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-label">Số điện thoại di động</div>
+                                <div class="profile-info-value">+84 792 831 172</div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-label">Email</div>
+                                <div class="profile-info-value">lnghuong04@gmail.com</div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-label">Ngày sinh</div>
+                                <div class="profile-info-value">-</div>
+                            </div>
+                            <div class="profile-info-item">
+                                <div class="profile-info-label">Giới tính</div>
+                                <div class="profile-info-value">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/General.js"></script>
+    <script src="../js/HoSo.js"></script>
+    <script src="../../assets_root/js/toastImage.js"></script>
+</body>
+
+</html>
