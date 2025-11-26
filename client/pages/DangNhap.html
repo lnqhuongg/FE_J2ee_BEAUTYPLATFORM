@@ -17,11 +17,12 @@
         rel="stylesheet" type="text/css" />
     <!-- css rieng -->
     <link rel="stylesheet" href="../assets/css/client.css">
+    <link rel="stylesheet" href="../../assets_root/css/continue_btn_top.css">
 </head>
 
 <body>
-    <button class="back-btn btn btn-light" onclick="window.history.back()" title="Quay lại">
-        <i class="fas fa-arrow-left"></i>
+    <button class="continue-btn-top">
+        Continue <i class="fas fa-arrow-right"></i>
     </button>
     <div class="login-container">
         <!-- Form Section 1: Email và OAuth2 -->
@@ -105,7 +106,8 @@
 
                     <div class="form-group">
                         <label for="inputRegisterPassword">Mật khẩu *</label>
-                        <input type="password" id="inputRegisterPassword" placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)">
+                        <input type="password" id="inputRegisterPassword"
+                            placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)">
                     </div>
 
                     <div class="form-group">
@@ -132,7 +134,8 @@
                         <label for="inputPhone">Số điện thoại *</label>
                         <div class="d-flex justify-content-between">
                             <input type="text" value="+84" style="width: 65px; background: #eeeeee;" disabled>
-                            <input type="text" id="inputPhone" placeholder="Nhập số điện thoại" style="width: 330px;" pattern="[0-9]{9,10}">
+                            <input type="text" id="inputPhone" placeholder="Nhập số điện thoại" style="width: 330px;"
+                                pattern="[0-9]{9,10}">
                         </div>
                     </div>
 

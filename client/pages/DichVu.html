@@ -9,27 +9,41 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- font awesome cua Huong Nguyen -->
+    <link
+        href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
+        rel="stylesheet" type="text/css" />
+
     <!-- Google Font giống Fresha -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/client.css">
+    <link rel="stylesheet" href="../../assets_root/css/continue_btn_top.css">
 
 </head>
 
 <body>
-    <main class="page-wrapper">
+    <main class="select-page-wrapper">
+        <a class="continue-btn-top" href="./ChiTietDoanhNghiep.html">
+            X
+        </a>
         <div class="container-fluid">
             <div class="row">
                 <!-- Cột trái: danh sách dịch vụ -->
                 <div class="col-lg-7 col-md-7">
                     <!-- breadcrumb -->
-                    <div class="breadcrumb-custom mb-1">
-                        <a href="#" class="active" >Dịch vụ</a>
-                        <span> &gt; </span>
-                        <a href="#">Thời gian</a>
-                        <span> &gt; </span>
-                        <a href="#">Xác nhận</a>
+                    <div class="breadcrumb-nav d-flex align-items-center">
+                        <a href="" class="active">Dịch vụ</a>
+                        <i class="fa-duotone fa-thin fa-caret-right"></i>
+                        <a href="">Chuyên viên</a>
+                        <i class="fa-duotone fa-thin fa-caret-right"></i>
+                        <a href="">Thời gian</a>
+                        <i class="fa-duotone fa-thin fa-caret-right"></i>
+                        <a href="">Xác nhận</a>
                     </div>
 
                     <h1 class="page-title">Dịch vụ</h1>
@@ -37,7 +51,8 @@
                     <!-- Tabs -->
                     <ul class="nav service-tabs mb-3">
                         <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-noibat">Nổi bật</button>
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-noibat">Nổi
+                                bật</button>
                         </li>
                         <li class="nav-item">
                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-facial">Facial</button>
@@ -59,15 +74,13 @@
                             <h5 class="service-section-title">Nổi bật</h5>
 
                             <!-- 1 dịch vụ -->
-                            <div class="service-card"
-                                data-id="body"
-                                data-name="BODY Massage"
-                                data-price="420000">
+                            <div class="service-card" data-id="body" data-name="BODY Massage" data-price="420000">
                                 <div>
                                     <div class="service-info-title">BODY Massage</div>
                                     <div class="service-info-meta">1 giờ - 2 giờ</div>
                                     <div class="service-info-meta">
-                                        Particularly suited to stress-related conditions and increasing blood circulation...
+                                        Particularly suited to stress-related conditions and increasing blood
+                                        circulation...
                                     </div>
                                     <div class="service-info-price">từ 420.000 ₫</div>
                                 </div>
@@ -76,10 +89,7 @@
                                 </button>
                             </div>
 
-                            <div class="service-card"
-                                data-id="hair"
-                                data-name="HAIR CARE"
-                                data-price="490000">
+                            <div class="service-card" data-id="hair" data-name="HAIR CARE" data-price="490000">
                                 <div>
                                     <div class="service-info-title">HAIR CARE</div>
                                     <div class="service-info-meta">1 giờ 30 phút</div>
@@ -93,15 +103,56 @@
                                 </button>
                             </div>
 
-                            <div class="service-card"
-                                data-id="foot"
-                                data-name="FOOT Massage"
-                                data-price="350000">
+                            <div class="service-card" data-id="foot" data-name="FOOT Massage" data-price="350000">
                                 <div>
                                     <div class="service-info-title">FOOT Massage</div>
                                     <div class="service-info-meta">1 giờ - 1 giờ 30 phút</div>
                                     <div class="service-info-meta">
-                                        Foot therapy is very relaxing, especially for people who stand on their feet all day.
+                                        Foot therapy is very relaxing, especially for people who stand on their feet all
+                                        day.
+                                    </div>
+                                    <div class="service-info-price">từ 350.000 ₫</div>
+                                </div>
+                                <button class="service-add-btn">
+                                    <span>+</span>
+                                </button>
+                            </div>
+                            <div class="service-card" data-id="body" data-name="BODY Massage" data-price="420000">
+                                <div>
+                                    <div class="service-info-title">BODY Massage</div>
+                                    <div class="service-info-meta">1 giờ - 2 giờ</div>
+                                    <div class="service-info-meta">
+                                        Particularly suited to stress-related conditions and increasing blood
+                                        circulation...
+                                    </div>
+                                    <div class="service-info-price">từ 420.000 ₫</div>
+                                </div>
+                                <button class="service-add-btn">
+                                    <span>+</span>
+                                </button>
+                            </div>
+
+                            <div class="service-card" data-id="hair" data-name="HAIR CARE" data-price="490000">
+                                <div>
+                                    <div class="service-info-title">HAIR CARE</div>
+                                    <div class="service-info-meta">1 giờ 30 phút</div>
+                                    <div class="service-info-meta">
+                                        90 MINS với bất kỳ chuyên gia nào...
+                                    </div>
+                                    <div class="service-info-price">từ 490.000 ₫</div>
+                                </div>
+                                <button class="service-add-btn">
+                                    <span>+</span>
+                                </button>
+                            </div>
+
+                            <div class="service-card" data-id="foot" data-name="FOOT Massage" data-price="350000">
+                                <div>
+                                    <div class="service-info-title">FOOT Massage</div>
+                                    <div class="service-info-meta">1 giờ - 1 giờ 30 phút</div>
+                                    <div class="service-info-meta">
+                                        Foot therapy is very relaxing, especially for people who stand on their feet all
+                                        day.
                                     </div>
                                     <div class="service-info-price">từ 350.000 ₫</div>
                                 </div>
@@ -142,12 +193,12 @@
                             <div class="summary-header">
                                 <div class="summary-img">
                                     <img src="https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                         alt="Spa">
+                                        alt="Spa">
                                 </div>
                                 <div>
                                     <div class="summary-name">CiCi International Spa</div>
                                     <div class="summary-rating">
-                                        <span >4.9</span><span class="star">★★★★★</span><span>(387)</span>
+                                        <span>4.9</span><span class="star">★★★★★</span><span>(387)</span>
                                     </div>
                                     <div class="summary-address">
                                         Bến Thành, District 1, Ho Chi Minh City
@@ -160,10 +211,9 @@
                             </div>
 
                             <div id="summary-services"></div>
-
-                            <div class="summary-total-row">
+                            <div class="summary-total-row mt-2 border-top pt-3">
                                 <span>Tổng tiền</span>
-                                <span id="summary-total">miễn phí</span>
+                                <span id="summary-total">0 VND</span>
                             </div>
 
                             <button id="continueBtn" class="continue-btn" disabled>Tiếp tục</button>

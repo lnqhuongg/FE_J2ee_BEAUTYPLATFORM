@@ -1475,8 +1475,9 @@ footer ul li a:hover {
     padding: 8px;
     width: 32px;
     height: 32px;
-    opacity: 1; /* quan trọng: tránh bị mờ của bootstrap */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    opacity: 1;
+    /* quan trọng: tránh bị mờ của bootstrap */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .change-pass-close:hover {
@@ -1536,233 +1537,378 @@ a {
     }
 }
 
-/* Dịch vụ */
+/* css cho trang chi tiết doanh nghiệp */
+.provider-information-section {
+    margin-top: 100px;
+    padding: 0px 60px;
+}
 
-body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fafafa;
-        }
+.provider-information-section .top {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
 
-        .page-wrapper {
-            padding: 40px 60px;
-        }
+.provider-information-section .title-block {
+    flex: 1;
+}
 
-        .breadcrumb-custom {
-            font-size: 14px;
-            color: #9e9e9e;
-        }
+.provider-information-section .title-block h1 {
+    margin: 0;
+    font-size: 28px;
+}
 
-        .breadcrumb-custom a {
-            color: #9e9e9e;
-            text-decoration: none;
-        }
+.provider-information-section .meta {
+    color: var(--muted);
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
 
-        .breadcrumb-custom a.active {
-            color: #222;
-            font-weight: 500;
-        }
+.provider-information-section .meta div i {
+    font-size: 13px;
+}
 
-        .page-title {
-            font-size: 38px;
-            font-weight: 700;
-            margin-top: 10px;
-            margin-bottom: 25px;
-        }
+.provider-information-section .meta button {
+    display: flex;
+    align-items: center;
+    padding: 15px 15px 12px 15px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0.5px solid #cdcdcd;
+    border-radius: 50%;
+}
 
-        /* Tabs dịch vụ */
-        .service-tabs {
-            border-bottom: 1px solid #eee;
-            margin-bottom: 20px;
-        }
+.provider-information-section .meta button:hover {
+    background-color: #ebebeb;
+}
 
-        .service-tabs .nav-link {
-            border-radius: 999px;
-            padding: 8px 18px;
-            font-size: 14px;
-            color: #555;
-            margin-right: 4px;
-        }
+.provider-information-section .gallery {
+    position: relative;
+}
 
-        .service-tabs .nav-link.active {
-            background-color: #111;
-            color: #fff;
-        }
+.provider-information-section .main-image img {
+    width: 800px;
+    border-radius: 10px;
+}
 
-        /* Card dịch vụ bên trái */
-        .service-section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 20px 0 12px;
-        }
+.provider-information-section .thumbs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        .service-card {
-            border-radius: 14px;
-            border: 1px solid #e5e5e5;
-            padding: 14px 18px;
-            margin-bottom: 12px;
-            background-color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            transition: box-shadow 0.2s;
-        }
+.provider-information-section .thumbs .thumb img {
+    width: 380px;
+    border-radius: 10px;
+}
 
-        .service-card:hover {
-            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-        }
+.see-all-thumbs {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
 
-        .service-info-title {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
+.see-all-thumbs button {
+    font-size: 14px;
+    padding: 4px 22px;
+    border: none;
+    background-color: #fff;
+    border-radius: 50px;
+    transition: 0.4s;
+}
 
-        .service-info-meta {
-            font-size: 13px;
-            color: #777;
-            margin-bottom: 4px;
-        }
+.see-all-thumbs button:hover {
+    background-color: #e7e7e7;
+}
 
-        .service-info-price {
-            font-size: 13px;
-            font-weight: 500;
-            margin-top: 4px;
-        }
+.provider-information-section .content-section {
+    padding-block: 2rem;
+    display: grid;
+    grid-template-columns: 770px 1fr;
+    align-items: start;
+    gap: 2rem;
+}
 
-        .service-add-btn {
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
+.provider-information-section .content-section .aside-sticky-provider {
+    position: sticky;
+    top: 8rem;
+}
 
-        .service-add-btn span {
-            font-size: 18px;
-            line-height: 1;
-        }
+.provider-information-section .content-section .aside-sticky-provider .content-aside-sticky {
+    background-color: #fff;
+    border-radius: 10px;
+}
 
-        /* Panel bên phải */
-        .summary-card {
-            border-radius: 14px;
-            border: 1px solid #e5e5e5;
-            background-color: #fff;
-            padding: 18px 18px 14px;
-        }
+.aside-sticky-provider .content-aside-sticky .provider-name {
+    font-weight: 700;
+    font-size: 27px;
+}
 
-        .summary-header {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
+.make-an-appointment-btn {
+    font-size: 15px;
+    font-weight: 900;
+}
 
-        .summary-img {
-            width: 64px;
-            height: 64px;
-            border-radius: 10px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
+.make-an-appointment-btn button {
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 50px;
+}
 
-        .summary-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.make-an-appointment-btn button:hover {
+    background-color: #272727;
+}
 
-        .summary-name {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
+.provider-information-section .service-list .service-preview {
+    border: 0.5px solid #cfcfcf;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        .summary-rating {
-            font-size: 13px;
-            color: #555;
-        }
+.provider-information-section .service-list .service-preview:hover {
+    background-color: #f3f3f3;
+}
 
-        .summary-rating .star {
-            color: #f5c14b;
-            margin-right: 4px;
-        }
+.provider-information-section .rating-star i {
+    font-size: 13px;
+}
 
-        .summary-address {
-            font-size: 12px;
-            color: #777;
-        }
+.provider-information-section .business-rating-section .rating {
+    height: 165px;
+}
 
-        .summary-empty {
-            font-size: 14px;
-            color: #777;
-            padding: 12px 0 18px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 16px;
-        }
+.provider-information-section .more-info .opening-time i {
+    font-size: 10px;
+    color: #78d240;
+    margin-right: 10px;
+}
 
-        .summary-total-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
+.select-page-wrapper {
+    font-family: 'Inter', sans-serif;
+    padding: 50px 200px;
+}
 
-        .summary-total-row span:first-child {
-            font-weight: 500;
-        }
+.select-page-wrapper .breadcrumb-custom {
+    font-size: 14px;
+    color: #9e9e9e;
+}
 
-        .continue-btn {
-            width: 100%;
-            border-radius: 999px;
-            padding: 12px 0;
-            font-weight: 600;
-            background-color: #bdbdbd;
-            border: none;
-            color: #fff;
-            cursor: not-allowed;
-        }
-        .page-wrapper {
-            padding: 40px 180px;
-        }
-        /* Để panel phải luôn nhìn thấy (giống sticky) */
-        @media (min-width: 992px) {
-            .summary-wrapper {
-                position: sticky;
-                top: 30px;
-            }
-        }
+.select-page-wrapper .breadcrumb-custom a {
+    color: #9e9e9e;
+    text-decoration: none;
+}
 
-        @media (max-width: 992px) {
-            .page-wrapper {
-                padding: 20px 16px;
-            }
-        }
+.select-page-wrapper .breadcrumb-custom a.active {
+    color: #222;
+    font-weight: 500;
+}
 
-        .service-card.selected {
-            border-color: #7c3aed;
-            box-shadow: 0 0 0 1px #7c3aed;
-        }
+.select-page-wrapper .page-title {
+    font-size: 38px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
 
-        .service-card.selected .service-add-btn {
-            border-color: #7c3aed;
-            background-color: #7c3aed;
-            color: #fff;
-        }
+/* Tabs dịch vụ */
+.select-page-wrapper .service-tabs {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
 
-        .service-card.selected .service-add-btn span {
-            font-weight: 700;
-        }
+.select-page-wrapper .service-tabs .nav-link {
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 14px;
+    color: #555;
+    margin-right: 4px;
+}
 
-        .service-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;   /* <-- QUAN TRỌNG */
-            padding: 16px 20px;
-            border: 1px solid #e5e5e5;
-            border-radius: 14px;
-            background: #fff;
-            margin-bottom: 12px;
-        }
+.select-page-wrapper .service-tabs .nav-link.active {
+    background-color: #111;
+    color: #fff;
+}
+
+/* Card dịch vụ bên trái */
+.select-page-wrapper .service-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0 12px;
+}
+
+.select-page-wrapper .service-card {
+    border-radius: 14px;
+    border: 1px solid #e5e5e5;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+}
+
+.select-page-wrapper .service-card:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.select-page-wrapper .service-info-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.select-page-wrapper .service-info-meta {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.select-page-wrapper .service-info-price {
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.select-page-wrapper .service-add-btn {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.select-page-wrapper .service-add-btn span {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Panel bên phải */
+.select-page-wrapper .summary-card {
+    border-radius: 14px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    padding: 18px 18px 14px;
+}
+
+.select-page-wrapper .summary-header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.select-page-wrapper .summary-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.select-page-wrapper .summary-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.select-page-wrapper .summary-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.select-page-wrapper .summary-rating {
+    font-size: 13px;
+    color: #555;
+}
+
+.select-page-wrapper .summary-rating .star {
+    color: #f5c14b;
+    margin-right: 4px;
+}
+
+.select-page-wrapper .summary-address {
+    font-size: 12px;
+    color: #777;
+}
+
+.select-page-wrapper .summary-empty {
+    font-size: 14px;
+    color: #777;
+    padding: 12px 0 18px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 16px;
+}
+
+.select-page-wrapper .summary-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.select-page-wrapper .summary-total-row span:first-child {
+    font-weight: 500;
+}
+
+.select-page-wrapper .continue-btn {
+    width: 100%;
+    border-radius: 999px;
+    padding: 12px 0;
+    font-weight: 600;
+    background-color: #bdbdbd;
+    border: none;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+/* Để panel phải luôn nhìn thấy (giống sticky) */
+@media (min-width: 992px) {
+    .summary-wrapper {
+        position: sticky;
+        top: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .page-wrapper {
+        padding: 20px 16px;
+    }
+}
+
+.service-card.selected {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 1px #7c3aed;
+}
+
+.select-page-wrapper .service-card.selected .service-add-btn {
+    border-color: #7c3aed;
+    background-color: #7c3aed;
+    color: #fff;
+}
+
+.select-page-wrapper .service-card.selected .service-add-btn span {
+    font-weight: 700;
+}
+
+.select-page-wrapper .service-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* <-- QUAN TRỌNG */
+    padding: 16px 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    background: #fff;
+    margin-bottom: 12px;
+}
