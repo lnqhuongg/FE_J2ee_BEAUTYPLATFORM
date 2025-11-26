@@ -43,10 +43,11 @@ menuItems.forEach(item => {
         }
     });
 });
+
 $(document).ready(function () {
     const token = localStorage.getItem("token"); 
     if (!token) {
-        window.location.href = '/client/pages/Auth.html';
+        // window.location.href = '/client/pages/Auth.html';
         return;
     }
 

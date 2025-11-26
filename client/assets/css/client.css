@@ -1106,7 +1106,7 @@ footer ul li a:hover {
     margin: 35px auto;
 }
 
-.container-page .container-cards .service-card {
+.container-page .container-cards .service-card-search {
     background: white;
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1122,7 +1122,7 @@ footer ul li a:hover {
     /* Added width: 100% to make anchor tag fill its container */
 }
 
-.container-page .container-cards .service-card:hover {
+.container-page .container-cards .service-card-search:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -1141,7 +1141,7 @@ footer ul li a:hover {
 }
 
 /* Zoom image on card hover */
-.service-card:hover .card-image {
+.service-card-search:hover .card-image {
     transform: scale(1.10);
 }
 
