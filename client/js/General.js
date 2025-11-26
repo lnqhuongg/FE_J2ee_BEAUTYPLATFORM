@@ -45,10 +45,10 @@ menuItems.forEach(item => {
 });
 $(document).ready(function () {
     const token = localStorage.getItem("token"); 
-    if (!token) {
-        window.location.href = '/client/pages/Auth.html';
-        return;
-    }
+    // if (!token) {
+    //     window.location.href = '/client/pages/Auth.html';
+    //     return;
+    // }
 
     // Gọi API để lấy hồ sơ tài khoản
     $.ajax({
