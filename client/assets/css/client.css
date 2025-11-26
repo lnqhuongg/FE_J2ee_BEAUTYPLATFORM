@@ -1602,25 +1602,6 @@ a {
     border-radius: 10px;
 }
 
-.see-all-thumbs {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-}
-
-.see-all-thumbs button {
-    font-size: 14px;
-    padding: 4px 22px;
-    border: none;
-    background-color: #fff;
-    border-radius: 50px;
-    transition: 0.4s;
-}
-
-.see-all-thumbs button:hover {
-    background-color: #e7e7e7;
-}
-
 .provider-information-section .content-section {
     padding-block: 2rem;
     display: grid;
@@ -1674,7 +1655,16 @@ a {
     background-color: #f3f3f3;
 }
 
-.provider-information-section .staff-at-business .img-wapper,
-.provider-information-section .staff-at-business .staff-name {
-    cursor: pointer;
+.provider-information-section .rating-star i {
+    font-size: 13px;
+}
+
+.provider-information-section .business-rating-section .rating {
+    height: 165px;
+}
+
+.provider-information-section .more-info .opening-time i{
+    font-size: 10px;
+    color: #78d240;
+    margin-right: 10px;
 }
