@@ -1106,7 +1106,7 @@ footer ul li a:hover {
     margin: 35px auto;
 }
 
-.container-page .container-cards .service-card {
+.container-page .container-cards .service-card-search {
     background: white;
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1122,7 +1122,7 @@ footer ul li a:hover {
     /* Added width: 100% to make anchor tag fill its container */
 }
 
-.container-page .container-cards .service-card:hover {
+.container-page .container-cards .service-card-search:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -1141,7 +1141,7 @@ footer ul li a:hover {
 }
 
 /* Zoom image on card hover */
-.service-card:hover .card-image {
+.service-card-search:hover .card-image {
     transform: scale(1.10);
 }
 
@@ -2381,5 +2381,88 @@ a {
     justify-content: center;
     text-decoration: none;
     color: #000;
+}
+/* Pagination */
+/* XÓA STYLE MẶC ĐỊNH CỦA BOOTSTRAP */
+.pagination-wow .page-link {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* CẤU HÌNH CHUNG CHO CÁC NÚT */
+.pagination-wow .page-item {
+    margin: 0 8px; /* Khoảng cách giữa các nút */
+}
+
+.pagination-wow .page-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50% !important; /* Bo tròn tuyệt đối */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #64b5f6; /* Màu chữ xanh biển nhạt */
+    background-color: #ffffff;
+    
+    /* Hiệu ứng đổ bóng tạo chiều sâu (Wow factor 1) */
+    box-shadow: 0 5px 15px rgba(169, 208, 245, 0.3);
+    
+    /* Hiệu ứng chuyển động mượt mà */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* TRẠNG THÁI HOVER (RÊ CHUỘT) */
+.pagination-wow .page-link:hover {
+    color: #7c3aed;
+    background-color: #fff;
+    transform: translateY(-5px); /* Bay lên nhẹ */
+    box-shadow: 0 10px 20px rgba(169, 208, 245, 0.5); /* Bóng đổ sâu hơn */
+}
+
+/* TRẠNG THÁI ACTIVE (ĐANG CHỌN) */
+.pagination-wow .page-item.active .page-link {
+    /* Gradient xanh biển nhạt (Wow factor 2) */
+    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(41, 182, 246, 0.4); /* Bóng cùng màu nút */
+    transform: scale(1.1); /* Phóng to nhẹ */
+}
+
+/* NÚT PREV/NEXT */
+.pagination-wow .page-item:first-child .page-link,
+.pagination-wow .page-item:last-child .page-link {
+    background-color: transparent;
+    box-shadow: none;
+    color: #90caf9;
+    font-size: 1.2rem;
+}
+
+.pagination-wow .page-item:first-child .page-link:hover,
+.pagination-wow .page-item:last-child .page-link:hover {
+    color: #8b5cf6;
+    transform: translateX(0) scale(1.2); /* Chỉ phóng to icon */
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Hiệu ứng gợn sóng (Ripple) khi click (Optional) */
+.pagination-wow .page-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease-out;
+}
+.pagination-wow .page-link:active::after {
+    transform: scale(2);
+    opacity: 0;
 }
 
