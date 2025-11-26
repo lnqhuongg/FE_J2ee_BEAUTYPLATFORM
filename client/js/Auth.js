@@ -18,6 +18,16 @@
       initDangNhapPage(); // load trang login/register bình thường
   });
 
+  document.getElementById("loginLink").addEventListener("click", function () {
+    console.log("Đã nhấn vào đăng nhập");
+    document.getElementById("registerForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+  });
+  document.getElementById("registerLink").addEventListener("click", function () {
+    console.log("Đã nhấn vào đăng ký");
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("registerForm").style.display = "block";
+  });
 
   // ==================== KHỞI TẠO TRANG ====================
   
@@ -66,9 +76,8 @@
     if (!alertDiv) return;
 
     alertDiv.innerHTML = `
-      <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+      <div class="alert alert-${type} alert-dismissible fade show mt-2 p-2" role="alert">
         ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
       </div>
     `;
 
@@ -93,7 +102,9 @@
     
     // Reset form
     document.getElementById('inputEmail').value = '';
-    hideAlert('emailAlert');
+    hideAlert('register_emailAlert');
+    hideAlert('login_emailAlert');
+    hideAlert('login_passwordAlert');
   }
 
   function showAuthStep(isLogin = true) {
@@ -101,35 +112,18 @@
     document.getElementById('authStep').style.display = 'flex';
     
     hideAlert('authAlert');
-
-    if (isLogin) {
-      // Hiển thị form đăng nhập
-      document.getElementById('authTitle').textContent = 'Đăng nhập';
-      document.getElementById('authDescription').innerHTML = 
-        `Chào mừng trở lại! Nhập mật khẩu cho email <strong>${currentEmail}</strong>`;
-      
-      document.getElementById('formLogin').style.display = 'block';
-      document.getElementById('formRegister').style.display = 'none';
-      
-      // Focus vào input password
-      setTimeout(() => {
-        document.getElementById('inputLoginPassword').focus();
-      }, 100);
-      
-    } else {
-      // Hiển thị form đăng ký
-      document.getElementById('authTitle').textContent = 'Tạo tài khoản mới';
-      document.getElementById('authDescription').innerHTML = 
-        `Gần xong rồi! Tạo tài khoản mới cho email <strong>${currentEmail}</strong> của bạn bằng cách hoàn thành các thông tin sau`;
-      
-      document.getElementById('formLogin').style.display = 'none';
-      document.getElementById('formRegister').style.display = 'block';
-      
-      // Focus vào input họ tên
-      setTimeout(() => {
-        document.getElementById('inputFullname').focus();
-      }, 100);
-    }
+    // Hiển thị form đăng ký
+    document.getElementById('authTitle').textContent = 'Tạo tài khoản mới';
+    document.getElementById('authDescription').innerHTML = 
+      `Gần xong rồi! Tạo tài khoản mới cho email <strong>${currentEmail}</strong> của bạn bằng cách hoàn thành các thông tin sau`;
+    
+    document.getElementById('formLogin').style.display = 'none';
+    document.getElementById('formRegister').style.display = 'block';
+    
+    // Focus vào input họ tên
+    setTimeout(() => {
+      document.getElementById('inputFullname').focus();
+    }, 100);
   }
 
   // ==================== XỬ LÝ CHECK EMAIL ====================
@@ -157,32 +151,31 @@
 
   // ==================== XỬ LÝ ĐĂNG NHẬP ====================
 
-  async function handleLogin(matKhau) {
+  async function handleLogin(email,matKhau) {
     const btnLogin = document.getElementById('btnLogin');
-    
+    console.log("Đang xử lý đăng nhập..."+email+matKhau);
     try {
       // Disable button và hiển thị loading
       btnLogin.disabled = true;
       btnLogin.textContent = 'Đang xử lý...';
 
       const res = await callApi('/auth/dangnhap', 'POST', {
-        email: currentEmail,
+        email: email,
         matKhau: matKhau
       });
-
       if (res.success && res.data) {
         // Lưu token và thông tin user
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('userInfo', JSON.stringify(res.data));
         
-        showAlert('authAlert', 'Đăng nhập thành công! Đang chuyển hướng...', 'success');
+        showAlert('login_passwordAlert', 'Đăng nhập thành công! Đang chuyển hướng...', 'success');
         
         // Redirect sau 1.5 giây
         setTimeout(() => {
           if (res.data.loaiTK === 2) {
             window.location.href = '/ncc/dashboard.html';
           } else if (res.data.loaiTK === 3) {
-            window.location.href = '/index.html';
+            window.location.href = '/client/pages/TrangChu.html';
           } else if (res.data.loaiTK === 1) {
             window.location.href = '/admin/dashboard.html';
           } else {
@@ -191,12 +184,12 @@
         }, 1500);
 
       } else {
-        showAlert('authAlert', res.message || 'Email hoặc mật khẩu không đúng!');
+        showAlert('login_passwordAlert', res.message || 'Email hoặc mật khẩu không đúng!');
       }
 
     } catch (error) {
       console.error('Lỗi đăng nhập:', error);
-      showAlert('authAlert', 'Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại!');
+      showAlert('login_passwordAlert', 'Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại!');
     } finally {
       btnLogin.disabled = false;
       btnLogin.textContent = 'Đăng nhập';
@@ -292,14 +285,14 @@
       const email = $('#inputEmail').val().trim();
       
       if (!email) {
-        showAlert('emailAlert', 'Vui lòng nhập địa chỉ email!');
+        showAlert('register_emailAlert', 'Vui lòng nhập địa chỉ email!');
         return;
       }
 
       // Validate email format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        showAlert('emailAlert', 'Địa chỉ email không hợp lệ!');
+        showAlert('register_emailAlert', 'Địa chỉ email không hợp lệ!');
         return;
       }
 
@@ -315,7 +308,7 @@
         // Chuyển sang bước tiếp theo
         showAuthStep(isExistingUser);
       } else {
-        showAlert('emailAlert', 'Có lỗi xảy ra. Vui lòng thử lại!');
+        showAlert('register_emailAlert', 'Có lỗi xảy ra. Vui lòng thử lại!');
       }
 
       btnContinue.prop('disabled', false).text('Tiếp tục');
@@ -325,15 +318,27 @@
     
     $('#formLogin').on('submit', async function (e) {
       e.preventDefault();
-      
+
       const password = $('#inputLoginPassword').val();
+      const email = $('#inputLoginEmail').val().trim();
       
-      if (!password) {
-        showAlert('authAlert', 'Vui lòng nhập mật khẩu!');
+      if (!email) {
+        showAlert('login_emailAlert', 'Vui lòng nhập địa chỉ email!');
         return;
       }
 
-      await handleLogin(password);
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showAlert('login_emailAlert', 'Địa chỉ email không hợp lệ!');
+        return;
+      }
+      if (!password) {
+        showAlert('login_passwordAlert', 'Vui lòng nhập mật khẩu!');
+        return;
+      }
+
+      await handleLogin(email,password);
     });
 
     // ==================== FORM ĐĂNG KÝ ====================

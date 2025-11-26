@@ -51,20 +51,46 @@
                 </div>
 
                 <!-- Alert cho bước email -->
-                <div id="emailAlert"></div>
+                <div id="registerForm" style="display: none;">
+                    <form id="formCheckEmail" novalidate>
+                        <div class="form-group">
+                            <input type="email" id="inputEmail" placeholder="Địa chỉ email của bạn">
+                            <div id="register_emailAlert"></div>
+                        </div>
 
-                <form id="formCheckEmail">
-                    <div class="form-group">
-                        <input type="email" id="inputEmail" placeholder="Địa chỉ email của bạn">
+                        <button type="submit" class="continue-btn" id="btnContinueEmail">
+                            Tiếp tục
+                        </button>
+                    </form>
+                    <div class="register-footer">
+                        Bạn có tài khoản doanh nghiệp?<br> <a id="loginLink" href="#">Đăng nhập tài khoản doanh nghiệp</a>
                     </div>
+                </div>
+                <div id="loginForm">
+                    <form id="formLogin" novalidate>
+                        <div class="form-group">
+                            <input type="email" id="inputLoginEmail" placeholder="Địa chỉ email của bạn">
+                            <div id="login_emailAlert"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="inputLoginPassword" placeholder="Mật khẩu của bạn">
+                            <div id="login_passwordAlert"></div>
+                        </div>
 
-                    <button type="submit" class="continue-btn" id="btnContinueEmail">
-                        Tiếp tục
-                    </button>
-                </form>
-
-                <div class="login-footer">
-                    Bạn có tài khoản doanh nghiệp?<br> <a href="#">Đăng nhập tài khoản doanh nghiệp</a>
+                        <button type="submit" class="continue-btn" id="btnLogin">
+                            Tiếp tục
+                        </button>
+                    </form>
+                    <div class="login-footer">
+                        Bạn có tài khoản doanh nghiệp?<br> <a id="registerLink" href="#">Đăng ký tài khoản doanh nghiệp</a>
+                    </div>
+                </div>
+                <div id="otpStep" style="display: none;">
+                    <form class="form-group" id="formEnterOtp" novalidate>
+                        <input type="text" id="inputOtp" placeholder="Nhập mã OTP đã được gửi đến mail của bạn">
+                        <div id="otpAlert"></div>
+                        <button type="submit" class="continue-btn mt-2" id="btnVerifyOtp">Xác nhận OTP</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -156,7 +182,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../lib/api.js"></script>
-    <script src="../js/DangNhap.js"></script>
+    <script src="../js/Auth.js"></script>
 </body>
 
 </html>
