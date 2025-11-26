@@ -87,10 +87,15 @@
                     </div>
                 </div>
                 <div id="otpStep" style="display: none;">
-                    <form class="form-group" id="formEnterOtp" novalidate>
-                        <input type="text" id="inputOtp" placeholder="Nhập mã OTP đã được gửi đến mail của bạn">
+                    <form id="formOtp">
+                        <div class="form-group d-flex">
+                            <input type="text" id="inputOtp" placeholder="Nhập mã OTP">
+                            <a href="#" id="resendOtp" class="continue-btn" style="width: 200px;margin-left: 10px;">Gửi lại OTP</a>
+                        </div>
                         <div id="otpAlert"></div>
-                        <button type="submit" class="continue-btn mt-2" id="btnVerifyOtp">Xác nhận OTP</button>
+                        <button type="submit" class="continue-btn" id="btnVerifyOtp">
+                            Xác minh
+                        </button>
                     </form>
                 </div>
             </div>

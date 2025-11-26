@@ -59,6 +59,7 @@ $(document).ready(function () {
         },
         success: function (hoso) {
             localStorage.setItem("hoSo_MaKH", hoso.data.maKH);
+            document.querySelector(".btn-nav-business").style.display = "none";
             // Avatar
             if (hoso.data.hinhAnh) {
                 $("#avatarPreview_navbar").attr("src", hoso.data.hinhAnh);

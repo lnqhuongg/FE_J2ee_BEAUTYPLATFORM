@@ -19,12 +19,10 @@
   });
 
   document.getElementById("loginLink").addEventListener("click", function () {
-    console.log("Đã nhấn vào đăng nhập");
     document.getElementById("registerForm").style.display = "none";
     document.getElementById("loginForm").style.display = "block";
   });
   document.getElementById("registerLink").addEventListener("click", function () {
-    console.log("Đã nhấn vào đăng ký");
     document.getElementById("loginForm").style.display = "none";
     document.getElementById("registerForm").style.display = "block";
   });
@@ -32,8 +30,6 @@
   // ==================== KHỞI TẠO TRANG ====================
   
   function initDangNhapPage() {
-    console.log("KHỞI TẠO TRANG ĐĂNG NHẬP");
-    
     // Kiểm tra nếu đã đăng nhập
     checkExistingLogin();
   }
@@ -107,6 +103,15 @@
     hideAlert('login_passwordAlert');
   }
 
+  function showOtpStep() {
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('otpStep').style.display = 'block';
+    
+    hideAlert('otpAlert');
+    $('#inputOtp').val('').focus();
+  }
+
+
   function showAuthStep(isLogin = true) {
     document.getElementById('emailStep').style.display = 'none';
     document.getElementById('authStep').style.display = 'flex';
@@ -128,24 +133,24 @@
 
   // ==================== XỬ LÝ CHECK EMAIL ====================
 
-  async function handleCheckEmail(email) {
+  async function handleCheckEmailExists(email) {
     try {
       // Gọi API kiểm tra email có tồn tại không
       const res = await callApi(`/auth/check-email?email=${encodeURIComponent(email)}`, 'GET');
       
       if (res.success) {
         isExistingUser = res.data.exists || false;
-        return true;
+        return res.data.exists;
       } else {
         // Nếu API không có endpoint check-email, mặc định là user mới
         isExistingUser = false;
-        return true;
+        return res.data.exists;
       }
     } catch (error) {
       console.error('Lỗi kiểm tra email:', error);
       // Nếu có lỗi, cho phép tiếp tục (mặc định là đăng ký)
       isExistingUser = false;
-      return true;
+      return res.data.exists;
     }
   }
 
@@ -250,7 +255,7 @@
         
         // Redirect sau 1.5 giây
         setTimeout(() => {
-          window.location.href = '/index.html';
+          window.location.href = '/TrangChu.html';
         }, 1500);
 
       } else {
@@ -302,13 +307,13 @@
       currentEmail = email;
       
       // Kiểm tra email có tồn tại không
-      const success = await handleCheckEmail(email);
+      const isExists = await handleCheckEmailExists(email);
       
-      if (success) {
-        // Chuyển sang bước tiếp theo
-        showAuthStep(isExistingUser);
+      if (!isExists) {
+        await callApi('/auth/send-otp?email=' + encodeURIComponent(email), 'POST');
+        showOtpStep();
       } else {
-        showAlert('register_emailAlert', 'Có lỗi xảy ra. Vui lòng thử lại!');
+        showAlert('register_emailAlert', 'Email đã tồn tại trong hệ thống!');
       }
 
       btnContinue.prop('disabled', false).text('Tiếp tục');
@@ -385,6 +390,42 @@
 
       await handleRegister(hoTen, matKhau, xacNhanMatKhau, sdt, ngaySinh, gioiTinh);
     });
+
+    $('#formOtp').on('submit', async function(e) {
+        e.preventDefault();
+        const otp = $('#inputOtp').val().trim();
+
+        if (!otp) {
+            showAlert('otpAlert', 'Vui lòng nhập OTP!');
+            return;
+        }
+
+        const res = await callApi(`/auth/verify-otp?email=${encodeURIComponent(currentEmail)}&otp=${encodeURIComponent(otp)}`, 'POST');
+
+        if (res.success) {
+            // OTP hợp lệ, chuyển sang bước đăng nhập hoặc đăng ký
+            showAuthStep(isExistingUser);
+        } else {
+            showAlert('otpAlert', res.message || 'OTP không hợp lệ!');
+        }
+    });
+    $('#resendOtp').on('click', async function(e) {
+        e.preventDefault();
+
+        const btn = $(this);
+        btn.prop('disabled', true).text('Đang gửi OTP...'); // Disable và đổi text
+
+        try {
+            await callApi('/auth/send-otp?email=' + encodeURIComponent(currentEmail), 'POST');
+            showAlert('otpAlert', 'OTP đã được gửi lại!', 'success');
+        } catch (error) {
+            console.error('Lỗi gửi OTP:', error);
+            showAlert('otpAlert', 'Gửi OTP thất bại. Vui lòng thử lại!', 'danger');
+        } finally {
+            btn.prop('disabled', false).text('Gửi lại OTP'); // Bật lại button và đổi text về
+        }
+    });
+
 
     // ==================== QUAY LẠI NHẬP EMAIL ====================
     
