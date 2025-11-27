@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <main class="select-page-wrapper">
+    <main class="select-page-wrapper chuyenvien-page">
         <a class="back-btn" href="./ChiTietDoanhNghiep.html">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -53,26 +53,6 @@
 
                     <!-- Specialists -->
                     <div id="specialistsList">
-                        <div class="specialist-card" data-id="1">
-                            <div class="icon-wrapper">
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
-                                    stroke="#6A5ACD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H11a4 4 0 0 0-4 4v2" />
-                                    <circle cx="12" cy="7" r="4" />
-                                    <path d="M5.5 21v-2a4 4 0 0 1 2.5-3.7" />
-                                    <path d="M18.5 21v-2a4 4 0 0 0-2.5-3.7" />
-                                    <circle cx="5.5" cy="10.5" r="3" />
-                                    <circle cx="18.5" cy="10.5" r="3" />
-                                </svg>
-                            </div>
-                            <div class="specialist-info">
-                                <div class="specialist-name">Bất kỳ chuyên viên nào</div>
-                                <div class="specialist-meta">có nhiều khung giờ trống nhất</div>
-                                <div class="specialist-price">từ 380 HK$</div>
-                            </div>
-                            <button class="specialist-select-btn" data-id="1">Chọn</button>
-                        </div>
-
                         <div class="specialist-card" data-id="2">
                             <img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=400"
                                 alt="Ball Ng" class="specialist-avatar">
@@ -154,7 +134,7 @@
                             </div>
 
                             <!-- Continue Button -->
-                            <button id="continueBtn" class="continue-btn" disabled>
+                            <button id="continueBtn" class="continue-btn-staff-submit" disabled>
                                 Tiếp tục
                             </button>
                         </div>
@@ -166,8 +146,10 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../lib/api.js"></script>
     <script src="../js/ChuyenVien.js"></script>
-
+    <script src="../js/DatLich.js"></script>
 </body>
 
 </html>

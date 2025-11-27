@@ -1864,7 +1864,7 @@ a {
     font-weight: 500;
 }
 
-.select-page-wrapper .continue-btn {
+.select-page-wrapper .continue-btn-service-submit {
     width: 100%;
     border-radius: 999px;
     padding: 12px 0;
@@ -1872,6 +1872,29 @@ a {
     background-color: #bdbdbd;
     border: none;
     color: #fff;
+    cursor: not-allowed;
+}
+
+.select-page-wrapper .continue-btn-service-submit {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-page-wrapper .continue-btn-service-submit:hover:not(:disabled) {
+    background: #333;
+}
+
+.select-page-wrapper .continue-btn-service-submit:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
 }
 
@@ -1916,10 +1939,27 @@ a {
     margin-bottom: 12px;
 }
 
+.service-add-btn.selected {
+    border: 3px solid #7646f9;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.select-page-wrapper .service-card-selected {
+    border: 3px solid #7646f9;
+}
+
+
+
+
+
+
+
+
 /* Chuyên Viên */
 
 /* Page Title */
-.page-title {
+.chuyenvien-page .page-title {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 30px;
@@ -1927,7 +1967,7 @@ a {
 }
 
 /* Specialist Cards */
-.specialist-card {
+.chuyenvien-page .specialist-card {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -1940,17 +1980,17 @@ a {
     transition: all 0.3s ease;
 }
 
-.specialist-card:hover {
+.chuyenvien-page .specialist-card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-color: #ddd;
 }
 
-.specialist-card.selected {
+.chuyenvien-page .specialist-card.selected {
     border-color: #333;
     background-color: #f5f5f5;
 }
 
-.specialist-avatar {
+.chuyenvien-page .specialist-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -1958,35 +1998,35 @@ a {
     flex-shrink: 0;
 }
 
-.specialist-info {
+.chuyenvien-page .specialist-info {
     flex: 1;
 }
 
-.specialist-name {
+.chuyenvien-page .specialist-name {
     font-size: 16px;
     font-weight: 600;
     color: #1a1a1a;
     margin-bottom: 4px;
 }
 
-.specialist-meta {
+.chuyenvien-page .specialist-meta {
     font-size: 14px;
     color: #999;
 }
 
-.specialist-price {
+.chuyenvien-page .specialist-price {
     font-size: 16px;
     font-weight: 600;
     color: #1a1a1a;
     margin-bottom: 8px;
 }
 
-.specialist-schedule {
+.chuyenvien-page .specialist-schedule {
     font-size: 13px;
     color: #666;
 }
 
-.specialist-select-btn {
+.chuyenvien-page .specialist-select-btn {
     padding: 8px 20px;
     border: 1px solid #ddd;
     background: white;
@@ -1998,31 +2038,31 @@ a {
     white-space: nowrap;
 }
 
-.specialist-select-btn:hover {
+.chuyenvien-page .specialist-select-btn:hover {
     border-color: #333;
     color: #333;
 }
 
-.specialist-select-btn.selected {
+.chuyenvien-page .specialist-select-btn.selected {
     background: #333;
     color: white;
     border-color: #333;
 }
 
 /* Summary Section */
-.summary-wrapper {
+.chuyenvien-page .summary-wrapper {
     position: sticky;
     top: 40px;
 }
 
-.summary-card {
+.chuyenvien-page .summary-card {
     background: white;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.summary-header {
+.chuyenvien-page .summary-header {
     display: flex;
     gap: 16px;
     margin-bottom: 24px;
@@ -2030,7 +2070,7 @@ a {
     border-bottom: 1px solid #e8e8e8;
 }
 
-.summary-img {
+.chuyenvien-page .summary-img {
     width: 80px;
     height: 80px;
     border-radius: 8px;
@@ -2038,20 +2078,20 @@ a {
     flex-shrink: 0;
 }
 
-.summary-img img {
+.chuyenvien-page .summary-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.summary-name {
+.chuyenvien-page .summary-name {
     font-size: 16px;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 6px;
 }
 
-.summary-rating {
+.chuyenvien-page .summary-rating {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -2059,21 +2099,21 @@ a {
     margin-bottom: 6px;
 }
 
-.summary-rating .star {
+.chuyenvien-page .summary-rating .star {
     color: #ffc107;
     font-size: 12px;
 }
 
-.summary-rating span:last-child {
+.chuyenvien-page .summary-rating span:last-child {
     color: #999;
 }
 
-.summary-address {
+.chuyenvien-page .summary-address {
     font-size: 13px;
     color: #999;
 }
 
-.summary-empty {
+.chuyenvien-page .summary-empty {
     padding: 20px;
     text-align: center;
     color: #999;
@@ -2083,11 +2123,11 @@ a {
     margin-bottom: 16px;
 }
 
-.summary-services {
+.chuyenvien-page .summary-services {
     margin-bottom: 16px;
 }
 
-.summary-service-item {
+.chuyenvien-page .summary-service-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2096,21 +2136,21 @@ a {
     border-bottom: 1px solid #f0f0f0;
 }
 
-.summary-service-item:last-child {
+.chuyenvien-page .summary-service-item:last-child {
     border-bottom: none;
 }
 
-.summary-service-name {
+.chuyenvien-page .summary-service-name {
     color: #1a1a1a;
     font-weight: 500;
 }
 
-.summary-service-price {
+.chuyenvien-page .summary-service-price {
     color: #1a1a1a;
     font-weight: 600;
 }
 
-.summary-total-row {
+.chuyenvien-page .summary-total-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2119,7 +2159,7 @@ a {
     color: #1a1a1a;
 }
 
-.continue-btn {
+.chuyenvien-page .continue-btn-service-submit {
     width: 100%;
     padding: 14px;
     margin-top: 20px;
@@ -2133,15 +2173,16 @@ a {
     transition: all 0.3s ease;
 }
 
-.continue-btn:hover:not(:disabled) {
+.chuyenvien-page .continue-btn-service-submit:hover:not(:disabled) {
     background: #333;
 }
 
-.continue-btn:disabled {
+.chuyenvien-page .continue-btn-service-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
-.icon-wrapper {
+
+.chuyenvien-page .icon-wrapper {
     width: 60px;
     height: 60px;
     background: #f3f0ff; /* tím nhạt */
@@ -2150,7 +2191,7 @@ a {
     align-items: center;
     justify-content: center;
 }
-.back-btn {
+.chuyenvien-page .back-btn {
     position: absolute;
     top: 12px;
     left: 12px;
@@ -2166,14 +2207,52 @@ a {
     z-index:999;
     position: fixed;
 }
-.back-btn:hover {
+.chuyenvien-page .back-btn:hover {
     background: #f5f5f5;
 }
+
+.chuyenvien-page .continue-btn-staff-submit {
+    width: 100%;
+    border-radius: 999px;
+    padding: 12px 0;
+    font-weight: 600;
+    background-color: #bdbdbd;
+    border: none;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.chuyenvien-page .continue-btn-staff-submit {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chuyenvien-page .continue-btn-staff-submit:hover:not(:disabled) {
+    background: #333;
+}
+
+.chuyenvien-page .continue-btn-staff-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+
+
 /* Thời gian */
 
 
 /* Time slot */
-.time-item {
+.thoigian-page .time-item {
     padding: 14px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -2182,19 +2261,19 @@ a {
     cursor: pointer;
 }
 
-.time-item.active {
+.thoigian-page .time-item.active {
     border-color: #6A5ACD;
     background: #f4f2ff;
 }
 
 /* Summary card */
-.summary-card {
+.thoigian-page .summary-card {
     border: 1px solid #eee;
     border-radius: 12px;
     padding: 20px;
 }
 
-.summary-img img {
+.thoigian-page .summary-img img {
     width: 70px;
     height: 70px;
     border-radius: 10px;
@@ -2202,18 +2281,18 @@ a {
     margin-right: 12px;
 }
 
-.summary-name {
+.thoigian-page .summary-name {
     font-weight: 600;
     font-size: 16px;
 }
 
-.summary-total-row {
+.thoigian-page .summary-total-row {
     font-size: 18px;
     font-weight: 600;
 }
 
 /* Continue button */
-.continue-btn {
+.thoigian-page .continue-btn {
     width: 100%;
     padding: 14px;
     border: none;
@@ -2224,18 +2303,18 @@ a {
     margin-top: 20px;
 }
 
-.continue-btn.enabled {
+.thoigian-page .continue-btn.enabled {
     background: #6A5ACD;
     cursor: pointer;
 }
-.date-picker-container {
+.thoigian-page .date-picker-container {
     position: relative;
     display: flex;
     align-items: center;
     max-width: 100%;
 }
 
-.date-list {
+.thoigian-page .date-list {
     display: flex;
     gap: 16px;
     overflow-x: auto;
@@ -2244,11 +2323,11 @@ a {
     flex: 1;
 }
 
-.date-list::-webkit-scrollbar {
+.thoigian-page .date-list::-webkit-scrollbar {
     display: none;
 }
 
-.date-item {
+.thoigian-page .date-item {
     flex: 0 0 65px;
     height: 65px;
     border-radius: 50%;
@@ -2261,19 +2340,19 @@ a {
     transition: all 0.3s ease;
 }
 
-.date-item.disabled {
+.thoigian-page .date-item.disabled {
     opacity: .3;
     cursor: default;
 }
 
-.date-item.active {
+.thoigian-page .date-item.active {
     background: #6A5ACD;
     color: #fff;
     border: none;
     transform: scale(1.0);
 }
 
-.scroll-btn {
+.thoigian-page .scroll-btn {
     background: rgba(0,0,0,0.1);
     border: none;
     border-radius: 50%;
@@ -2287,11 +2366,14 @@ a {
     z-index: 10;
 }
 
-.scroll-btn.left { left: -15px; }
-.scroll-btn.right { right: -15px; }
+.thoigian-page .scroll-btn.left { left: -15px; }
+.thoigian-page .scroll-btn.right { right: -15px; }
+
+
+
 /* Xác nhận */
 /* Payment Method Box */
-.payment-option {
+.payment-appointment .payment-option {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 15px;
@@ -2300,17 +2382,17 @@ a {
     cursor: pointer;
     transition: all 0.2s;
 }
-.payment-option:hover {
+.payment-appointment .thoigian-page .payment-option:hover {
     border-color: #000;
 }
-.payment-icon {
+.payment-appointment .thoigian-page .payment-icon {
     font-size: 1.2rem;
     margin-right: 15px;
     color: #444;
 }
 
 /* Right Side Summary Card */
-.summary-card {
+.payment-appointment  .summary-card {
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     padding: 24px;
@@ -2318,29 +2400,29 @@ a {
     background: #fff;
 }
 
-.business-thumb {
+.payment-appointment  .business-thumb {
     width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 8px;
 }
 
-.summary-price {
+.payment-appointment  .summary-price {
     font-weight: 600;
 }
 
-.total-text {
+.payment-appointment  .total-text {
     font-size: 1.1rem;
     font-weight: 700;
 }
 
-.text-green {
+.payment-appointment  .text-green {
     color: #2e7d32;
     font-weight: 600;
 }
 
 /* Buttons */
-.btn-confirm {
+.payment-appointment  .btn-confirm {
     background-color: #0d1117; /* Màu đen như ảnh */
     color: white;
     border-radius: 50px;
@@ -2350,28 +2432,28 @@ a {
     border: none;
     transition: background 0.2s;
 }
-.btn-confirm:hover {
+.payment-appointment  .btn-confirm:hover {
     background-color: #333;
     color: #fff;
 }
 
-.section-title {
+.payment-appointment  .section-title {
     font-weight: 700;
     margin-top: 30px;
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
 
-.form-control:focus {
+.payment-appointment  .form-control:focus {
     box-shadow: none;
     border-color: #000;
 }
 
 /* Back Button */
-.back-btn-wrapper {
+.payment-appointment  .back-btn-wrapper {
     margin-bottom: 20px;
 }
-.back-btn-circle {
+.payment-appointment  .back-btn-circle {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -2382,6 +2464,44 @@ a {
     text-decoration: none;
     color: #000;
 }
+
+.payment-appointment  .continue-btn-date-submit {
+    width: 100%;
+    border-radius: 999px;
+    padding: 12px 0;
+    font-weight: 600;
+    background-color: #bdbdbd;
+    border: none;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.payment-appointment  .continue-btn-date-submit {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-appointment  .continue-btn-date-submit:hover:not(:disabled) {
+    background: #333;
+}
+
+.payment-appointment  .continue-btn-date-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+
+
 /* Pagination */
 /* XÓA STYLE MẶC ĐỊNH CỦA BOOTSTRAP */
 .pagination-wow .page-link {
@@ -2465,4 +2585,3 @@ a {
     transform: scale(2);
     opacity: 0;
 }
-

@@ -77,6 +77,7 @@ async function showListRatings(maNCC) {
 
             // Ví dụ cập nhật vào HTML
             $('.danhgia_soDanhGia').text(count);
+            
         }
 
     } catch (error) {
