@@ -118,7 +118,8 @@ async function postDatLich() {
 
         return null;
     } catch (error) {
-        console.error('Lỗi load dịch vụ:', error);
+        console.error('Lỗi tạo đặt lịch:', error);
+        return null;
     }
 }
 
@@ -163,7 +164,7 @@ async function postThanhToan(maDL, phuongThuc) {
             maDL: maDL,
             phuongThuc: phuongThuc,
             soTien: total,
-            trangThai: 0,
+            trangThai: 0, // Chưa thanh toán
             ngayThanhToan: new Date().toISOString() // LocalDateTime
         };
 
@@ -176,24 +177,63 @@ async function postThanhToan(maDL, phuongThuc) {
 
     } catch (error) {
         console.error("Lỗi post thanh toán:", error);
+        return null;
     }
 }
 
-
 async function postCTDatLich(maDL) {
     try {
-        const list = await buildCTDatLichList(maDL); // ← THÊM await !!!!!!!!
+        const list = await buildCTDatLichList(maDL);
 
         console.log("CT gửi lên backend:", list);
 
         const res = await callApi(`/datlich/${maDL}/ct`, "POST", list);
 
         console.log("Kết quả thêm CT:", res);
+        return res;
     } catch (error) {
-        console.error('Lỗi load dịch vụ:', error);
+        console.error('Lỗi thêm chi tiết đặt lịch:', error);
+        return null;
     }
 }
 
+// ============ THÊM HÀM TẠO THANH TOÁN MOMO ============
+async function createMomoPayment(maDL) {
+    try {
+        // Tính tổng tiền
+        let total = 0;
+        selectedServices.forEach(s => total += s.gia);
+
+        // Tạo mô tả đơn hàng
+        const serviceNames = selectedServices.map(s => s.ten).join(", ");
+        const orderInfo = `Thanh toán dịch vụ: ${serviceNames}`;
+
+        const requestBody = {
+            maDL: maDL,
+            amount: total,
+            orderInfo: orderInfo
+        };
+
+        console.log("Tạo thanh toán MoMo:", requestBody);
+
+        const res = await callApi(`/momo/create-payment`, "POST", requestBody);
+
+        console.log("Kết quả từ MoMo:", res);
+
+        if (res.success && res.data.resultCode === 0) {
+            // MoMo trả về payUrl - redirect người dùng đến trang thanh toán
+            return res.data.payUrl;
+        } else {
+            throw new Error(res.message || "Không thể tạo thanh toán MoMo");
+        }
+
+    } catch (error) {
+        console.error("Lỗi tạo thanh toán MoMo:", error);
+        throw error;
+    }
+}
+
+// ============ CẬP NHẬT HÀM XÁC NHẬN ĐẶT LỊCH ============
 async function handleConfirmBooking() {
     const paymentMethod = localStorage.getItem("paymentMethod");
 
@@ -202,40 +242,90 @@ async function handleConfirmBooking() {
         return;
     }
 
-    // 1️⃣ Tạo ĐẶT LỊCH
-    const maDL = await postDatLich();
-    if (!maDL) {
-        alert("Có lỗi khi tạo đặt lịch!");
-        return;
+    // Hiển thị loading
+    const btnConfirm = $(".btn-confirm");
+    const originalText = btnConfirm.html();
+    btnConfirm.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...');
+
+    try {
+        // 1️⃣ Tạo ĐẶT LỊCH
+        const maDL = await postDatLich();
+        if (!maDL) {
+            throw new Error("Có lỗi khi tạo đặt lịch!");
+        }
+
+        console.log("Mã ĐL mới:", maDL);
+
+        // 2️⃣ Tạo CHI TIẾT ĐẶT LỊCH
+        const ctResult = await postCTDatLich(maDL);
+        if (!ctResult || !ctResult.success) {
+            throw new Error("Có lỗi khi tạo chi tiết đặt lịch!");
+        }
+
+        // 3️⃣ Xử lý theo PHƯƠNG THỨC THANH TOÁN
+        if (paymentMethod === "1") {
+            // THANH TOÁN TẠI CỬA HÀNG
+            const thanhToanResult = await postThanhToan(maDL, 1);
+            
+            if (thanhToanResult && thanhToanResult.success) {
+                alert("Đặt lịch thành công! Vui lòng thanh toán tại cửa hàng.");
+                
+                // Xóa storage
+                clearBookingData();
+                
+                // Redirect về trang thành công
+                window.location.href = `/client/pages/ThanhToanThanhCong.html?orderId=${maDL}&method=store`;
+            } else {
+                throw new Error("Có lỗi khi tạo thanh toán!");
+            }
+
+        } else if (paymentMethod === "2") {
+            // THANH TOÁN QUA VÍ ĐIỆN TỬ (MOMO)
+            const thanhToanResult = await postThanhToan(maDL, 2);
+            
+            if (!thanhToanResult || !thanhToanResult.success) {
+                throw new Error("Có lỗi khi tạo bản ghi thanh toán!");
+            }
+
+            // Tạo thanh toán MoMo và lấy payUrl
+            const momoPayUrl = await createMomoPayment(maDL);
+            
+            if (momoPayUrl) {
+                // Lưu thông tin để xử lý callback
+                localStorage.setItem("pendingBooking", JSON.stringify({
+                    maDL: maDL,
+                    timestamp: Date.now()
+                }));
+                
+                // Redirect đến trang thanh toán MoMo
+                window.location.href = momoPayUrl;
+            } else {
+                throw new Error("Không thể tạo link thanh toán MoMo!");
+            }
+        }
+
+    } catch (error) {
+        console.error("Lỗi xác nhận đặt lịch:", error);
+        alert(error.message || "Có lỗi xảy ra, vui lòng thử lại!");
+        
+        // Reset button
+        btnConfirm.prop("disabled", false).html(originalText);
     }
+}
 
-    console.log("Mã ĐL mới:", maDL);
-
-    // 2️⃣ Tạo CHI TIẾT ĐẶT LỊCH
-    await postCTDatLich(maDL);
-
-    // 3️⃣ Tạo THANH TOÁN
-    await postThanhToan(maDL, Number(paymentMethod));
-
-    alert("Đặt lịch thành công!");
-
-    // Xóa storage
+// ============ HÀM XÓA DỮ LIỆU BOOKING ============
+function clearBookingData() {
     localStorage.removeItem("selectedStaff");
     localStorage.removeItem("selectedServices");
     localStorage.removeItem("selectedDateTime");
     localStorage.removeItem("paymentMethod");
-
-    // Redirect
-    window.location.href = "/client/pages/ThanhToanThanhCong.html";
 }
 
-
+// ============ EVENT HANDLERS ============
 $(document).on("click", ".btn-confirm", async function () {
     await handleConfirmBooking();
 });
 
 $(".continue-btn-top").on("click", function () {
-    localStorage.removeItem("selectedStaff");
-    localStorage.removeItem("selectedServices");
-    localStorage.removeItem("selectedDateTime");
+    clearBookingData();
 });

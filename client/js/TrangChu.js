@@ -34,6 +34,16 @@ async function loadTopRatedBusinesses() {
         
         if (res && res.success && res.data && res.data.content) {
             const businesses = res.data.content;
+
+            // Lấy hình ảnh cho từng doanh nghiệp
+            for (let business of businesses) {
+                const imagesRes = await callApi(`/nhacungcap/${business.maNCC}/hinhanh`, 'GET');
+                business.images = imagesRes && imagesRes.success ? imagesRes.data : [];
+                const mainImage = business.images.find(img => img.imageMain == 1);
+                business.hinhAnh = mainImage ? mainImage.imageUrl : null;
+                console.log(business);
+            }
+
             renderBusinessCarousel('#carouselTopRated', businesses);
         }
     } catch (error) {
@@ -45,15 +55,26 @@ async function loadTopRatedBusinesses() {
 async function loadNewBusinesses() {
     try {
         const res = await callApi('/nhacungcap?page=0&size=10', 'GET');
-        
+
         if (res && res.success && res.data && res.data.content) {
             const businesses = res.data.content;
+
+            // Lấy hình ảnh cho từng doanh nghiệp
+            for (let business of businesses) {
+                const imagesRes = await callApi(`/nhacungcap/${business.maNCC}/hinhanh`, 'GET');
+                business.images = imagesRes && imagesRes.success ? imagesRes.data : [];
+                const mainImage = business.images.find(img => img.imageMain == 1);
+                business.hinhAnh = mainImage ? mainImage.imageUrl : null;
+                console.log(business);
+            }
+
             renderBusinessCarousel('#carouselNewBusinesses', businesses);
         }
     } catch (error) {
         console.error('Lỗi khi load doanh nghiệp mới:', error);
     }
 }
+
 
 // Render carousel doanh nghiệp
 function renderBusinessCarousel(carouselId, businesses) {
