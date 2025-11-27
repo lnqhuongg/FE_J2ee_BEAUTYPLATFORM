@@ -2369,7 +2369,39 @@ a {
 .thoigian-page .scroll-btn.left { left: -15px; }
 .thoigian-page .scroll-btn.right { right: -15px; }
 
+.thoigian-page  .continue-btn-date-submit {
+    width: 100%;
+    border-radius: 999px;
+    padding: 12px 0;
+    font-weight: 600;
+    background-color: #bdbdbd;
+    border: none;
+    color: #fff;
+    cursor: not-allowed;
+}
 
+.thoigian-page  .continue-btn-date-submit {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.thoigian-page .continue-btn-date-submit:hover:not(:disabled) {
+    background: #333;
+}
+
+.thoigian-page .continue-btn-date-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
 /* Xác nhận */
 /* Payment Method Box */
@@ -2382,6 +2414,12 @@ a {
     cursor: pointer;
     transition: all 0.2s;
 }
+
+.payment-appointment .payment-option.active-payment {
+    border: 2px solid #7a5cf5 !important; /* tím */
+    background: #f4f0ff;
+}
+
 .payment-appointment .thoigian-page .payment-option:hover {
     border-color: #000;
 }
@@ -2490,11 +2528,11 @@ a {
     transition: all 0.3s ease;
 }
 
-.payment-appointment  .continue-btn-date-submit:hover:not(:disabled) {
+.payment-appointment .continue-btn-date-submit:hover:not(:disabled) {
     background: #333;
 }
 
-.payment-appointment  .continue-btn-date-submit:disabled {
+.payment-appointment .continue-btn-date-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }

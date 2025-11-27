@@ -115,3 +115,9 @@ $("#continueBtn").on("click", function () {
     // Chuyển trang
     window.location.href = "ThoiGian.html?maNCC=" + maNCC;
 });
+
+$(".continue-btn-top").on("click", function () {
+    localStorage.removeItem("selectedStaff");
+    localStorage.removeItem("selectedServices");
+    localStorage.removeItem("selectedDateTime");
+});

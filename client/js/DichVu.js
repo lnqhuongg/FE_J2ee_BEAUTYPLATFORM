@@ -212,3 +212,9 @@ $("#continueBtn").on("click", function () {
 
     window.location.href = "ChuyenVien.html?maNCC=" + maNCC; // chỉnh lại theo trang bạn muốn
 });
+
+$(".continue-btn-top").on("click", function () {
+    localStorage.removeItem("selectedStaff");
+    localStorage.removeItem("selectedServices");
+    localStorage.removeItem("selectedDateTime");
+});

@@ -13,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link
         href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
@@ -23,123 +23,100 @@
 </head>
 
 <body>
-        <main class="select-page-wrapper thoigian-page">
-            <a class="back-btn" href="./ChiTietDoanhNghiep.html">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M15 18l-6-6 6-6"/>
-                </svg>
-            </a>
-            <a class="continue-btn-top" href="./ChiTietDoanhNghiep.html">
-                X
-            </a>
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- LEFT SIDE -->
-                    <div class="col-lg-7">
-                        <!-- Breadcrumb -->
-                        <div class="breadcrumb-nav d-flex align-items-center">
-                            <a href="">Dịch vụ</a>
-                            <i class="fa-duotone fa-thin fa-caret-right"></i>
-                            <a href="" class="active">Chuyên viên</a>
-                            <i class="fa-duotone fa-thin fa-caret-right"></i>
-                            <a href="">Thời gian</a>
-                            <i class="fa-duotone fa-thin fa-caret-right"></i>
-                            <a href="">Xác nhận</a>
-                        </div>
-
-                        <h1 class="page-title">Chọn thời gian</h1>
-
-                        <!-- Specialist (tĩnh) -->
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200"
-                                width="42" height="42" style="border-radius: 50%; object-fit: cover;">
-                            <span class="ms-2 fw-semibold">Ricky Pang</span>
-                        </div>
-
-                        <!-- Month title -->
-                        <h5 class="fw-semibold mb-3">tháng 11 năm 2025</h5>
-
-                        <!-- Date list -->
-                        <div class="date-picker-container">
-                            <button class="scroll-btn left">&lt;</button>
-                            <div class="date-list" id="dateList">
-                                <div class="date-item active" data-date="26">26<br><span>Th 4</span></div>
-                                <div class="date-item" data-date="27">27<br><span>Th 5</span></div>
-                                <div class="date-item" data-date="28">28<br><span>Th 6</span></div>
-                                <div class="date-item disabled">29<br><span>Th 7</span></div>
-                                <div class="date-item" data-date="30">30<br><span>CN</span></div>
-                                <div class="date-item" data-date="1">1<br><span>Th 2</span></div>
-                                <div class="date-item" data-date="2">2<br><span>Th 3</span></div>
-                                <div class="date-item" data-date="3">3<br><span>Th 4</span></div>
-                                <div class="date-item" data-date="4">4<br><span>Th 5</span></div>
-                                <div class="date-item disabled">29<br><span>Th 7</span></div>
-                                <div class="date-item" data-date="30">30<br><span>CN</span></div>
-                                <div class="date-item" data-date="1">1<br><span>Th 2</span></div>
-                                <div class="date-item" data-date="2">2<br><span>Th 3</span></div>
-                                <div class="date-item" data-date="3">3<br><span>Th 4</span></div>
-                                <div class="date-item" data-date="4">4<br><span>Th 5</span></div>
-                                <div class="date-item disabled">29<br><span>Th 7</span></div>
-                                <div class="date-item" data-date="30">30<br><span>CN</span></div>
-                                <div class="date-item" data-date="1">1<br><span>Th 2</span></div>
-                                <div class="date-item" data-date="2">2<br><span>Th 3</span></div>
-                                <div class="date-item" data-date="3">3<br><span>Th 4</span></div>
-                                <div class="date-item" data-date="4">4<br><span>Th 5</span></div>
-                            </div>
-                            <button class="scroll-btn right">&gt;</button>
-                        </div>
-
-
-                        <!-- Time list -->
-                        <div id="timeList">
-                            <div class="time-item" data-time="17:30">17:30</div>
-                            <div class="time-item" data-time="18:00">18:00</div>
-                            <div class="time-item" data-time="20:00">20:00</div>
-                            <div class="time-item" data-time="20:30">20:30</div>
-                        </div>
-
+    <main class="select-page-wrapper thoigian-page">
+        <a class="continue-btn-top" href="./ChiTietDoanhNghiep.html">
+            X
+        </a>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- LEFT SIDE -->
+                <div class="col-lg-7">
+                    <!-- Breadcrumb -->
+                    <div class="breadcrumb-nav d-flex align-items-center">
+                        <a href="">Dịch vụ</a>
+                        <i class="fa-duotone fa-thin fa-caret-right"></i>
+                        <a href="" class="active">Chuyên viên</a>
+                        <i class="fa-duotone fa-thin fa-caret-right"></i>
+                        <a href="">Thời gian</a>
+                        <i class="fa-duotone fa-thin fa-caret-right"></i>
+                        <a href="">Xác nhận</a>
                     </div>
 
-                    <!-- RIGHT SIDE -->
-                    <div class="col-lg-5">
-                        <div class="summary-card">
+                    <h1 class="page-title">Chọn thời gian</h1>
 
-                            <!-- Header -->
-                            <div class="summary-header d-flex mb-3">
+                    <!-- Specialist (tĩnh) -->
+                    <div class="d-flex align-items-center mb-3" id="thongtinChuyenvien">
+                        <img src="" id="imgChuyenvien" width="42" height="42" style="border-radius: 50%; object-fit: cover;">
+                        <span class="ms-2 fw-semibold" id="tenChuyenVien">Ricky Pang</span>
+                    </div>
+
+                    <!-- Month title -->
+                    <h5 class="fw-semibold mb-3">tháng 11 năm 2025</h5>
+
+                    <!-- Date list -->
+                    <div class="date-picker-container">
+                        <button class="scroll-btn left">&lt;</button>
+                        <div class="date-list" id="tabDates">
+                        </div>
+                        <button class="scroll-btn right">&gt;</button>
+                    </div>
+
+                    <!-- Time list -->
+                    <div id="timeList">
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE -->
+                <div class="col-lg-5 col-md-5">
+                    <div class="summary-wrapper">
+                        <div class="summary-card">
+                            <!-- Header with Spa Info -->
+                            <div class="summary-header">
                                 <div class="summary-img">
-                                    <img src="https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg?auto=compress&cs=tinysrgb&w=800">
+                                    <img src="https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                        alt="Causeway Bay 2">
                                 </div>
                                 <div>
                                     <div class="summary-name">Causeway Bay 2 Handsome Factory Barber Shop</div>
-                                    <div class="summary-rating text-warning">★★★★★ <span class="text-dark">4.9 (3,863)</span></div>
-                                    <div class="summary-address text-muted">55 Paterson Street, Shop...</div>
+                                    <div class="summary-rating">
+                                        <span>4.9</span>
+                                        <span class="star">★★★★★</span>
+                                        <span>(3,863)</span>
+                                    </div>
+                                    <div class="summary-address">
+                                        CAUSEWAY BAY 2: 55 Paterson Street, Shop...
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Content -->
-                            <div>
-                                <div class="fw-semibold">Haircut</div>
-                                <div class="text-muted">30 phút với Ricky Pang</div>
-                                <div class="mt-2 mb-3">480 HK$</div>
+                            <!-- Selected Services Info -->
+                            <div id="summaryEmpty" class="summary-empty">
+                                Không có chuyên viên nào được chọn
                             </div>
+
+                            <div id="summaryServices" class="summary-services"></div>
 
                             <!-- Total -->
-                            <div class="summary-total-row d-flex justify-content-between pt-3 border-top">
+                            <div class="summary-total-row border-top pt-3">
                                 <span>Tổng tiền</span>
-                                <span id="totalPrice">480 HK$</span>
+                                <span id="summaryTotal">từ 380 HK$</span>
                             </div>
 
-                            <!-- Continue button -->
-                            <button id="continueBtn" class="continue-btn-date-submit" disabled>Tiếp tục</button>
-
+                            <!-- Continue Button -->
+                            <button id="continueBtn" class="continue-btn-date-submit" disabled>
+                                Tiếp tục
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </main>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../lib/api.js"></script>
     <script src="../js/ThoiGian.js"></script>
     <script src="../js/DatLich.js"></script>

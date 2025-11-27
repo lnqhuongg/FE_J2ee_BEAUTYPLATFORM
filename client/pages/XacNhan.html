@@ -25,12 +25,6 @@
 
 <body>
     <main class="select-page-wrapper payment-appointment">
-        <a class="back-btn" href="./ChiTietDoanhNghiep.html">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-            </svg>
-        </a>
         <a class="continue-btn-top" href="./ChiTietDoanhNghiep.html">
             X
         </a>
@@ -53,21 +47,18 @@
 
                     <h1 class="page-title">Xem lại và xác nhận</h1>
                     <h5 class="section-title">Phương thức thanh toán</h5>
-                    <div class="payment-option mb-3">
-                        <div class="payment-icon">
+                    <div class="payment-option mb-3" data-method="1">
+                        <div class="payment-icon me-2">
                             <i class="fa-solid fa-store"></i>
                         </div>
                         <div class="fw-medium">Thanh toán tại địa điểm</div>
                     </div>
-                    <div class="payment-option">
-                        <div class="payment-icon">
+                    <div class="payment-option" data-method="2">
+                        <div class="payment-icon me-2">
                             <i class="fa-sharp-duotone fa-solid fa-wallet"></i>
                         </div>
                         <div class="fw-medium">Thanh toán bằng ví điện tử</div>
                     </div>
-
-                    <h5 class="section-title">Chính sách hủy</h5>
-                    <p class="text-secondary mb-0">Vui lòng hủy ít nhất <strong>3 giờ trước cuộc hẹn</strong>.</p>
 
                     <h5 class="section-title">Thông tin quan trọng</h5>
                     <div class="text-secondary small">
@@ -78,10 +69,6 @@
                             problems, please consult a doctor and reschedule your appointment. We thank you for your
                             cooperation.</p>
                     </div>
-
-                    <h5 class="section-title">Ghi chú lịch hẹn</h5>
-                    <textarea class="form-control" rows="4"
-                        placeholder="Đính kèm nhận xét hoặc yêu cầu về lịch hẹn của bạn"></textarea>
                 </div>
 
                 <div class="col-lg-5">
@@ -103,7 +90,7 @@
 
                         <hr class="text-secondary opacity-25">
 
-                        <div class="d-flex gap-2 mb-4 text-secondary">
+                        <div class="d-flex gap-2 mb-4 text-secondary summary-date">
                             <i class="fa-regular fa-calendar mt-1"></i>
                             <div>
                                 <div class="fw-medium text-dark">Thứ Sáu, 28 tháng 11</div>
@@ -113,7 +100,7 @@
 
                         <hr class="text-secondary opacity-25">
 
-                        <div class="mb-3">
+                        <div class="mb-3 summary-services">
                             <div class="d-flex justify-content-between mb-1">
                                 <span class="fw-medium">Haircut</span>
                                 <span class="summary-price">480 HK$</span>
@@ -123,24 +110,9 @@
 
                         <hr class="text-secondary opacity-25">
 
-                        <div class="d-flex justify-content-between mb-3 text-secondary">
-                            <span>Tổng phụ</span>
-                            <span>480 HK$</span>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center mb-1">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
                             <span class="total-text">Tổng tiền</span>
-                            <span class="total-text">480 HK$</span>
-                        </div>
-
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-green">Thanh toán ngay</span>
-                            <span class="text-green">0 HK$</span>
-                        </div>
-
-                        <div class="d-flex justify-content-between mb-4">
-                            <span class="text-secondary">Thanh toán tại địa điểm</span>
-                            <span class="text-secondary">480 HK$</span>
+                            <span class="total-text summary-total">480 HK$</span>
                         </div>
 
                         <button class="btn btn-confirm">Xác nhận</button>
@@ -152,6 +124,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../lib/api.js"></script>
     <script src="../js/XacNhan.js"></script>
     <script src="../js/DatLich.js"></script>
