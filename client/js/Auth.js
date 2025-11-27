@@ -255,7 +255,7 @@
         
         // Redirect sau 1.5 giây
         setTimeout(() => {
-          window.location.href = '/TrangChu.html';
+          window.location.href = '/client/pages/TrangChu.html';
         }, 1500);
 
       } else {
@@ -348,48 +348,128 @@
 
     // ==================== FORM ĐĂNG KÝ ====================
     
-    $('#formRegister').on('submit', async function (e) {
+   $('#formRegister').on('submit', async function (e) {
       e.preventDefault();
-      
+
+      // Lấy giá trị
       const hoTen = $('#inputFullname').val().trim();
       const matKhau = $('#inputRegisterPassword').val();
       const xacNhanMatKhau = $('#inputConfirmPassword').val();
       const sdt = $('#inputPhone').val().trim();
       const ngaySinh = $('#inputBirthdate').val();
       const gioiTinh = $('#inputGender').val();
-      
+
+      let isValid = true;
+
+      // =================== Họ và tên ===================
+      const hoTenRegex = /^[a-zA-ZÀ-ỹ\s]+$/; // chỉ cho phép chữ và dấu
       if (!hoTen) {
-        showAlert('authAlert', 'Vui lòng nhập họ và tên!');
-        return;
+          $('#fullnameError').text('Vui lòng nhập họ và tên!');
+          $('#inputFullname').addClass('is-invalid');
+          isValid = false;
+      } else if (!hoTenRegex.test(hoTen)) {
+          $('#fullnameError').text('Họ và tên không hợp lệ, chỉ chữ cái và khoảng trắng!');
+          $('#inputFullname').addClass('is-invalid');
+          isValid = false;
+      } else if (hoTen.length > 100) {
+          $('#fullnameError').text('Họ và tên quá dài!');
+          $('#inputFullname').addClass('is-invalid');
+          isValid = false;
+      } else {
+          $('#fullnameError').text('');
+          $('#inputFullname').removeClass('is-invalid');
       }
 
+      // =================== Mật khẩu ===================
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,50}$/; // ít nhất 1 chữ và 1 số
       if (!matKhau) {
-        showAlert('authAlert', 'Vui lòng nhập mật khẩu!');
-        return;
+          $('#passwordError').text('Vui lòng nhập mật khẩu!');
+          $('#inputRegisterPassword').addClass('is-invalid');
+          isValid = false;
+      } else if (!passwordRegex.test(matKhau)) {
+          $('#passwordError').text('Mật khẩu phải từ 6–50 ký tự, gồm chữ và số!');
+          $('#inputRegisterPassword').addClass('is-invalid');
+          isValid = false;
+      } else {
+          $('#passwordError').text('');
+          $('#inputRegisterPassword').removeClass('is-invalid');
       }
 
+      // =================== Xác nhận mật khẩu ===================
       if (!xacNhanMatKhau) {
-        showAlert('authAlert', 'Vui lòng nhập xác nhận mật khẩu!');
-        return;
+          $('#confirmPasswordError').text('Vui lòng nhập xác nhận mật khẩu!');
+          $('#inputConfirmPassword').addClass('is-invalid');
+          isValid = false;
+      } else if (xacNhanMatKhau !== matKhau) {
+          $('#confirmPasswordError').text('Mật khẩu xác nhận không khớp!');
+          $('#inputConfirmPassword').addClass('is-invalid');
+          isValid = false;
+      } else {
+          $('#confirmPasswordError').text('');
+          $('#inputConfirmPassword').removeClass('is-invalid');
       }
 
-      if (!sdt) {
-        showAlert('authAlert', 'Vui lòng nhập số điện thoại!');
-        return;
+      // =================== Giới tính ===================
+      if (!gioiTinh || !['0', '1'].includes(gioiTinh)) {
+          $('#genderError').text('Vui lòng chọn giới tính hợp lệ!');
+          $('#inputGender').addClass('is-invalid');
+          isValid = false;
+      } else {
+          $('#genderError').text('');
+          $('#inputGender').removeClass('is-invalid');
       }
 
+      // =================== Ngày sinh ===================
       if (!ngaySinh) {
-        showAlert('authAlert', 'Vui lòng chọn ngày sinh!');
-        return;
+          $('#birthdateError').text('Vui lòng chọn ngày sinh!');
+          $('#inputBirthdate').addClass('is-invalid');
+          isValid = false;
+      } else {
+          const birthDateObj = new Date(ngaySinh);
+          const today = new Date();
+          const age = today.getFullYear() - birthDateObj.getFullYear();
+          const monthDiff = today.getMonth() - birthDateObj.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+              age--;
+          }
+
+          if (age < 10) {
+              $('#birthdateError').text('Tuổi không hợp lệ, phải ≥ 10 tuổi!');
+              $('#inputBirthdate').addClass('is-invalid');
+              isValid = false;
+          } else if (birthDateObj > today) {
+              $('#birthdateError').text('Ngày sinh không được vượt quá hôm nay!');
+              $('#inputBirthdate').addClass('is-invalid');
+              isValid = false;
+          } else {
+              $('#birthdateError').text('');
+              $('#inputBirthdate').removeClass('is-invalid');
+          }
       }
 
-      if (!gioiTinh) {
-        showAlert('authAlert', 'Vui lòng chọn giới tính!');
-        return;
+      // =================== Số điện thoại ===================
+      const phoneRegex = /^[0-9]{9,10}$/;
+      if (!sdt) {
+          $('#phoneError').text('Vui lòng nhập số điện thoại!');
+          $('#inputPhone').addClass('is-invalid');
+          isValid = false;
+      } else if (!phoneRegex.test(sdt)) {
+          $('#phoneError').text('Số điện thoại không hợp lệ, phải 9–10 chữ số!');
+          $('#inputPhone').addClass('is-invalid');
+          isValid = false;
+      } else {
+          $('#phoneError').text('');
+          $('#inputPhone').removeClass('is-invalid');
       }
+
+      // =================== Gọi API nếu hợp lệ ===================
+      if (!isValid) return;
 
       await handleRegister(hoTen, matKhau, xacNhanMatKhau, sdt, ngaySinh, gioiTinh);
-    });
+  });
+
+
+
 
     $('#formOtp').on('submit', async function(e) {
         e.preventDefault();

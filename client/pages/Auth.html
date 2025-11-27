@@ -63,7 +63,7 @@
                         </button>
                     </form>
                     <div class="register-footer">
-                        Bạn có tài khoản doanh nghiệp?<br> <a id="loginLink" href="#">Đăng nhập tài khoản doanh nghiệp</a>
+                        Bạn có tài khoản?<br> <a id="loginLink" href="#">Đăng nhập tài khoản</a>
                     </div>
                 </div>
                 <div id="loginForm">
@@ -82,7 +82,7 @@
                         </button>
                     </form>
                     <div class="login-footer">
-                        Bạn có tài khoản doanh nghiệp?<br> <a id="registerLink" href="#">Đăng ký tài khoản doanh nghiệp</a>
+                        Bạn có tài khoản?<br> <a id="registerLink" href="#">Đăng ký tài khoản</a>
                     </div>
                 </div>
                 <div id="otpStep" style="display: none;">
@@ -132,16 +132,19 @@
                     <div class="form-group">
                         <label for="inputFullname">Họ và tên *</label>
                         <input type="text" id="inputFullname" placeholder="Nhập họ và tên">
+                        <div class="invalid-feedback" id="fullnameError"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputRegisterPassword">Mật khẩu *</label>
-                        <input type="password" id="inputRegisterPassword" placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)">
+                        <input type="password" id="inputRegisterPassword" placeholder="Nhập mật khẩu">
+                        <div class="invalid-feedback" id="passwordError"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputConfirmPassword">Xác nhận mật khẩu *</label>
                         <input type="password" id="inputConfirmPassword" placeholder="Nhập lại mật khẩu">
+                        <div class="invalid-feedback" id="confirmPasswordError"></div>
                     </div>
 
                     <div class="form-group">
@@ -150,20 +153,24 @@
                             <option value="">-- Chọn giới tính --</option>
                             <option value="1">Nam</option>
                             <option value="0">Nữ</option>
-                            <option value="2">Khác</option>
                         </select>
+                        <div class="invalid-feedback" id="genderError"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputBirthdate">Ngày sinh *</label>
                         <input type="date" id="inputBirthdate">
+                        <div class="invalid-feedback" id="birthdateError"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputPhone">Số điện thoại *</label>
-                        <div class="d-flex justify-content-between">
-                            <input type="text" value="+84" style="width: 65px; background: #eeeeee;" disabled>
-                            <input type="text" id="inputPhone" placeholder="Nhập số điện thoại" style="width: 330px;" pattern="[0-9]{9,10}">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">+84</span>
+                            </div>
+                            <input type="text" id="inputPhone" class="form-control" placeholder="Nhập số điện thoại" pattern="[0-9]{9,10}">
+                            <div class="invalid-feedback" id="phoneError"></div>
                         </div>
                     </div>
 

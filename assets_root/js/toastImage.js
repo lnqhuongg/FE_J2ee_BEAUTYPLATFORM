@@ -10,7 +10,7 @@ avatarInput.addEventListener("change", function(event) {
         avatarPreview.src = URL.createObjectURL(file);
 
         // Hiện toast
-        showToast("Đã thay đổi ảnh đại diện thành công");
+        showToast("Đã tải lên ảnh đại diện");
     }
 });
 

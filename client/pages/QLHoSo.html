@@ -159,7 +159,7 @@
                             <input type="file" id="avatarInput" accept="image/*" hidden>
 
                             <!-- label thay cho button -->
-                            <label for="avatarInput" class="edit-btn">
+                            <label for="avatarInput" class="edit-btn d-none">
                                 <i class="fa-duotone fa-solid fa-pencil"></i>
                             </label>
                         </div>
@@ -168,32 +168,37 @@
 
                         <div class="profile-divider"></div>
 
-                        <div class="profile-info">
-                            <div class="profile-info-item">
-                                <div class="profile-info-label">Họ Tên</div>
-                                <div id="hoTen" class="profile-info-value">-</div>
-                            </div>
+                            <div class="profile-info">
+                                <div class="profile-info-item">
+                                    <div class="profile-info-label">Họ Tên</div>
+                                    <div id="hoTen" class="profile-info-value">-</div>
+                                    <div class="invalid-feedback" id="hoTenError"></div>
+                                </div>
 
-                            <div class="profile-info-item">
-                                <div class="profile-info-label">Số điện thoại di động</div>
-                                <div id="sdt" class="profile-info-value">-</div>
-                            </div>
+                                <div class="profile-info-item">
+                                    <div class="profile-info-label">Số điện thoại di động</div>
+                                    <div id="sdt" class="profile-info-value">-</div>
+                                    <div class="invalid-feedback" id="sdtError"></div>
+                                </div>
 
-                            <div class="profile-info-item">
-                                <div class="profile-info-label">Email</div>
-                                <div id="email" class="profile-info-value">-</div>
-                            </div>
+                                <div class="profile-info-item">
+                                    <div class="profile-info-label">Email</div>
+                                    <div id="email" class="profile-info-value">-</div>
+                                    <div class="invalid-feedback" id="emailError"></div>
+                                </div>
 
-                            <div class="profile-info-item">
-                                <div class="profile-info-label">Ngày sinh</div>
-                                <div id="ngaySinh" class="profile-info-value">-</div>
-                            </div>
+                                <div class="profile-info-item">
+                                    <div class="profile-info-label">Ngày sinh</div>
+                                    <div id="ngaySinh" class="profile-info-value">-</div>
+                                    <div class="invalid-feedback" id="ngaySinhError"></div>
+                                </div>
 
-                            <div class="profile-info-item">
-                                <div class="profile-info-label">Giới tính</div>
-                                <div id="gioiTinh" class="profile-info-value">-</div>
+                                <div class="profile-info-item">
+                                    <div class="profile-info-label">Giới tính</div>
+                                    <div id="gioiTinh" class="profile-info-value">-</div>
+                                    <div class="invalid-feedback" id="gioiTinhError"></div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
