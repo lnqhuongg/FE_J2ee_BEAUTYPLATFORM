@@ -226,7 +226,7 @@ async function handleConfirmBooking() {
     localStorage.removeItem("paymentMethod");
 
     // Redirect
-    window.location.href = "/client/pages/Success.html";
+    window.location.href = "/client/pages/ThanhToanThanhCong.html";
 }
 
 
