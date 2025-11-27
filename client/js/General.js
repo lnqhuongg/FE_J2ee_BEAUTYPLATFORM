@@ -50,6 +50,7 @@ $(document).ready(function () {
         // window.location.href = '/client/pages/Auth.html';
         return;
     }
+    $('.btn-nav-client').addClass('d-none');
 
     // Gọi API để lấy hồ sơ tài khoản
     $.ajax({
