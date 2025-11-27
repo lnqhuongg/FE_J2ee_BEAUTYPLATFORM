@@ -21,6 +21,10 @@ if (input && box) {
     });
 }
 
+document.querySelector('.btn-nav-business').addEventListener('click', function() {
+    window.location.href = '/client/pages/Auth.html';
+});
+
 // carousel multiple items 
 var multipleCardCarousel = document.querySelector(
     "#carouselExampleControls"
