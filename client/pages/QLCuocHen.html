@@ -4,30 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Freshj</title>
+    <title>Quản lý cuộc hẹn - Freshj</title>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Font giống Fresha -->
+    <!-- Google Font -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <!-- font awesome cua Huong Nguyen -->
+    <!-- Font Awesome -->
     <link
         href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
         rel="stylesheet" type="text/css" />
-    <!-- css rieng -->
+    <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/client.css">
     <link rel="stylesheet" href="../../assets_root/css/toast.css">
 </head>
 
-<div id="toast" class="toast-custom">
-    <span id="toastMessage">Đã thay đổi ảnh đại diện thành công</span>
-    <button id="toastClose">&times;</button>
-</div>
-
 <body style="overflow: hidden;">
+    <!-- Toast notification -->
+    <div id="toast" class="toast-custom">
+        <span id="toastMessage">Thông báo</span>
+        <button id="toastClose" onclick="$('#toast').removeClass('show')">&times;</button>
+    </div>
+
     <main class="bg-light">
-        <!-- Hero area có nền gradient -->
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg py-3 px-4 px-lg-5 animation-appear" id="navbar">
             <div class="container-fluid d-flex justify-content-between">
                 <div class="d-flex align-items-center">
@@ -49,8 +50,6 @@
                             <option>Any date</option>
                             <option>Today</option>
                             <option>Tomorrow</option>
-                            <option>This week</option>
-                            <option>This month</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -59,8 +58,6 @@
                             <option>Any time</option>
                             <option>Morning (6AM - 12PM)</option>
                             <option>Afternoon (12PM - 6PM)</option>
-                            <option>Evening (6PM - 12AM)</option>
-                            <option>Night (12AM - 6AM)</option>
                         </select>
                     </div>
                     <button class="search-btn">
@@ -69,9 +66,6 @@
                     </button>
                 </div>
                 <div class="d-flex gap-2">
-                    <!-- này là chưa đăng nhập -->
-                    <!-- <button class="btn btn-nav-client">Đăng nhập</button> -->
-                    <!-- này là sau khi đăng nhập -->
                     <div class="dropdown-container">
                         <button class="profile-button" id="profileBtn">
                             <img src="../img/image.png" alt="Avatar" id="avatarPreview_navbar">
@@ -112,6 +106,7 @@
                 </div>
             </div>
         </nav>
+
         <div class="main-container">
             <!-- Sidebar -->
             <aside class="sidebar">
@@ -120,12 +115,12 @@
                 </div>
                 <ul class="sidebar-menu">
                     <li>
-                        <a href="#" class="active">
+                        <a href="#">
                             <i class="fa-light fa-user"></i>Hồ sơ
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#" class="active">
                             <i class="fa-light fa-calendar"></i> Các cuộc hẹn
                         </a>
                     </li>
@@ -148,102 +143,31 @@
 
                 <div class="d-flex justify-content-center mt-4">
                     <div class="row" style="width: 900px;">
+                        <!-- Danh sách cuộc hẹn -->
                         <div class="col-4">
-                            <select class="form-select" name="" id="">
-                                <option value="">Các cuộc hẹn mới nhất</option>
-                                <option value="">Các cuộc hẹn cũ nhất</option>
-                                <option value="">Các cuộc hẹn chưa xác nhận </option>
+                            <select class="form-select" id="filterSelect">
+                                <option value="newest">Các cuộc hẹn mới nhất</option>
+                                <option value="oldest">Các cuộc hẹn cũ nhất</option>
+                                <option value="pending">Chờ xác nhận</option>
+                                <option value="confirmed">Đã xác nhận</option>
+                                <option value="completed">Hoàn thành</option>
+                                <option value="cancelled">Đã hủy</option>
                             </select>
+                            
                             <div class="list_appointments mt-4">
-                                <div class="appointment_element mb-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong style="font-size: 15px;">Spa mát xa cực đã</strong>
-                                        <span style="font-size: 13px; color: #8e8e8e;">17/01/2025</span>
-                                    </div>
-                                    <div class="img-wrapper-appointment mt-1">
-                                        <img src="../../uploads/providers/test-1.avif" alt="">
-                                    </div>
-                                </div>
-                                <div class="appointment_element mb-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong style="font-size: 15px;">Spa mát xa cực đã</strong>
-                                        <span style="font-size: 13px; color: #8e8e8e;">17/01/2025</span>
-                                    </div>
-                                    <div class="img-wrapper-appointment mt-1">
-                                        <img src="../../uploads/providers/test-1.avif" alt="">
-                                    </div>
-                                </div>
-                                <div class="appointment_element mb-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong style="font-size: 15px;">Spa mát xa cực đã</strong>
-                                        <span style="font-size: 13px; color: #8e8e8e;">17/01/2025</span>
-                                    </div>
-                                    <div class="img-wrapper-appointment mt-1">
-                                        <img src="../../uploads/providers/test-1.avif" alt="">
-                                    </div>
-                                </div>
-                                <div class="appointment_element mb-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong style="font-size: 15px;">Spa mát xa cực đã</strong>
-                                        <span style="font-size: 13px; color: #8e8e8e;">17/01/2025</span>
-                                    </div>
-                                    <div class="img-wrapper-appointment mt-1">
-                                        <img src="../../uploads/providers/test-1.avif" alt="">
-                                    </div>
-                                </div>
-                                <div class="appointment_element mb-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong style="font-size: 15px;">Spa mát xa cực đã</strong>
-                                        <span style="font-size: 13px; color: #8e8e8e;">17/01/2025</span>
-                                    </div>
-                                    <div class="img-wrapper-appointment mt-1">
-                                        <img src="../../uploads/providers/test-1.avif" alt="">
-                                    </div>
+                                <!-- Danh sách cuộc hẹn sẽ được render ở đây -->
+                                <div class="text-center mt-4">
+                                    <i class="fa-duotone fa-spinner-third fa-spin fa-2x"></i>
+                                    <p class="mt-2 text-muted">Đang tải...</p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Chi tiết cuộc hẹn -->
                         <div class="col-8 appointment_details" style="background-color: #fff;">
-                            <div class="image-wrapper">
-                                <img src="../../uploads/providers/test-1.avif" alt="">
-                            </div>
-                            <h4 style="font-weight: 900;" class="mt-3 ms-3">Spa mát xa cực đã</h4>
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <div class="ms-3 mb-2" style="font-size: 13px;"><i
-                                            class="fa-thin fa-clock me-2"></i>Ngày hẹn: <span>Ngày 14 tháng 12,
-                                            2025</span>
-                                        <span>lúc 09:00</span>
-                                    </div>
-                                    <div class="ms-3" style="font-size: 13px;"><i
-                                            class="fa-thin fa-location-dot me-2"></i><span>Vương quốc Bình Chánh, Hồ Chí
-                                            Minh</span></div>
-                                </div>
-                                <div style="color: #47b053;" class="d-flex align-items-center">
-                                    <i class="fa-light fa-badge-check me-2" style="font-size: 25px;"></i> Xác nhận
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <h6 class="ms-3">Dịch vụ</h6>
-                            
-                            <div class="services-list-appointment ms-3">
-                                <div class="service-appointment d-flex justify-content-between mb-2">
-                                    <span>Dịch vụ mát xa chân</span>
-                                    <span>30 phút</span>
-                                </div>
-                                <div class="service-appointment d-flex justify-content-between mb-2">
-                                    <span>Dịch vụ mát xa chân</span>
-                                    <span>30 phút</span>
-                                </div>
-                                <div class="service-appointment d-flex justify-content-between mb-2">
-                                    <span>Dịch vụ mát xa chân</span>
-                                    <span>30 phút</span>
-                                </div>
-                                <div class="service-appointment d-flex justify-content-between mb-2">
-                                    <span>Dịch vụ mát xa chân</span>
-                                    <span>30 phút</span>
-                                </div>
+                            <div class="text-center mt-5">
+                                <i class="fa-light fa-calendar-xmark fa-3x text-muted"></i>
+                                <p class="mt-3 text-muted">Chọn một cuộc hẹn để xem chi tiết</p>
                             </div>
                         </div>
                     </div>
@@ -252,9 +176,12 @@
         </div>
     </main>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/General.js"></script>
+    <script src="../js/QLCuocHen.js"></script>
+    <script src="../../lib/api.js"></script>
 </body>
 
 </html>
