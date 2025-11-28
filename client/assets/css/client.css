@@ -2623,3 +2623,96 @@ a {
     transform: scale(2);
     opacity: 0;
 }
+
+/*TRANG QUAN LY CUOC HEN*/
+
+.appointment-management .list_appointments .img-wrapper-appointment {
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+    border-radius: 8px; /* nếu muốn bo góc */
+}
+
+.appointment-management .list_appointments .img-wrapper-appointment img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* GIỮ TỈ LỆ, CROP PHẦN DƯ */
+    transition: transform 0.4s ease; /* hiệu ứng mượt khi zoom */
+}
+
+.appointment-management .list_appointments .appointment_element {
+    cursor: pointer;
+}
+
+/* Khi hover vào nguyên appointment element → zoom ảnh */
+.appointment-management .list_appointments .appointment_element:hover .img-wrapper-appointment img {
+    transform: scale(1.1); /* tăng 10% */
+}
+
+.appointment-management .list_appointments {
+    max-height: 480px;      /* hoặc đổi chiều cao bạn muốn */
+    overflow-y: auto;
+    padding-right: 8px;     /* tránh che nội dung bởi scrollbar */
+}
+
+/* ===== Scrollbar màu tím ===== */
+.appointment-management .list_appointments::-webkit-scrollbar {
+    width: 4px;
+}
+
+.appointment-management .list_appointments::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.appointment-management .list_appointments::-webkit-scrollbar-thumb {
+    background: #29135f;  /* màu tím chủ đạo */
+    border-radius: 10px;
+}
+
+.appointment-management .list_appointments::-webkit-scrollbar-thumb:hover {
+    background: #352d81;  /* đậm hơn khi hover */
+}
+
+.appointment-management .appointment_details .image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;   /* GIỮ TỈ LỆ, CROP PHẦN DƯ */
+}
+
+.appointment-management .appointment_details .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.appointment-management .services-list-appointment .service-appointment {
+    background-color: #f3f4ff;
+    font-size: 13.5px;
+    padding: 10px 15px;
+    border: 0.5px solid #cecece;
+    border-radius: 10px;
+    color: #363636;
+}
+
+.appointment-management .services-list-appointment {
+    max-height: 130px;      /* hoặc đổi chiều cao bạn muốn */
+    overflow-y: auto;
+    padding-right: 8px;     /* tránh che nội dung bởi scrollbar */
+}
+
+/* ===== Scrollbar màu tím ===== */
+.appointment-management .services-list-appointment::-webkit-scrollbar {
+    width: 4px;
+}
+
+.appointment-management .services-list-appointment::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.appointment-management .services-list-appointment::-webkit-scrollbar-thumb {
+    background: #29135f;  /* màu tím chủ đạo */
+    border-radius: 10px;
+}
