@@ -158,7 +158,7 @@ menuItems.forEach(item => {
                 window.location.href = '/client/pages/QLHoSo.html';
                 break;
             case 'Các cuộc hẹn':
-                window.location.href = '/client/pages/CuocHen.html';
+                window.location.href = '/client/pages/QLCuocHen.html';
                 break;
             case 'Mục yêu thích':
                 window.location.href = '/client/pages/YeuThich.html';

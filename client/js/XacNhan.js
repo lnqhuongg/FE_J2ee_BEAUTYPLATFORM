@@ -104,7 +104,7 @@ async function postDatLich() {
             maKH: maKH,
             tongThoiGian: tongThoiGian,
             tongTien: tongTien,
-            trangThai: 1,
+            trangThai: 0,
             ngayTao: selectedDateTime.date    // server tự parse LocalDate
         };
 
