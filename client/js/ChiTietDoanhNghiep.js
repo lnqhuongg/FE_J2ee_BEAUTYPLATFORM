@@ -34,7 +34,11 @@ if (window.matchMedia("(min-width: 800px)").matches) {
 $(document).ready(function() {
     const urlParams = new URLSearchParams(window.location.search);
     const maNCC = urlParams.get('maNCC');
-    
+
+    document.getElementById("btnDatNgay").addEventListener("click", function () {
+        window.location.href = `DichVu.html?maNCC=${maNCC}`;
+    });
+
     if (!maNCC) {
         alert('Không tìm thấy thông tin doanh nghiệp');
         window.location.href = 'TrangChu.html';
@@ -341,6 +345,7 @@ async function showWorkingSchedule(maNCC) {
         const res = await callApi(`/nhacungcap/${maNCC}/giolamviec`, 'GET');
         
         if (res && res.success && res.data && res.data.length > 0) {
+            console.log(res.data);
             renderWorkingSchedule(res.data);
         }
     } catch (error) {
@@ -350,12 +355,12 @@ async function showWorkingSchedule(maNCC) {
 
 // Render giờ làm việc
 function renderWorkingSchedule(schedule) {
-    const days = ['', '', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ nhật'];
+    const days = ['', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ nhật'];
     
     schedule.forEach(item => {
         const dayName = days[item.ngayTrongTuan] || 'Không xác định';
-        const openTime = item.gioMoCua || '00:00';
-        const closeTime = item.gioDongCua || '00:00';
+        const openTime = item.gioMoCua ? item.gioMoCua.substring(0, 5) : '00:00';
+        const closeTime = item.gioDongCua ? item.gioDongCua.substring(0, 5) : '00:00';
         
         $(`.opening-time div:contains("${dayName}") span`).text(`${openTime} - ${closeTime}`);
     });
@@ -402,6 +407,14 @@ async function loadOtherBusinesses() {
         const res = await callApi('/nhacungcap?page=0&size=10', 'GET');
         
         if (res && res.success && res.data && res.data.content) {
+            const businesses = res.data.content;
+            // Lấy hình ảnh cho từng doanh nghiệp
+            for (let business of businesses) {
+                const imagesRes = await callApi(`/nhacungcap/${business.maNCC}/hinhanh`, 'GET');
+                business.images = imagesRes && imagesRes.success ? imagesRes.data : [];
+                const mainImage = business.images.find(img => img.imageMain == 1);
+                business.hinhAnh = mainImage ? mainImage.imageUrl : null;
+            }
             renderOtherBusinesses(res.data.content);
         }
     } catch (error) {

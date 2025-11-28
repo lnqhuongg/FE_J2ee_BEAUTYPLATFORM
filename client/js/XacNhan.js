@@ -164,7 +164,7 @@ async function postThanhToan(maDL, phuongThuc) {
             maDL: maDL,
             phuongThuc: phuongThuc,
             soTien: total,
-            trangThai: 0, // Chưa thanh toán
+            trangThai: 1, // Chưa thanh toán
             ngayThanhToan: new Date().toISOString() // LocalDateTime
         };
 
