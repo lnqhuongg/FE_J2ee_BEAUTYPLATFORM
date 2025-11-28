@@ -2697,7 +2697,7 @@ a {
 }
 
 .appointment-management .services-list-appointment {
-    max-height: 130px;      /* hoặc đổi chiều cao bạn muốn */
+    max-height: 120px;      /* hoặc đổi chiều cao bạn muốn */
     overflow-y: auto;
     padding-right: 8px;     /* tránh che nội dung bởi scrollbar */
 }
