@@ -43,8 +43,16 @@ async function loadTopRatedBusinesses() {
                 business.hinhAnh = mainImage ? mainImage.imageUrl : null;
                 console.log(business);
             }
-
-            renderBusinessCarousel('#carouselTopRated', businesses);
+            
+            // Load đánh giá cho từng doanh nghiệp
+            const businessesWithRatings = await Promise.all(
+                businesses.map(async (business) => {
+                    const rating = await loadRatingForBusiness(business.maNCC);
+                    return { ...business, rating };
+                })
+            );
+            
+            renderBusinessCarousel('#carouselTopRated', businessesWithRatings);
         }
     } catch (error) {
         console.error('Lỗi khi load doanh nghiệp được đánh giá cao:', error);
@@ -55,7 +63,7 @@ async function loadTopRatedBusinesses() {
 async function loadNewBusinesses() {
     try {
         const res = await callApi('/nhacungcap?page=0&size=10', 'GET');
-
+        
         if (res && res.success && res.data && res.data.content) {
             const businesses = res.data.content;
 
@@ -67,22 +75,111 @@ async function loadNewBusinesses() {
                 business.hinhAnh = mainImage ? mainImage.imageUrl : null;
                 console.log(business);
             }
-
-            renderBusinessCarousel('#carouselNewBusinesses', businesses);
+            
+            // Load đánh giá cho từng doanh nghiệp
+            const businessesWithRatings = await Promise.all(
+                businesses.map(async (business) => {
+                    const rating = await loadRatingForBusiness(business.maNCC);
+                    return { ...business, rating };
+                })
+            );
+            
+            renderBusinessCarousel('#carouselNewBusinesses', businessesWithRatings);
         }
     } catch (error) {
         console.error('Lỗi khi load doanh nghiệp mới:', error);
     }
 }
 
+// Load đánh giá cho một doanh nghiệp
+async function loadRatingForBusiness(maNCC) {
+    try {
+        const res = await callApi(`/danhgia/ncc/${maNCC}?diemDanhGia=0`, 'GET');
+        
+        if (res && res.success && res.data && Array.isArray(res.data)) {
+            const reviews = res.data;
+            const totalReviews = reviews.length;
+            
+            if (totalReviews === 0) {
+                return {
+                    averageRating: 0,
+                    totalReviews: 0,
+                    stars: '☆☆☆☆☆'
+                };
+            }
+            
+            // Tính điểm trung bình
+            const totalPoints = reviews.reduce((sum, review) => {
+                return sum + (review.diemDanhGia || 0);
+            }, 0);
+            
+            const averageRating = (totalPoints / totalReviews).toFixed(1);
+            
+            // Tạo chuỗi sao
+            const stars = generateStars(parseFloat(averageRating));
+            
+            return {
+                averageRating: parseFloat(averageRating),
+                totalReviews: totalReviews,
+                stars: stars
+            };
+        }
+        
+        return {
+            averageRating: 0,
+            totalReviews: 0,
+            stars: '☆☆☆☆☆'
+        };
+        
+    } catch (error) {
+        console.error(`Lỗi khi load đánh giá cho NCC ${maNCC}:`, error);
+        return {
+            averageRating: 0,
+            totalReviews: 0,
+            stars: '☆☆☆☆☆'
+        };
+    }
+}
+
+// Tạo chuỗi sao dựa trên điểm đánh giá
+function generateStars(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    
+    let stars = '';
+    
+    // Sao đầy
+    for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fa-solid fa-star text-warning"></i>';
+    }
+    
+    // Sao nửa (nếu có)
+    if (hasHalfStar) {
+        stars += '<i class="fa-solid fa-star-half-stroke text-warning"></i>';
+    }
+    
+    // Sao rỗng
+    for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="fa-regular fa-star text-warning"></i>';
+    }
+    
+    return stars;
+}
 
 // Render carousel doanh nghiệp
 function renderBusinessCarousel(carouselId, businesses) {
     const carouselInner = $(carouselId).find('.carousel-inner');
     carouselInner.empty();
     
+    if (!businesses || businesses.length === 0) {
+        carouselInner.html('<div class="carousel-item active"><p class="text-center">Không có dữ liệu</p></div>');
+        return;
+    }
+    
     businesses.forEach((business, index) => {
         const isActive = index === 0 ? 'active' : '';
+        const rating = business.rating || { averageRating: 0, totalReviews: 0, stars: '☆☆☆☆☆' };
         
         const cardHtml = `
             <div class="carousel-item ${isActive}">
@@ -96,8 +193,8 @@ function renderBusinessCarousel(carouselId, businesses) {
                     <div class="card-body">
                         <strong class="card-title">${business.tenNCC}</strong>
                         <div class="rating">
-                            <span><strong>5.0</strong> <i class="fa-solid fa-star text-warning"></i></span>
-                            (<span>0</span>)
+                            <span><strong>${rating.averageRating.toFixed(1)}</strong> ${rating.stars}</span>
+                            (<span>${rating.totalReviews}</span>)
                         </div>
                         <div class="address">${business.diaChi || 'Chưa cập nhật địa chỉ'}</div>
                         <div class="d-flex">
@@ -163,8 +260,11 @@ async function loadStatistics() {
             $('.stat-business-count').text(resNCC.data.totalElements + ' +');
         }
         
-        // Load số lượng nhân viên (tạm thời dùng số cố định hoặc tính tổng)
-        $('.stat-staff-count').text('2.000 +');
+        // Load số lượng nhân viên
+        const resNV = await callApi('/nhanvien?page=0&size=1', 'GET');
+        if (resNV && resNV.success && resNV.data) {
+            $('.stat-staff-count').text(resNV.data.totalElements + ' +');
+        }
         
         // Load số lượng khách hàng
         const resKH = await callApi('/khachhang?page=0&size=1', 'GET');
@@ -192,7 +292,7 @@ $('.search_form').on('submit', function(e) {
 
 // ==================== LOAD DANH SÁCH TỈNH/THÀNH PHỐ ====================
 
-// Danh sách tỉnh/thành phố Việt Nam (có thể lấy từ API nếu có)
+// Danh sách tỉnh/thành phố Việt Nam
 const cities = [
     'Hồ Chí Minh',
     'Hà Nội', 
@@ -239,9 +339,12 @@ async function loadBusinessByCity(city) {
         
         if (res && res.success && res.data && res.data.content) {
             renderCityContent(res.data.content);
+        } else {
+            $('.city-content-scrollbar').html('<p class="text-muted">Không có doanh nghiệp nào tại khu vực này</p>');
         }
     } catch (error) {
         console.error('Lỗi khi load doanh nghiệp theo thành phố:', error);
+        $('.city-content-scrollbar').html('<p class="text-danger">Có lỗi xảy ra khi tải dữ liệu</p>');
     }
 }
 
@@ -250,7 +353,12 @@ function renderCityContent(businesses) {
     const cityContentScrollbar = $('.city-content-scrollbar');
     cityContentScrollbar.empty();
     
-    // Nhóm doanh nghiệp theo quận/huyện (giả sử địa chỉ có định dạng: "Quận X, Thành phố Y")
+    if (!businesses || businesses.length === 0) {
+        cityContentScrollbar.html('<p class="text-muted">Không có doanh nghiệp nào</p>');
+        return;
+    }
+    
+    // Nhóm doanh nghiệp theo quận/huyện
     const groupedByDistrict = {};
     
     businesses.forEach(business => {
