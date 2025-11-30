@@ -151,6 +151,7 @@ function selectAppointment(maDL) {
 
 // Hiển thị chi tiết cuộc hẹn
 async function showAppointmentDetails(appointment) {
+    console.log('Selected Appointment:', appointment);
     const maNCC = appointment.chiTiet[0].maNCC;
     // Lấy thông tin nhà cung cấp từ API
     const imagesRes = await callApi(`/nhacungcap/${maNCC}/hinhanh`, 'GET');
