@@ -17,6 +17,51 @@
     <!-- CSS riêng -->
     <link rel="stylesheet" href="../assets/css/provider.css">
     <link rel="stylesheet" href="../../assets_root/css/root.css">
+
+    <!-- Custom CSS for image upload preview -->
+    <style>
+      .image-preview-container {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      .image-preview-box {
+        width: 100px;
+        height: 100px;
+        border: 2px dashed #e0e0e0;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        background-color: #f9f9f9;
+        transition: all 0.3s ease;
+      }
+
+      .image-preview-box:hover {
+        border-color: #007bff;
+        background-color: #f0f7ff;
+      }
+
+      .image-preview-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-preview-box i {
+        font-size: 28px;
+        color: #999;
+      }
+
+      .image-input {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -28,7 +73,7 @@
           <span class="ms-2 fw-semibold fs-4">freshj</span>
         </div>
         <div class="d-flex align-items-center provider-info">
-          <span class="me-2 fw-light">provider's name</span>
+          <span class="me-2 fw-light">Salon Xịn Nhất Cái Sài Gòn</span>
           <i class="fa-thin fa-circle-user fs-2"></i>
           <a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
         </div>
@@ -58,11 +103,6 @@
               </a>
             </li>
             <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-calendar-days"></i>Lịch làm việc
-              </a>
-            </li>
-            <li class="nav-item mb-2">
               <a class="nav-link active" href="#">
                 <i class="fa-light fa-users"></i>Quản lý Nhân viên
               </a>
@@ -87,7 +127,7 @@
         <button type="button" 
                 class="btn btn-blue-100 border"
                 data-bs-toggle="modal" 
-                data-bs-target="#employeeModal">
+                data-bs-target="#addEmployeeModal">
           <i class="fa-light fa-plus-large me-1"></i>
           Thêm Nhân viên mới
         </button>
@@ -117,8 +157,6 @@
                 <tr>
                   <th scope="col">#</th>
                   <th class="custom-column1st" scope="col">Tên nhân viên</th>
-                  <th class="custom-column2nd" scope="col">Vị trí</th>
-                  <th class="text-center" scope="col">Chức vụ</th>
                   <th class="text-center" scope="col">Email</th>
                   <th class="text-center" scope="col">Số điện thoại</th>
                   <th class="text-center" scope="col">Trạng thái</th>
@@ -129,8 +167,6 @@
                 <tr>
                   <td>1</td>
                   <td class="custom-column1st">Nguyễn Văn A</td>
-                  <td class="custom-column2nd">Thợ cắt tóc</td>
-                  <td class="text-center">Cắt tóc</td>
                   <td class="text-center">nguyenvana@email.com</td>
                   <td class="text-center">0912345678</td>
                   <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
@@ -138,62 +174,69 @@
                     <button class="btn btn-sm btn-blue-400-outline me-1"
                             type="button"
                             data-bs-toggle="modal" 
-                            data-bs-target="#employeeModal">
+                            data-bs-target="#editEmployeeModal">
                       <i class="fa-regular fa-pen"></i>
                     </button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
                   </td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td class="custom-column1st">Trần Thị B</td>
-                  <td class="custom-column2nd">Nhân viên gội đầu</td>
-                  <td class="text-center">Gội đầu</td>
                   <td class="text-center">tranthib@email.com</td>
                   <td class="text-center">0987654321</td>
                   <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editEmployeeModal">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
                   <td>3</td>
                   <td class="custom-column1st">Lê Văn C</td>
-                  <td class="custom-column2nd">Thợ nhuộm tóc</td>
-                  <td class="text-center">Nhuộm tóc</td>
                   <td class="text-center">levanc@email.com</td>
                   <td class="text-center">0901234567</td>
                   <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">Tạm ngưng</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editEmployeeModal">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
                   <td>4</td>
                   <td class="custom-column1st">Phạm Thị D</td>
-                  <td class="custom-column2nd">Thợ cắt tóc</td>
-                  <td class="text-center">Cắt tóc</td>
                   <td class="text-center">phamthid@email.com</td>
                   <td class="text-center">0923456789</td>
                   <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editEmployeeModal">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
                   <td>5</td>
                   <td class="custom-column1st">Đỗ Văn E</td>
-                  <td class="custom-column2nd">Nhân viên gội đầu</td>
-                  <td class="text-center">Gội đầu</td>
                   <td class="text-center">dovane@email.com</td>
                   <td class="text-center">0934567890</td>
                   <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="fa-regular fa-trash"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editEmployeeModal">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -223,64 +266,53 @@
     </div>
 
     <!-- MODAL THEM NHAN VIEN -->
-    <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+    <!-- Modal for adding new employee - no status select -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content custom-modal">
           <div class="modal-header border-0 pb-0">
-            <h5 class="modal-title fw-semibold" id="employeeModalLabel">Thêm Nhân viên mới</h5>
+            <h5 class="modal-title fw-semibold" id="addEmployeeModalLabel">Thêm Nhân viên mới</h5>
             <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Đóng"></button>
           </div>
 
           <div class="modal-body">
             <form>
+              <!-- Added employee image upload section -->
+              <div class="mb-4">
+                <label class="form-label fw-medium">Hình ảnh nhân viên</label>
+                <div class="image-preview-container">
+                  <div class="image-preview-box" onclick="document.getElementById('employeeImageInput').click()">
+                    <i class="fa-light fa-image"></i>
+                  </div>
+                  <input type="file" id="employeeImageInput" class="image-input" accept="image/*">
+                </div>
+                <small class="text-muted d-block mt-2">Click để chọn hình ảnh nhân viên</small>
+              </div>
+
               <div class="row g-3">
-                <!-- tên nhân viên  -->
+                <!-- Tên nhân viên  -->
                 <div class="col-md-6">
                   <label for="employeeName" class="form-label fw-medium">Tên nhân viên</label>
                   <input type="text" class="form-control" id="employeeName" placeholder="Nhập tên nhân viên...">
                 </div>
-                <!-- vị trí  -->
-                <div class="col-md-6">
-                  <label for="employeePosition" class="form-label fw-medium">Vị trí</label>
-                  <select class="form-select">
-                    <option selected>Chọn vị trí</option>
-                    <option value="1">Thợ cắt tóc</option>
-                    <option value="2">Nhân viên gội đầu</option>
-                    <option value="3">Thợ nhuộm tóc</option>
-                  </select>
-                </div>
-                <!-- Chức vụ  -->
-                <div class="col-md-6">
-                  <label for="employeeDepartment" class="form-label fw-medium">Chức vụ</label>
-                  <select class="form-select">
-                    <option selected>Chọn Chức vụ</option>
-                    <option value="1">Cắt tóc</option>
-                    <option value="2">Gội đầu</option>
-                    <option value="3">Nhuộm tóc</option>
-                  </select>
-                </div>
-                <!-- email   -->
+                
+                <!-- Email   -->
                 <div class="col-md-6">
                   <label for="employeeEmail" class="form-label fw-medium">Email</label>
                   <input type="email" class="form-control" id="employeeEmail" placeholder="Nhập email...">
                 </div>
-                <!-- số điện thoại  -->
+                <!-- Số điện thoại  -->
                 <div class="col-md-6">
                   <label for="employeePhone" class="form-label fw-medium">Số điện thoại</label>
                   <input type="text" class="form-control" id="employeePhone" placeholder="Nhập số điện thoại...">
                 </div>
-                <!-- địa chỉ  -->
+                <!-- Giới tính  -->
                 <div class="col-md-6">
-                  <label for="employeeAddress" class="form-label fw-medium">Địa chỉ</label>
-                  <input type="text" class="form-control" id="employeeAddress" placeholder="Nhập địa chỉ...">
-                </div>
-                <!-- trạng thái  -->
-                <div class="col-md-4">
-                  <label for="employeeStatus" class="form-label fw-medium">Trạng thái</label>
-                  <select class="form-select">
-                    <option selected>Chọn trạng thái</option>
-                    <option value="1">Hoạt động</option>
-                    <option value="2">Tạm ngưng</option>
+                  <label for="employeeGender" class="form-label fw-medium">Giới tính</label>
+                  <select class="form-select" id="employeeGender">
+                    <option selected>Chọn giới tính</option>
+                    <option value="1">Nam</option>
+                    <option value="2">Nữ</option>
                   </select>
                 </div>
               </div>
@@ -295,8 +327,121 @@
       </div>
     </div>
 
+    <!-- MODAL SUA NHAN VIEN -->
+    <!-- Modal for editing employee - includes status select -->
+    <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content custom-modal">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-semibold" id="editEmployeeModalLabel">Chỉnh sửa thông tin nhân viên</h5>
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Đóng"></button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <!-- Employee image display and edit section -->
+              <div class="mb-4">
+                <label class="form-label fw-medium">Hình ảnh nhân viên</label>
+                <div class="image-preview-container">
+                  <div class="image-preview-box" onclick="document.getElementById('editEmployeeImageInput').click()">
+                    <img src="/placeholder.svg?height=100&width=100" alt="Hình nhân viên">
+                  </div>
+                  <input type="file" id="editEmployeeImageInput" class="image-input" accept="image/*">
+                </div>
+                <small class="text-muted d-block mt-2">Click để thay đổi hình ảnh</small>
+              </div>
+
+              <div class="row g-3">
+                <!-- Tên nhân viên  -->
+                <div class="col-md-6">
+                  <label for="editEmployeeName" class="form-label fw-medium">Tên nhân viên</label>
+                  <input type="text" class="form-control" id="editEmployeeName" placeholder="Nhập tên nhân viên..." value="Nguyễn Văn A">
+                </div>
+                
+                <!-- Email   -->
+                <div class="col-md-6">
+                  <label for="editEmployeeEmail" class="form-label fw-medium">Email</label>
+                  <input type="email" class="form-control" id="editEmployeeEmail" placeholder="Nhập email..." value="nguyenvana@email.com">
+                </div>
+                <!-- Số điện thoại  -->
+                <div class="col-md-6">
+                  <label for="editEmployeePhone" class="form-label fw-medium">Số điện thoại</label>
+                  <input type="text" class="form-control" id="editEmployeePhone" placeholder="Nhập số điện thoại..." value="0912345678">
+                </div>
+                <!-- Giới tính  -->
+                <div class="col-md-6">
+                  <label for="editEmployeeGender" class="form-label fw-medium">Giới tính</label>
+                  <select class="form-select" id="editEmployeeGender">
+                    <option>Chọn giới tính</option>
+                    <option value="1" selected>Nam</option>
+                    <option value="2">Nữ</option>
+                  </select>
+                </div>
+                <!-- Added status select for edit modal only -->
+                <div class="col-md-6">
+                  <label for="editEmployeeStatus" class="form-label fw-medium">Trạng thái</label>
+                  <select class="form-select" id="editEmployeeStatus">
+                    <option>Chọn trạng thái</option>
+                    <option value="1" selected>Hoạt động</option>
+                    <option value="2">Tạm ngưng</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
+            <button type="button" class="btn btn-blue-100 border">Lưu thay đổi</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
+    <!-- JavaScript for image preview functionality -->
+    <script>
+      // Handle image preview for add employee modal
+      document.getElementById('employeeImageInput').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            const container = document.querySelector('#addEmployeeModal .image-preview-container');
+            container.innerHTML = `
+              <div class="image-preview-box">
+                <img src="${event.target.result}" alt="Preview">
+              </div>
+            `;
+            container.querySelector('.image-preview-box').addEventListener('click', function() {
+              document.getElementById('employeeImageInput').click();
+            });
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Handle image preview for edit employee modal
+      document.getElementById('editEmployeeImageInput').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            const container = document.querySelector('#editEmployeeModal .image-preview-container');
+            container.innerHTML = `
+              <div class="image-preview-box">
+                <img src="${event.target.result}" alt="Preview">
+              </div>
+            `;
+            container.querySelector('.image-preview-box').addEventListener('click', function() {
+              document.getElementById('editEmployeeImageInput').click();
+            });
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
   </body>
 </html>

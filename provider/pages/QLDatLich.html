@@ -28,7 +28,7 @@
           <span class="ms-2 fw-semibold fs-4">freshj</span>
         </div>
         <div class="d-flex align-items-center provider-info">
-          <span class="me-2 fw-light">provider's name</span>
+          <span class="me-2 fw-light">Salon Xịn Nhất Cái Sài Gòn</span>
           <i class="fa-thin fa-circle-user fs-2"></i>
           <a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
         </div>
@@ -43,7 +43,7 @@
           <h6 class="text-uppercase text-muted">Tính năng</h6>
           <ul class="nav flex-column mt-3">
             <li class="nav-item mb-2">
-              <a class="nav-link active" href="#">
+              <a class="nav-link" href="#">
                 <i class="fa-light fa-address-card"></i>Quản lý Hồ sơ
               </a>  
             </li>
@@ -53,13 +53,8 @@
               </a>
             </li>
             <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
+              <a class="nav-link active" href="#">
                 <i class="fa-light fa-calendar-lines-pen"></i>Quản lý Đặt lịch
-              </a>
-            </li>
-            <li class="nav-item mb-2">
-              <a class="nav-link" href="#">
-                <i class="fa-light fa-calendar-days"></i>Lịch làm việc
               </a>
             </li>
             <li class="nav-item mb-2">
@@ -118,7 +113,7 @@
 
             <div class="col-md-2">
               <label class="form-label">Tìm kiếm từ khóa</label>
-              <input type="text" class="form-control" placeholder="Nhập vào tên...">
+              <input type="text" class="form-control" placeholder="Nhập tên khách hàng...">
             </div>
 
             <div class="col-md-2 d-grid">
@@ -132,75 +127,103 @@
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table align-middle table-hover mb-0 custom-table">
+              <!-- Updated table headers from service-focused to booking-focused -->
               <thead class="table-light">
                 <tr>
                   <th scope="col">#</th>
-                  <th class="custom-column1st" scope="col">Tên dịch vụ</th>
-                  <th class="text-center" scope="col">Ngày thực hiện</th>
-                  <th class="text-center" scope="col">Giá (VND)</th>
-                  <th class="text-center" scope="col">Thời lượng (phút)</th>
+                  <th class="custom-column1st" scope="col">Tên khách hàng</th>
+                  <th class="text-center" scope="col">Ngày đặt</th>
+                  <th class="text-center" scope="col">Tổng thời gian (phút)</th>
+                  <th class="text-center" scope="col">Tổng tiền (VND)</th>
                   <th class="text-center" scope="col">Trạng thái</th>
-                  <th class="text-center" scope="col" class="text-end">Thao tác</th>
+                  <th class="text-center" scope="col">Thao tác</th>
                 </tr>
               </thead>
+              <!-- Updated table body with booking data instead of service data -->
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td class="custom-column1st">Cắt tóc nam</td>
+                  <td class="custom-column1st">Nguyễn Thị Hương</td>
                   <td class="text-center">22/10/2025</td>
-                  <td class="text-center">80,000</td>
-                  <td class="text-center">30</td>
-                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td class="text-center">90</td>
+                  <td class="text-center">250,000</td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoàn thành</span></td>
                   <td class="text-center">
                     <button class="btn btn-sm btn-blue-400-outline me-1"
                             type="button"
                             data-bs-toggle="modal" 
-                            data-bs-target="#ScheduleModal">
+                            data-bs-target="#ScheduleModal"
+                            data-booking-id="1">
                       <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td class="custom-column1st">Gội đầu thư giãn ối giồi ôi trình là gì</td>
-                  <td class="text-center">22/10/2025</td>
-                  <td class="text-center">50,000</td>
-                  <td class="text-center">15</td>
-                  <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">Tạm ngưng</span></td>
+                  <td class="custom-column1st">Trần Văn Minh</td>
+                  <td class="text-center">21/10/2025</td>
+                  <td class="text-center">45</td>
+                  <td class="text-center">150,000</td>
+                  <td class="text-center"><span class="badge bg-warning-subtle text-warning">Đã tiếp nhận</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#ScheduleModal"
+                            data-booking-id="2">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td class="custom-column1st">Cắt tóc nam</td>
-                  <td class="text-center">22/10/2025</td>
-                  <td class="text-center">80,000</td>
-                  <td class="text-center">30</td>
-                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td>3</td>
+                  <td class="custom-column1st">Lê Thị Kim Oanh</td>
+                  <td class="text-center">20/10/2025</td>
+                  <td class="text-center">120</td>
+                  <td class="text-center">380,000</td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoàn thành</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#ScheduleModal"
+                            data-booking-id="3">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td class="custom-column1st">Gội đầu thư giãn ối giồi ôi trình là gì</td>
-                  <td class="text-center">22/10/2025</td>
-                  <td class="text-center">50,000</td>
-                  <td class="text-center">15</td>
-                  <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">Tạm ngưng</span></td>
+                  <td>4</td>
+                  <td class="custom-column1st">Phạm Hồng Hạnh</td>
+                  <td class="text-center">19/10/2025</td>
+                  <td class="text-center">60</td>
+                  <td class="text-center">120,000</td>
+                  <td class="text-center"><span class="badge bg-secondary-subtle text-secondary">Chờ xác nhận</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#ScheduleModal"
+                            data-booking-id="4">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
-                  <td>1</td>
-                  <td class="custom-column1st">Cắt tóc nam</td>
-                  <td class="text-center">22/10/2025</td>
-                  <td class="text-center">80,000</td>
-                  <td class="text-center">30</td>
-                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoạt động</span></td>
+                  <td>5</td>
+                  <td class="custom-column1st">Đặng Minh Thu</td>
+                  <td class="text-center">18/10/2025</td>
+                  <td class="text-center">75</td>
+                  <td class="text-center">200,000</td>
+                  <td class="text-center"><span class="badge bg-success-subtle text-success">Hoàn thành</span></td>
                   <td class="text-center">
-                    <button class="btn btn-sm btn-blue-400-outline me-1"><i class="fa-regular fa-pen"></i></button>
+                    <button class="btn btn-sm btn-blue-400-outline me-1"
+                            type="button"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#ScheduleModal"
+                            data-booking-id="5">
+                      <i class="fa-regular fa-pen"></i>
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -209,7 +232,7 @@
         </div>
 
         <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center px-3 py-3">
-          <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> dịch vụ</div>
+          <div class="text-muted small">Hiển thị <strong>1–5</strong> trong <strong>15</strong> đặt lịch</div>
           <nav aria-label="Page navigation example">
             <ul class="pagination mb-0 custom-pagination">
               <li class="page-item disabled">
@@ -229,55 +252,114 @@
       </main>
     </div>
 
-    <!-- MODAL ĐỂ TÁCH BIỆT RA KHỎI CODE GIAO DIỆN NHA ĐỂ BÊN DƯỚI CÙNG ĐỂ MỐT CODE DỄ TÌM -->
+    <!-- MODAL CHI TIẾT ĐẶT LỊCH -->
     <div class="modal fade" id="ScheduleModal" tabindex="-1" aria-labelledby="ScheduleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content custom-modal">
           <div class="modal-header border-0 pb-0">
-            <h5 class="modal-title fw-semibold" id="ScheduleModalLabel">Chi tiết dịch vụ được đặt</h5>
+            <h5 class="modal-title fw-semibold" id="ScheduleModalLabel">Chi tiết đặt lịch</h5>
             <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Đóng"></button>
           </div>
 
           <div class="modal-body">
-            <form>
-              <div class="row g-3">
-                <!-- tên dịch vụ  -->
-                <div class="col-md-6">
-                  <label for="serviceName" class="form-label fw-medium">Tên dịch vụ</label>
-                  <input type="text" class="form-control" id="serviceName" value="Gội đầu nam" disabled>
-                </div>
-                <!-- loại dịch vụ  -->
-                <div class="col-md-6">
-                  <label for="serviceType" class="form-label fw-medium">Loại dịch vụ</label>
-                  <input type="text" class="form-control" id="serviceName" value="Gội đầu" disabled>
-                </div>
-                <!-- giá  -->
-                <div class="col-md-6">
-                  <label for="servicePrice" class="form-label fw-medium">Giá (VNĐ)</label>
-                  <input type="text" class="form-control" id="servicePrice" value="50.000Đ" disabled>
-                </div>
-                <!-- thời lượng   -->
-                <div class="col-md-6">
-                  <label for="serviceDuration" class="form-label fw-medium">Thời lượng (phút)</label>
-                  <input type="text" class="form-control" id="serviceDuration" value="20" disabled>
-                </div>
-                <!-- mô tả  -->
-                <div class="col-12">
-                  <label for="serviceDescription" class="form-label fw-medium">Ghi chú của khách hàng</label>
-                  <textarea class="form-control" id="serviceDescription" rows="3" disabled>Nhẹ nhàng, da đầu nhạy cảm dễ dị ứng với hóa chất</textarea>
-                </div>
-                <!-- trạng thái  -->
-                <div class="col-md-4">
-                  <label for="serviceType" class="form-label fw-medium">Trạng thái</label>
-                  <input type="text" class="form-control" id="serviceDuration" value="Đã xác nhận" disabled>
-                </div>
+            <!-- Added customer information section -->
+            <h6 class="fw-semibold mb-3">Thông tin khách hàng</h6>
+            <div class="row g-3 mb-4 p-3 bg-light rounded">
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Tên khách hàng</label>
+                <input type="text" class="form-control form-control-sm" value="Nguyễn Thị Hương" disabled>
               </div>
-            </form>
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Số điện thoại</label>
+                <input type="text" class="form-control form-control-sm" value="0987654321" disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Giới tính</label>
+                <input type="text" class="form-control form-control-sm" value="Nữ" disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Ngày sinh</label>
+                <input type="text" class="form-control form-control-sm" value="15/05/1995" disabled>
+              </div>
+            </div>
+
+            <!-- Added services list with duration and time -->
+            <h6 class="fw-semibold mb-3">Danh sách dịch vụ</h6>
+            <div class="table-responsive mb-4">
+              <table class="table table-sm table-bordered">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Tên dịch vụ</th>
+                    <th class="text-center" scope="col">Thời lượng (phút)</th>
+                    <th class="text-center" scope="col">Bắt đầu</th>
+                    <th class="text-center" scope="col">Kết thúc</th>
+                    <th class="text-center" scope="col">Nhân viên</th>
+                    <th class="text-center" scope="col">Giá (VND)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Cắt tóc nữ</td>
+                    <td class="text-center">45</td>
+                    <td class="text-center">09:00</td>
+                    <td class="text-center">09:45</td>
+                    <td class="text-center">Linh Đan</td>
+                    <td class="text-center">150,000</td>
+                  </tr>
+                  <tr>
+                    <td>Gội đầu thư giãn</td>
+                    <td class="text-center">30</td>
+                    <td class="text-center">09:50</td>
+                    <td class="text-center">10:20</td>
+                    <td class="text-center">Linh Đan</td>
+                    <td class="text-center">80,000</td>
+                  </tr>
+                  <tr>
+                    <td>Nhuộm tóc</td>
+                    <td class="text-center">90</td>
+                    <td class="text-center">10:25</td>
+                    <td class="text-center">11:55</td>
+                    <td class="text-center">Minh Huyền</td>
+                    <td class="text-center">300,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Added payment method and promotion info -->
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Phương thức thanh toán</label>
+                <input type="text" class="form-control form-control-sm" value="Tiền mặt" disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Khuyến mãi áp dụng</label>
+                <input type="text" class="form-control form-control-sm" value="Giảm 10% - Khách hàng VIP" disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Tổng thời gian (phút)</label>
+                <input type="text" class="form-control form-control-sm" value="165" disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small fw-medium">Tổng tiền (VND)</label>
+                <input type="text" class="form-control form-control-sm fw-semibold text-primary" value="502,500" disabled>
+              </div>
+              <div class="col-12">
+                <label class="form-label small fw-medium">Trạng thái</label>
+                <input type="text" class="form-control form-control-sm" value="Hoàn thành" disabled>
+              </div>
+            </div>
+
+            <!-- Added customer notes section -->
+            <div class="col-12">
+              <label class="form-label small fw-medium">Ghi chú của khách hàng</label>
+              <textarea class="form-control form-control-sm" rows="2" disabled>Làm nhẹ nhàng, da đầu nhạy cảm dễ dị ứng với hóa chất</textarea>
+            </div>
           </div>
 
-          <div class="modal-footer border-0 pt-0">
-            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Hủy</button>
-            <button type="button" class="btn btn-blue-100 border">Xác nhận</button>
+          <div class="modal-footer border-0 pt-3">
+            <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-blue-100 border">Xác nhận hoàn thành</button>
           </div>
         </div>
       </div>

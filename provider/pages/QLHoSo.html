@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="vi">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,17 +7,101 @@
 	<!-- Bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
 		crossorigin="anonymous">
-
 	<!-- Font Awesome -->
 	<link
 		href="https://cdn.jsdelivr.net/gh/HuongLamCoder/font-awesome-pro-6.5.2/fontawesome-pro-6.5.2-web/css/all.min.css"
 		rel="stylesheet" type="text/css" />
-
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="../assets/css/provider.css">
 	<link rel="stylesheet" href="../../assets_root/css/root.css">
+	<style>
+		.image-upload-box {
+			border: 2px dashed #ccc;
+			border-radius: 8px;
+			padding: 20px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			background-color: #f9f9f9;
+		}
+		.image-upload-box:hover {
+			border-color: #0d6efd;
+			background-color: #f0f4ff;
+		}
+		.image-upload-box.has-image {
+			border-color: #0d6efd;
+			padding: 0;
+			overflow: hidden;
+		}
+		.image-upload-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.image-upload-icon {
+			font-size: 32px;
+			color: #b8a0ff;
+		}
+		.working-hours-row {
+			display: flex;
+			align-items: center;
+			padding: 12px 0;
+			border-bottom: 1px solid #e9ecef;
+		}
+		.working-hours-row:last-child {
+			border-bottom: none;
+		}
+		.day-name {
+			flex: 0 0 120px;
+			font-weight: 500;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.day-indicator {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background-color: #28a745;
+		}
+		.day-indicator.off {
+			background-color: #ccc;
+		}
+		.working-hours-time {
+			flex: 1;
+			color: #6c757d;
+		}
+		.time-inputs-group {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			flex: 1;
+		}
+		.time-inputs-group input {
+			flex: 1;
+			max-width: 100px;
+		}
+		.time-separator {
+			color: #6c757d;
+			font-weight: 500;
+		}
+		.toggle-closed-btn {
+			padding: 4px 12px;
+			font-size: 12px;
+		}
+		.main-image-container {
+			width: 50%;
+		}
+		.thumbnail-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+			gap: 15px;
+		}
+		.thumbnail-box {
+			aspect-ratio: 1;
+		}
+	</style>
 </head>
-
 <body>
 	<!-- Header Sticky -->
 	<header class="shadow py-3 sticky-top bg-white z-3">
@@ -28,7 +111,7 @@
 				<span class="ms-2 fw-semibold fs-4">freshj</span>
 			</div>
 			<div class="d-flex align-items-center provider-info">
-				<span class="me-2 fw-light">provider's name</span>
+				<span class="me-2 fw-light">Salon Xịn Nhất Cái Sài Gòn</span>
 				<i class="fa-thin fa-circle-user fs-2"></i>
 				<a class="mb-0 nav-link text-dark ms-3 logout-link">Đăng xuất</a>
 			</div>
@@ -58,11 +141,6 @@
 					</li>
 					<li class="nav-item mb-2">
 						<a class="nav-link" href="#">
-							<i class="fa-light fa-calendar-days"></i>Lịch làm việc
-						</a>
-					</li>
-					<li class="nav-item mb-2">
-						<a class="nav-link" href="#">
 							<i class="fa-light fa-users"></i>Quản lý Nhân viên
 						</a>
 					</li>
@@ -84,13 +162,10 @@
 		<main class="flex-grow-1 px-5 mt-4" style="margin-left: 240px;">
 			<!-- Gradient banner -->
 			<div class="banner rounded mb-0"></div>
-
-			<form id="profileForm" class="profile-card bg-white rounded shadow-sm p-4 mt-n5">
+			
+			<!-- Profile Form -->
+			<form id="profileForm" class="profile-card bg-white rounded shadow-sm p-4 mt-n5 mb-4">
 				<div class="d-flex align-items-center">
-					<!-- avatar của doanh nghiệp -->
-					<div class="me-3">
-						<img src="../assets/avatar-default.svg" alt="avatar" class="rounded-circle avatar-lg">
-					</div>
 					<div class="flex-grow-1">
 						<h5 class="mb-1">Salon Xịn Nhất Cái Sài Gòn</h5>
 						<div class="text-muted">salonsaigon@gmail.com</div>
@@ -101,53 +176,281 @@
 							class="btn btn-outline-secondary btn-sm ms-2 d-none">Cancel</button>
 					</div>
 				</div>
-
 				<hr class="my-4">
-
 				<div class="row gy-3">
 					<div class="col-md-6">
 						<label class="form-label small">Tên Salon</label>
 						<input name="fullname" disabled type="text" class="form-control form-control-sm"
-							placeholder="Nhập tên Salon...">
+							value="Salon Xịn Nhất Cái Sài Gòn" placeholder="Nhập tên Salon...">
 					</div>
 					<div class="col-md-6">
 						<label class="form-label small">Email</label>
 						<input name="nickname" disabled type="text" class="form-control form-control-sm"
-							placeholder="Nhập email...">
+							value="salonsaigon@gmail.com" placeholder="Nhập email...">
 					</div>
 					<div class="col-md-6">
 						<label class="form-label small">Loại hình kinh doanh</label>
 						<select name="gender" disabled class="form-select form-select-sm">
 							<option selected>Chọn loại hình...</option>
-							<option>Tiệm làm nail</option>
+							<option selected>Làm đẹp tổng hợp</option>
 							<option>Tiệm làm tóc</option>
 						</select>
-					</div>
-					<div class="col-md-6">
-						<label class="form-label small">Mật khẩu</label>
-						<input name="nickname" disabled type="text" class="form-control form-control-sm"
-							placeholder="Nhập mật khẩu...">
 					</div>
 					<div class="col-md-6">
 						<label class="form-label small">Địa chỉ</label>
 						<input name="nickname" disabled type="text" class="form-control form-control-sm"
 							placeholder="A7/200 Văn Tiến Dũng, Phong Phú, Bình Chánh, TP. HCM">
 					</div>
-					<div class="col-md-6">
-						<label class="form-label small">Time Zone</label>
-						<select name="tz" disabled class="form-select form-select-sm">
-							<option selected>UTC +7</option>
-						</select>
+					<div class="col">
+						<label class="form-label small">Giới thiệu</label>
+						<textarea class="form-control" style="font-size: 14px;" id="exampleFormControlTextarea1" rows="3"
+							disabled>Được biết đến là một thương hiệu nổi tiếng tại Sài Gòn chuyên phục vụ các dịch vụ như: làm móng, gội đầu, spa, dưỡng da và các loại dịch vụ chăm sóc sắc đẹp khác cho các chị em phụ nữ.</textarea>
 					</div>
 				</div>
 			</form>
 
+			<!-- Working Hours Section -->
+			<div class="bg-white rounded shadow-sm p-4 mb-4">
+				<div class="d-flex justify-content-between align-items-center mb-4">
+					<h5 class="mb-0">Giờ mở cửa</h5>
+					<button type="button" id="editHoursBtn" class="btn btn-primary btn-sm">Edit</button>
+					<button type="button" id="cancelHoursBtn" class="btn btn-outline-secondary btn-sm ms-2 d-none">Cancel</button>
+					<button type="button" id="saveHoursBtn" class="btn btn-success btn-sm ms-2 d-none">Save</button>
+				</div>
+
+				<div id="hoursViewMode">
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator"></span>
+							Thứ Hai
+						</div>
+						<div class="working-hours-time">09:00 - 20:00</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator"></span>
+							Thứ Ba
+						</div>
+						<div class="working-hours-time">09:00 - 20:00</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Thứ Tư
+						</div>
+						<div class="working-hours-time">-</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Thứ Năm
+						</div>
+						<div class="working-hours-time">-</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator"></span>
+							Thứ Sáu
+						</div>
+						<div class="working-hours-time">09:00 - 18:00</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Thứ Bảy
+						</div>
+						<div class="working-hours-time">-</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Chủ nhật
+						</div>
+						<div class="working-hours-time">-</div>
+					</div>
+				</div>
+
+				<div id="hoursEditMode" class="d-none">
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator"></span>
+							Thứ Hai
+						</div>
+						<div class="time-inputs-group">
+							<input type="time" class="form-control form-control-sm" value="09:00" data-day="0">
+							<span class="time-separator">-</span>
+							<input type="time" class="form-control form-control-sm" value="20:00" data-day="0">
+							<button type="button" class="btn btn-outline-danger btn-sm toggle-closed-btn" data-day="0">
+								Mở
+							</button>
+						</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator"></span>
+							Thứ Ba
+						</div>
+						<div class="time-inputs-group">
+							<input type="time" class="form-control form-control-sm" value="09:00" data-day="1">
+							<span class="time-separator">-</span>
+							<input type="time" class="form-control form-control-sm" value="20:00" data-day="1">
+							<button type="button" class="btn btn-outline-danger btn-sm toggle-closed-btn" data-day="1">
+								Mở
+							</button>
+						</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Thứ Tư
+						</div>
+						<div class="time-inputs-group">
+							<input type="time" class="form-control form-control-sm" disabled data-day="2">
+							<span class="time-separator">-</span>
+							<input type="time" class="form-control form-control-sm" disabled data-day="2">
+							<button type="button" class="btn btn-outline-success btn-sm toggle-closed-btn" data-day="2">
+								Đóng
+							</button>
+						</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Thứ Năm
+						</div>
+						<div class="time-inputs-group">
+							<input type="time" class="form-control form-control-sm" disabled data-day="3">
+							<span class="time-separator">-</span>
+							<input type="time" class="form-control form-control-sm" disabled data-day="3">
+							<button type="button" class="btn btn-outline-success btn-sm toggle-closed-btn" data-day="3">
+								Đóng
+							</button>
+						</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator"></span>
+							Thứ Sáu
+						</div>
+						<div class="time-inputs-group">
+							<input type="time" class="form-control form-control-sm" value="09:00" data-day="4">
+							<span class="time-separator">-</span>
+							<input type="time" class="form-control form-control-sm" value="18:00" data-day="4">
+							<button type="button" class="btn btn-outline-danger btn-sm toggle-closed-btn" data-day="4">
+								Mở
+							</button>
+						</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Thứ Bảy
+						</div>
+						<div class="time-inputs-group">
+							<input type="time" class="form-control form-control-sm" disabled data-day="5">
+							<span class="time-separator">-</span>
+							<input type="time" class="form-control form-control-sm" disabled data-day="5">
+							<button type="button" class="btn btn-outline-success btn-sm toggle-closed-btn" data-day="5">
+								Đóng
+							</button>
+						</div>
+					</div>
+					<div class="working-hours-row">
+						<div class="day-name">
+							<span class="day-indicator off"></span>
+							Chủ nhật
+						</div>
+						<div class="time-inputs-group">
+							<input type="time" class="form-control form-control-sm" disabled data-day="6">
+							<span class="time-separator">-</span>
+							<input type="time" class="form-control form-control-sm" disabled data-day="6">
+							<button type="button" class="btn btn-outline-success btn-sm toggle-closed-btn" data-day="6">
+								Đóng
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Images Section -->
+			<div class="bg-white rounded shadow-sm p-4">
+				<div class="d-flex justify-content-between align-items-center mb-4">
+					<h5 class="mb-0">Hình ảnh Salon</h5>
+					<button type="button" id="editImagesBtn" class="btn btn-primary btn-sm">Edit</button>
+					<button type="button" id="cancelImagesBtn" class="btn btn-outline-secondary btn-sm ms-2 d-none">Cancel</button>
+					<button type="button" id="saveImagesBtn" class="btn btn-success btn-sm ms-2 d-none">Save</button>
+				</div>
+
+				<!-- View Mode -->
+				<div id="imagesViewMode">
+					<div class="main-image-container mb-3">
+						<div class="image-upload-box has-image rounded">
+							<img src="../../uploads/providers/businessImg1.png" alt="Salon main image">
+						</div>
+					</div>
+					<p class="text-muted small mb-3">Hình ảnh phụ</p>
+					<div class="thumbnail-container">
+						<div class="thumbnail-box">
+							<div class="image-upload-box has-image rounded">
+								<img src="../../uploads/providers/businessImg2.png" alt="Salon image 1">
+							</div>
+						</div>
+						<div class="thumbnail-box">
+							<div class="image-upload-box has-image rounded">
+								<img src="../../uploads/providers/businessImg3.png" alt="Salon image 2">
+							</div>
+						</div>
+						<!-- <div class="thumbnail-box">
+							<div class="image-upload-box has-image rounded">
+								<img src="../../uploads/providers/businessImg4.png" alt="Salon image 3">
+							</div>
+						</div> -->
+					</div>
+				</div>
+
+				<!-- Edit Mode -->
+				<div id="imagesEditMode" class="d-none">
+					<p class="text-muted small mb-3">Hình ảnh chính</p>
+					<div class="main-image-container mb-3">
+						<div class="image-upload-box rounded" id="mainImageBox">
+							<input type="file" class="d-none image-input" accept="image/*" data-type="main">
+							<i class="fa-regular fa-plus image-upload-icon"></i>
+							<p class="mt-2 small text-muted">Click để tải hình</p>
+						</div>
+					</div>
+
+					<p class="text-muted small mb-3">Hình ảnh phụ (tối đa 3 hình)</p>
+					<div class="thumbnail-container">
+						<div class="thumbnail-box">
+							<div class="image-upload-box rounded thumbnail-image-box" id="thumb1">
+								<input type="file" class="d-none image-input" accept="image/*" data-type="thumbnail">
+								<i class="fa-regular fa-plus image-upload-icon"></i>
+								<p class="mt-2 small text-muted">Click để tải</p>
+							</div>
+						</div>
+						<div class="thumbnail-box">
+							<div class="image-upload-box rounded thumbnail-image-box" id="thumb2">
+								<input type="file" class="d-none image-input" accept="image/*" data-type="thumbnail">
+								<i class="fa-regular fa-plus image-upload-icon"></i>
+								<p class="mt-2 small text-muted">Click để tải</p>
+							</div>
+						</div>
+						<!-- <div class="thumbnail-box">
+							<div class="image-upload-box rounded thumbnail-image-box" id="thumb3">
+								<input type="file" class="d-none image-input" accept="image/*" data-type="thumbnail">
+								<i class="fa-regular fa-plus image-upload-icon"></i>
+								<p class="mt-2 small text-muted">Click để tải</p>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
 		</main>
 	</div>
+
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
 	<script src="../js/HoSo.js"></script>
 </body>
-
 </html>

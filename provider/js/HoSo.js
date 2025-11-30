@@ -8,6 +8,7 @@
         const controls = form.querySelectorAll('input, select, textarea');
         controls.forEach(c => c.disabled = !flag);
     }
+
     editBtn.addEventListener('click', function () {
         if (!editing) {
             editing = true;
@@ -17,14 +18,12 @@
             editBtn.classList.remove('btn-primary');
             editBtn.classList.add('btn-success');
         } else {
-
             editing = false;
             setEditable(false);
             editBtn.textContent = 'Edit';
             cancelBtn.classList.add('d-none');
             editBtn.classList.remove('btn-success');
             editBtn.classList.add('btn-primary');
-
             editBtn.blur();
             const tmp = document.createElement('span');
             tmp.className = 'ms-2 text-success small';
@@ -33,8 +32,8 @@
             setTimeout(() => tmp.remove(), 1200);
         }
     });
-    cancelBtn.addEventListener('click', function () {
 
+    cancelBtn.addEventListener('click', function () {
         editing = false;
         setEditable(false);
         editBtn.textContent = 'Edit';
@@ -46,68 +45,131 @@
     setEditable(false);
 })();
 
-
-// Add Email Address behavior
+// Working Hours Editing
 (function () {
-    const addBtn = document.getElementById('addEmailBtn');
-    const addForm = document.getElementById('addEmailForm');
-    const saveBtn = document.getElementById('saveEmailBtn');
-    const cancelBtn = document.getElementById('cancelEmailBtn');
-    const input = document.getElementById('newEmailInput');
-    const emailList = document.getElementById('emailList');
-    const emailError = document.getElementById('emailError');
+    const editHoursBtn = document.getElementById('editHoursBtn');
+    const cancelHoursBtn = document.getElementById('cancelHoursBtn');
+    const saveHoursBtn = document.getElementById('saveHoursBtn');
+    const hoursViewMode = document.getElementById('hoursViewMode');
+    const hoursEditMode = document.getElementById('hoursEditMode');
+    const toggleClosedBtns = document.querySelectorAll('.toggle-closed-btn');
 
-    function isValidEmail(e) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
-    }
-
-    addBtn.addEventListener('click', function () {
-        addForm.classList.remove('d-none');
-        input.focus();
-        addBtn.setAttribute('disabled', '');
+    editHoursBtn.addEventListener('click', function () {
+        hoursViewMode.classList.add('d-none');
+        hoursEditMode.classList.remove('d-none');
+        editHoursBtn.classList.add('d-none');
+        cancelHoursBtn.classList.remove('d-none');
+        saveHoursBtn.classList.remove('d-none');
     });
 
-    cancelBtn.addEventListener('click', function () {
-        addForm.classList.add('d-none');
-        emailError.classList.add('d-none');
-        emailError.textContent = '';
-        input.value = '';
-        addBtn.removeAttribute('disabled');
+    cancelHoursBtn.addEventListener('click', function () {
+        hoursViewMode.classList.remove('d-none');
+        hoursEditMode.classList.add('d-none');
+        editHoursBtn.classList.remove('d-none');
+        cancelHoursBtn.classList.add('d-none');
+        saveHoursBtn.classList.add('d-none');
     });
 
-    saveBtn.addEventListener('click', function () {
-        const val = input.value.trim();
-        if (!isValidEmail(val)) {
-            emailError.textContent = 'Please enter a valid email address.';
-            emailError.classList.remove('d-none');
-            return;
-        }
+    saveHoursBtn.addEventListener('click', function () {
+        hoursViewMode.classList.remove('d-none');
+        hoursEditMode.classList.add('d-none');
+        editHoursBtn.classList.remove('d-none');
+        cancelHoursBtn.classList.add('d-none');
+        saveHoursBtn.classList.add('d-none');
 
-
-        const wrapper = document.createElement('div');
-        wrapper.className = 'd-flex align-items-center email-entry mb-2';
-        wrapper.innerHTML = `
-            <div class="me-3 email-icon bg-primary-subtle text-primary p-2 rounded-circle">
-                <i class="fa-regular fa-envelope"></i>
-            </div>
-            <div>
-                <div class="fw-medium">${val}</div>
-                <div class="small text-muted">Just now</div>
-            </div>`;
-
-        emailList.appendChild(wrapper);
-        // reset form
-        input.value = '';
-        emailError.classList.add('d-none');
-        addForm.classList.add('d-none');
-        addBtn.removeAttribute('disabled');
-
-        // small saved feedback
         const tmp = document.createElement('span');
         tmp.className = 'ms-2 text-success small';
-        tmp.textContent = 'Added';
-        addBtn.parentNode.appendChild(tmp);
+        tmp.textContent = 'Saved';
+        saveHoursBtn.parentNode.appendChild(tmp);
         setTimeout(() => tmp.remove(), 1200);
     });
 
+    toggleClosedBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const day = this.getAttribute('data-day');
+            const inputs = hoursEditMode.querySelectorAll(`input[data-day="${day}"]`);
+            const indicator = hoursEditMode.querySelectorAll('.day-indicator')[day];
+
+            if (this.textContent.trim() === 'Mở') {
+                inputs.forEach(input => input.disabled = true);
+                this.textContent = 'Đóng';
+                this.classList.remove('btn-outline-danger');
+                this.classList.add('btn-outline-success');
+                indicator.classList.add('off');
+            } else {
+                inputs.forEach(input => input.disabled = false);
+                this.textContent = 'Mở';
+                this.classList.remove('btn-outline-success');
+                this.classList.add('btn-outline-danger');
+                indicator.classList.remove('off');
+            }
+        });
+    });
+})();
+
+// Images Management
+(function () {
+    const editImagesBtn = document.getElementById('editImagesBtn');
+    const cancelImagesBtn = document.getElementById('cancelImagesBtn');
+    const saveImagesBtn = document.getElementById('saveImagesBtn');
+    const imagesViewMode = document.getElementById('imagesViewMode');
+    const imagesEditMode = document.getElementById('imagesEditMode');
+    const imageBoxes = document.querySelectorAll('.image-upload-box.rounded');
+    const imageInputs = document.querySelectorAll('.image-input');
+
+    editImagesBtn.addEventListener('click', function () {
+        imagesViewMode.classList.add('d-none');
+        imagesEditMode.classList.remove('d-none');
+        editImagesBtn.classList.add('d-none');
+        cancelImagesBtn.classList.remove('d-none');
+        saveImagesBtn.classList.remove('d-none');
+    });
+
+    cancelImagesBtn.addEventListener('click', function () {
+        imagesViewMode.classList.remove('d-none');
+        imagesEditMode.classList.add('d-none');
+        editImagesBtn.classList.remove('d-none');
+        cancelImagesBtn.classList.add('d-none');
+        saveImagesBtn.classList.add('d-none');
+    });
+
+    saveImagesBtn.addEventListener('click', function () {
+        imagesViewMode.classList.remove('d-none');
+        imagesEditMode.classList.add('d-none');
+        editImagesBtn.classList.remove('d-none');
+        cancelImagesBtn.classList.add('d-none');
+        saveImagesBtn.classList.add('d-none');
+
+        const tmp = document.createElement('span');
+        tmp.className = 'ms-2 text-success small';
+        tmp.textContent = 'Saved';
+        saveImagesBtn.parentNode.appendChild(tmp);
+        setTimeout(() => tmp.remove(), 1200);
+    });
+
+    // Image upload handlers
+    imageInputs.forEach(input => {
+        const box = input.parentElement;
+        
+        box.addEventListener('click', function () {
+            input.click();
+        });
+
+        input.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    box.innerHTML = '';
+                    box.classList.add('has-image');
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.alt = 'Uploaded image';
+                    box.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    });
 })();
